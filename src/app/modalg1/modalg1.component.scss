@@ -1,0 +1,65 @@
+@media screen and (max-width: 768px) { //cambios en tamaño ipad a celular
+    div.col2{
+     display: none;
+    }
+     .login-form-1{
+        margin-top: 2rem; 
+     }
+     .closepequeño{
+        z-index: 2;
+        position: absolute;
+        right: 10px;
+        top: 5px;
+    }
+    }
+
+    @media screen and (min-width: 1024px) { //desaparece el button "x" para cerrar el registro en patanlla superiro a 1024 
+        .closepequeño{
+         display: none;
+        }
+    }
+
+    .modal-body{
+        padding: 0rem; //borrde allimite de cuerpo del modal
+    }
+    .col2{
+        padding: 0rem;
+    }
+    // login centreado verticalmete
+    .row{
+       display: flex;
+       align-items: center;
+    }
+    //espaciado entre los titulos y la linea
+    .sesion{
+        margin-bottom: 0px;
+    }
+    .espacio{
+        margin-top: 0px;
+    }
+    //fin espacio
+    //linea caraterosticas
+    hr{
+        
+        width: 64%;
+        border-width: 2px;
+        border-color:#FAD000;
+    }
+    //redondear boton con css(ya que no funciona mdboostrap)
+    .btn-rounded{
+        border-radius: 22.5px;
+        }
+    .close{
+        z-index: 2;
+        position: absolute;
+        right: 10px;
+        top: 5px;
+    }
+    //texto del modal general
+    .modaltext{
+        z-index: 2;
+        position: absolute;
+        top: 85px;
+        left: 40px;
+        width: 16rem;
+    }

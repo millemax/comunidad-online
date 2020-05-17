@@ -122,8 +122,13 @@
               "devServerTarget": "comunidad-online:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "comunidad-online"
 }

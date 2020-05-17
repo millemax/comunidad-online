@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "comunidad-online",
+      "public": "dist/comunidad-online",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
