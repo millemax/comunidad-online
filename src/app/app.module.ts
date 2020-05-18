@@ -11,6 +11,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { RegistrosComponent } from './registros/registros.component';
 import { HomeComponent } from './home/home.component';
+import { Modalg1Component } from './modalg1/modalg1.component';
+
+/*firebase*/
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+//gestionarsubida de imagenes 
+import {AngularFireStorageModule,StorageBucket} from '@angular/fire/storage';
+import {AngularFireModule} from '@angular/fire';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -18,17 +26,26 @@ import { HomeComponent } from './home/home.component';
     NavbarComponent,
     NavbarpruebaComponent,
     RegistrosComponent,
-    HomeComponent
+    HomeComponent,
+    Modalg1Component
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
     BrowserAnimationsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    
+    //firebasebase parametro de conexion
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule,
+    AngularFireStorageModule,
+    AngularFirestoreModule,
     
   ],
-  providers: [],
+  providers: [
+    {provide: StorageBucket,useValue:'gs://comunidadbd-2053d.appspot.com'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

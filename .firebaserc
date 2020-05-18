@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "comunidadbd-2053d": {
+      "hosting": {
+        "comunidad-online": [
+          "comunidadbd-2053d"
+        ]
+      }
+    }
+  }
+}
