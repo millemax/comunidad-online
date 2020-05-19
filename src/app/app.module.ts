@@ -6,12 +6,11 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { NavbarpruebaComponent } from './navbarprueba/navbarprueba.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { RegistrosComponent } from './registros/registros.component';
 import { HomeComponent } from './home/home.component';
-import { Modalg1Component } from './modalg1/modalg1.component';
+
 
 /*firebase*/
 import {AngularFirestoreModule} from '@angular/fire/firestore';
@@ -19,6 +18,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule,StorageBucket} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import { environment } from 'src/environments/environment';
+<<<<<<< HEAD
 import { MapaComponent } from './mapa/mapa.component';
 
 
@@ -26,17 +26,35 @@ import { MapaComponent } from './mapa/mapa.component';
 import { AgmCoreModule } from '@agm/core';
 
 
+=======
+import { PostComponent } from './posts/post/post.component';
+import { AdminModule } from './admin/admin.module';
+import { LoginModule } from './auth/login/login.module';
+import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './auth/login/login.component';
+//modulo de autentificaion 
+import {AngularFireAuthModule} from '@angular/fire/auth';
+//Formularioreactivo
+import {ReactiveFormsModule} from '@angular/forms';
+import { HomeModule } from './home/home.module';
+>>>>>>> origin/jhon
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    NavbarpruebaComponent,
     RegistrosComponent,
     HomeComponent,
+<<<<<<< HEAD
     Modalg1Component,
     MapaComponent
+=======
+    PostComponent,
+    AdminComponent,
+    LoginComponent,
+    
+>>>>>>> origin/jhon
   ],
   imports: [
     BrowserModule,
@@ -57,10 +75,20 @@ import { AgmCoreModule } from '@agm/core';
     AngularFireModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
+<<<<<<< HEAD
 
     
     
     
+=======
+    AdminModule,
+    LoginModule,
+    //Authentificacion
+    AngularFireAuthModule,
+    //FormularioReactivo
+    ReactiveFormsModule,
+    HomeModule
+>>>>>>> origin/jhon
   ],
   providers: [
     {provide: StorageBucket,useValue:'gs://comunidadbd-2053d.appspot.com'}
