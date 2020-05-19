@@ -1,0 +1,18 @@
+<p>registrotienda works!</p>
+<input
+  value="Show Form"
+  class="primary"
+  type="button"
+  (click)="formHidden=false"
+/>
+<input
+  value="Hide Form"
+  class="inverse"
+  type="button"
+  (click)="formHidden=true"
+/>
+<form [ngClass]="{'hidden':formHidden}">
+  <fieldset>
+    <legend>Contact Form</legend>
+  </fieldset>
+</form>

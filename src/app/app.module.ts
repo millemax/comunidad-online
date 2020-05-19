@@ -19,6 +19,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule,StorageBucket} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { RegistrotiendaComponent } from './registrotienda/registrotienda.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { environment } from 'src/environments/environment';
     NavbarpruebaComponent,
     RegistrosComponent,
     HomeComponent,
-    Modalg1Component
+    Modalg1Component,
+    RegistrotiendaComponent
   ],
   imports: [
     BrowserModule,

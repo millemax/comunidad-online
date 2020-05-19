@@ -14,6 +14,7 @@ import {PostI} from './shared/modals/post.interface';
 })
 export class AppComponent implements OnInit{
   title = 'comunidad-online';//original
+  
   public posts:{
     id:string;
     titlePost:string;
