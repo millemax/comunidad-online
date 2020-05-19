@@ -18,7 +18,6 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule,StorageBucket} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import { environment } from 'src/environments/environment';
-<<<<<<< HEAD
 import { MapaComponent } from './mapa/mapa.component';
 
 
@@ -26,7 +25,6 @@ import { MapaComponent } from './mapa/mapa.component';
 import { AgmCoreModule } from '@agm/core';
 
 
-=======
 import { PostComponent } from './posts/post/post.component';
 import { AdminModule } from './admin/admin.module';
 import { LoginModule } from './auth/login/login.module';
@@ -37,7 +35,6 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 //Formularioreactivo
 import {ReactiveFormsModule} from '@angular/forms';
 import { HomeModule } from './home/home.module';
->>>>>>> origin/jhon
 
 
 @NgModule({
@@ -45,16 +42,12 @@ import { HomeModule } from './home/home.module';
     AppComponent,
     NavbarComponent,
     RegistrosComponent,
-    HomeComponent,
-<<<<<<< HEAD
-    Modalg1Component,
-    MapaComponent
-=======
+    HomeComponent,  
+    MapaComponent,
     PostComponent,
     AdminComponent,
     LoginComponent,
     
->>>>>>> origin/jhon
   ],
   imports: [
     BrowserModule,
@@ -75,12 +68,6 @@ import { HomeModule } from './home/home.module';
     AngularFireModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
-<<<<<<< HEAD
-
-    
-    
-    
-=======
     AdminModule,
     LoginModule,
     //Authentificacion
@@ -88,7 +75,6 @@ import { HomeModule } from './home/home.module';
     //FormularioReactivo
     ReactiveFormsModule,
     HomeModule
->>>>>>> origin/jhon
   ],
   providers: [
     {provide: StorageBucket,useValue:'gs://comunidadbd-2053d.appspot.com'}
