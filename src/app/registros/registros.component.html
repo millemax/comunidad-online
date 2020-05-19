@@ -1,106 +1,128 @@
 <br><br><br><br>
-<div class="container">
-    <div class="row d-flex justify-content-center">
-      
-      <div class="col-sm  d-flex justify-content-center">
-             <div class="row">
-                 <div class="col-sm columna">
-                    <a class="letras"><u>REGISTRAR</u></a>
 
-                    &nbsp;&nbsp;
-                    <a class="letras"><u>INICIAR SESION</u></a>
-                     <br><br>
-                     <form>
-                        <div class="form-group">
-                          <label for="exampleInputEmail1" style="color:#7B90A3">correo electronico</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ejemplo@gmail.com">
-                          
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1" style="color:#7B90A3">Contraseña</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="contraseña">
-                        </div>
-                        <br>
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn botoninicio">Iniciar Sesion</button>            
-                            
-                            
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <a href="www.ayniscript.com" style="color:#009CC7">olvide mi contraseña</a>
-                        </div>
-                        
-                        
-                      </form>
-                      <br>
+
+
+
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-sm col-xl-4 col-md-4 justify-content-center">
+              <!-- Bootstrap CSS -->
+                <!-- jQuery first, then Bootstrap JS. -->
+                <!-- Nav tabs -->
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                      <a class="nav-link letras" href="#registro" role="tab" data-toggle="tab">Registro</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active letras" href="#sesion" role="tab" data-toggle="tab">Iniciar sesion</a>
+                    </li>
+                   
                     
+                  </ul>
 
-                 </div>
-                 
+                
+                
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade " id="registro">
+                        <form>
+                            <label class="aviso">
+                                <b> Atencion:</b>                                
+                                
+                                Es importante que ingrese datos veridicos
+                                ya que estos seran usados para el envio de productos.
+                            </label>
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">Nombres:</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
 
-             </div>  
+                                <label for="formGroupExampleInput">Apellidos:</label>
+                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                                 
+                                 <div class="row">
+                                     <div class="col">
+                                        <label for="formGroupExampleInput">Fecha de nacimiento:</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="dd/mm/aa">
 
-            
-            
-      </div>
-      
-    </div>
-  </div>
+                                     </div>
+
+                                     <div class="col">
+                                        <label for="formGroupExampleInput">Numero de telefono:</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput">
+                                     </div>
+
+                                 </div>
+
+                                 <label for="formGroupExampleInput">Direccion:</label>
+                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                                  <br>
+                                 <label for="formGroupExampleInput">Arrastra el puntero hasta la ubicacion exacta:</label>
+
+                                 <app-mapa></app-mapa>   
+                                 
+                                 <br>
+                                 
+                                 <label for="exampleFormControlInput1">correo electronico: </label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ejemplo@gmail.com">
+
+                                
+                                <label for="exampleInputPassword1">Contraseña:</label>
+                                <input type="password" class="form-control">
+                                <label for="exampleInputPassword1">Confirmar contraseña:</label>
+                                <input type="password" class="form-control">
+                                <br>
+                                <div class="form-check">
+                                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                  <label class="form-check-label" for="exampleCheck1">Acepto los <a href="">terminos y condiciones</a> de privacidad </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                
 
 
-  <!--prueba de barra de navegacion-->
-  
-  <div class="row d-flex justify-content-center">
-      <div class=col-sm>
-        <section id="tabs">
-            <div class="container">
-              
-                <div class="row">
-                    <div class="col-xs-12 ">
-                        <nav>
-                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+                              
+                              
+                              
                                 
                             </div>
-                        </nav>
-                        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                            </div>
-                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                            </div>
-                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                            </div>
-                            <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                                Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                            </div>
-                        </div>
-                    
-                    </div>
-                </div>
-            </div>
-        </section>
+                            
+                            
+                            
+                          </form>
 
+                        
+                    </div>
+                    <div role="tabpanel" class="tab-pane in active" id="sesion">
+                        <form>
+                            <div class="form-group">
+                              <label for="exampleInputEmail1" style="color:#7B90A3">correo electronico</label>
+                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ejemplo@gmail.com">
+                              
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1" style="color:#7B90A3">Contraseña</label>
+                              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="contraseña">
+                            </div>
+                            <br>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn botoninicio">Iniciar Sesion</button>            
+                                
+                                
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <a href="www.ayniscript.com" style="color:#009CC7">olvide mi contraseña</a>
+                            </div>
+                            
+                            
+                          </form>
+
+                    </div>
+                    
+                </div>
+
+          </div>
 
       </div>
-
-
   </div>
 
-  <br><br>
-  
-<div class="container">
-    <div class="row d-flex justify-content-center">
-        
-        <div class="col-sm  d-flex justify-content-center">
-            <nav class="nav nav-tabs">
-                <a href="" class="nav-item  nav-link">REGISTRO</a>
-                <a href="" class="nav-item  nav-link">INICIAR SESION</a>    
-            </nav>
-        </div>
 
-    </div>
-</div>
+ 

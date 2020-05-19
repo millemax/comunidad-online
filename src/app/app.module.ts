@@ -19,6 +19,14 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule,StorageBucket} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { MapaComponent } from './mapa/mapa.component';
+
+
+// importamos para el modulo
+import { AgmCoreModule } from '@agm/core';
+
+
+
 
 @NgModule({
   declarations: [
@@ -27,7 +35,8 @@ import { environment } from 'src/environments/environment';
     NavbarpruebaComponent,
     RegistrosComponent,
     HomeComponent,
-    Modalg1Component
+    Modalg1Component,
+    MapaComponent
   ],
   imports: [
     BrowserModule,
@@ -35,12 +44,22 @@ import { environment } from 'src/environments/environment';
     AngularFontAwesomeModule,
     BrowserAnimationsModule,
     MatTooltipModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBQ2wl-PEYo_y3vpjO6E0ZzQOrKB6leYJI',
+      libraries: ['places']
+    }),
+    //importamos google Maps
+    
+
     
     //firebasebase parametro de conexion
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
+
+    
+    
     
   ],
   providers: [
