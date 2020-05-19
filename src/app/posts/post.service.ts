@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { PostI } from '../shared/modals/post.interface';
+import { PostI } from '../shared/models/post.interface';
 import { ActionSequence } from 'protractor';
 
 @Injectable({
@@ -13,6 +13,7 @@ export class PostService {
   constructor(private afs:AngularFirestore) { }
 
   public getAllPosts():Observable<PostI[]>{
+    //iterar sobre los post de firebase y ids y extraerlos en un solo objeto
     return this.afs.collection('posts')
     .snapshotChanges()
     .pipe(
@@ -25,4 +26,6 @@ export class PostService {
       )
     );
   }
+
+
 }
