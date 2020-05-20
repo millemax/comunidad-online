@@ -70,6 +70,7 @@ import { HomeModule } from './home/home.module';
     AngularFirestoreModule,
     AdminModule,
     LoginModule,
+    
     //Authentificacion
     AngularFireAuthModule,
     //FormularioReactivo

@@ -55,7 +55,7 @@ agm-map {
     background-color: transparent;
   //  border-color: transparent transparent #7B90A3;
     border-bottom: 4px solid !important;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
 }
 .nav-link {
@@ -64,9 +64,31 @@ agm-map {
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem;
     color: #7B90A3;
-    font-size: 20px;
+    font-size: 30px;
 }
 
+//cuando sea para responsive
+@media screen and (max-width: 768px){
+            //prueba de css para registro e inicio de sesion
+        .nav-tabs .nav-item.show .nav-link, .nav-link.active {
+            color: #FAD000;
+            background-color: transparent;
+        //  border-color: transparent transparent #7B90A3;
+            border-bottom: 4px solid !important;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .nav-link {
+            
+            border: 1px solid transparent;
+            border-top-left-radius: .25rem;
+            border-top-right-radius: .25rem;
+            color: #7B90A3;
+            font-size: 20px;
+        }
+   
+    
+}
 
 
 
