@@ -18,6 +18,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule,StorageBucket} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import { environment } from 'src/environments/environment';
+
 import { PostComponent } from './posts/post/post.component';
 import { AdminModule } from './admin/admin.module';
 import { LoginModule } from './auth/login/login.module';
@@ -55,6 +56,7 @@ import { HomeModule } from './home/home.module';
     AngularFirestoreModule,
     AdminModule,
     LoginModule,
+    
     //Authentificacion
     AngularFireAuthModule,
     //FormularioReactivo
