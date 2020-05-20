@@ -1,9 +1,5 @@
 // tamaño de las letras
 
-.letras{
-    font-size: 30px;
-    color: #7B90A3;
-}
 
 .letras:hover{
     color: #FAD000;
@@ -36,42 +32,7 @@
 
 
 
-// prueba de navegacion
-/* Tabs*/
-section {
-    padding: 60px 0;
-}
 
-section .section-title {
-    text-align: center;
-    color: #007b5e;
-    margin-bottom: 50px;
-    text-transform: uppercase;
-}
-
-#tabs{
-	background: #007b5e;
-    color: #eee;
-}
-#tabs h6.section-title{
-    color: #eee;
-}
-
-#tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    color: #f3f3f3;
-    background-color: transparent;
-    border-color: transparent transparent #f3f3f3;
-    border-bottom: 4px solid !important;
-    font-size: 20px;
-    font-weight: bold;
-}
-#tabs .nav-tabs .nav-link {
-    border: 1px solid transparent;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
-    color: #eee;
-    font-size: 20px;
-}
 
 
 // el parrafo de aviso en el registro
@@ -79,5 +40,34 @@ section .section-title {
     color: #7B90A3;
 
 }
+
+
+//tamño de la mapa
+agm-map {
+    height: 300px;
+}
+
+
+
+//prueba de css para registro e inicio de sesion
+ .nav-tabs .nav-item.show .nav-link, .nav-link.active {
+    color: #FAD000;
+    background-color: transparent;
+  //  border-color: transparent transparent #7B90A3;
+    border-bottom: 4px solid !important;
+    font-size: 20px;
+    font-weight: bold;
+}
+.nav-link {
+    
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #7B90A3;
+    font-size: 20px;
+}
+
+
+
 
 

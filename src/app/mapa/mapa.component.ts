@@ -7,17 +7,17 @@ import { MapsAPILoader, MouseEvent } from '@agm/core';
   styleUrls: ['./mapa.component.scss']
 })
 export class MapaComponent implements OnInit {
-  // varibles para almacenar datos de la mapa
-  title: string = 'AGM project';
-  latitude: number;
-  longitude: number;
-  zoom:number;
+    // varibles para almacenar datos de la mapa
+    title: string = 'AGM project';
+    latitude: number;
+    longitude: number;
+    zoom:number;
 
-  address: string;
-  private geoCoder;
+    address: string;
+    private geoCoder;
 
-  @ViewChild('search', {static: false})
-  public searchElementRef: ElementRef;
+    @ViewChild('search', {static: false})
+    public searchElementRef: ElementRef;
 
 
 

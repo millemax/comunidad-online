@@ -5,27 +5,28 @@
 
   <div class="container">
       <div class="row justify-content-center">
-          <div class="col-sm col-xl-4 col-md-4 justify-content-center">
+          <div class="col-sm col-xl-5 col-md-5 justify-content-center encabezado" >
               <!-- Bootstrap CSS -->
                 <!-- jQuery first, then Bootstrap JS. -->
                 <!-- Nav tabs -->
-                <ul class="nav justify-content-center">
-                    <li class="nav-item">
-                      <a class="nav-link letras" href="#registro" role="tab" data-toggle="tab">Registro</a>
+                <ul class="nav">
+                    <li class="nav-item ">
+                      <a class="nav-link btnencabezado" href="#registro" role="tab" data-toggle="tab" style="font-size: 30px; border-bottom-color: #7B90A3; border-bottom: 4px solid;">REGISTRO</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link active letras" href="#sesion" role="tab" data-toggle="tab">Iniciar sesion</a>
+                    <li class="nav-item justify-content-end">
+                      
+                      <a class="nav-link active  btnencabezado" href="#sesion" role="tab" data-toggle="tab" style="font-size: 30px; border-bottom-color: #7B90A3; border-bottom: 4px solid; " >INICIAR SESION</a>
                     </li>
                    
                     
                   </ul>
 
-                
+                <br>
                 
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade " id="registro">
-                        <form>
+                        
                             <label class="aviso">
                                 <b> Atencion:</b>                                
                                 
@@ -33,49 +34,66 @@
                                 ya que estos seran usados para el envio de productos.
                             </label>
                             <div class="form-group">
-                                <label for="formGroupExampleInput">Nombres:</label>
+                                <label for="formGroupExampleInput" class="aviso">Nombres:</label>
                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
 
-                                <label for="formGroupExampleInput">Apellidos:</label>
+                                <label for="formGroupExampleInput" class="aviso">Apellidos:</label>
                                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
                                  
                                  <div class="row">
                                      <div class="col">
-                                        <label for="formGroupExampleInput">Fecha de nacimiento:</label>
+                                        <label for="formGroupExampleInput" class="aviso">Fecha de nacimiento:</label>
                                         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="dd/mm/aa">
 
                                      </div>
 
                                      <div class="col">
-                                        <label for="formGroupExampleInput">Numero de telefono:</label>
+                                        <label for="formGroupExampleInput" class="aviso">Numero de telefono:</label>
                                         <input type="text" class="form-control" id="formGroupExampleInput">
                                      </div>
 
                                  </div>
 
-                                 <label for="formGroupExampleInput">Direccion:</label>
-                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-                                  <br>
-                                 <label for="formGroupExampleInput">Arrastra el puntero hasta la ubicacion exacta:</label>
-
-                                 <app-mapa></app-mapa>   
                                  
+                                  <br>
+                                  <div class="container" style="text-align: center;">
+                                    <label for="formGroupExampleInput"><b class="aviso">Arrastra el puntero hasta la ubicacion exacta </b></label>
+                                  </div>
+                                 
+                                  <!--la mapa de google-->
+
+                                  <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="busca tu ciudad" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+                                  
+                                  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+                                    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+                                      (dragEnd)="markerDragEnd($event)"></agm-marker>
+                                  </agm-map>
+
+                                  <!--fin de la mapa-->
                                  <br>
                                  
-                                 <label for="exampleFormControlInput1">correo electronico: </label>
+                                 <label for="formGroupExampleInput" class="aviso" >Direccion:</label>
+                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="{{address}}">
+                                 
+                                 <label for="exampleFormControlInput1" class="aviso">correo electronico: </label>
                                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ejemplo@gmail.com">
 
                                 
-                                <label for="exampleInputPassword1">Contraseña:</label>
+                                <label for="exampleInputPassword1" class="aviso">Contraseña:</label>
                                 <input type="password" class="form-control">
-                                <label for="exampleInputPassword1">Confirmar contraseña:</label>
+                                <label for="exampleInputPassword1" class="aviso">Confirmar contraseña:</label>
                                 <input type="password" class="form-control">
                                 <br>
                                 <div class="form-check">
                                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                  <label class="form-check-label" for="exampleCheck1">Acepto los <a href="">terminos y condiciones</a> de privacidad </label>
+                                  <label class="form-check-label" for="exampleCheck1" class="aviso">Acepto los <a href="" >terminos y condiciones</a> de privacidad </label>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+
+                                <div class="d-flex justify-content-center">
+                                  <button type="submit" class="btn botoninicio" >REGISTRARME</button>
+
+                                </div>
+                                
                                 
 
 
@@ -87,12 +105,12 @@
                             
                             
                             
-                          </form>
+                          
 
                         
                     </div>
                     <div role="tabpanel" class="tab-pane in active" id="sesion">
-                        <form>
+                        
                             <div class="form-group">
                               <label for="exampleInputEmail1" style="color:#7B90A3">correo electronico</label>
                               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ejemplo@gmail.com">
@@ -113,7 +131,7 @@
                             </div>
                             
                             
-                          </form>
+                          
 
                     </div>
                     
