@@ -21,6 +21,8 @@
 
 
 
+
+
 </head>
 
 
@@ -47,6 +49,8 @@
 
 <!--fin de mdbootstrap-->
 
+
+
   
 
 
@@ -57,12 +61,16 @@
       //-------------
       $(document).ready(function()
         {
+          
           $("#gridSystemModal").modal("toggle");
         });
 
+      //en la funcion de usuario muestra el popover al cursar encima
       $(function () {
+        
       $('[data-toggle="popover"]').popover({ triguer:"manual", html : true })
               .on("mouseenter", function () {
+                
                 var _this = this;
                 $(this).popover("show");
                 $(".popover").on("mouseleave", function () {
@@ -76,16 +84,22 @@
                     }
                 }, 300);
         });
+        });    
+      
 
-
+    //esta funcionalidad es de side bar
+      $("#menu-toggle").click(function(e){           
+            e.preventDefault();            
+            $('#content-wrapper').toggleClass("toggled");
 
         });
 
       
-      
-      
 
 </script>
+
+
+
 
 
 </html>

@@ -1,0 +1,65 @@
+// los colores que se usaran
+//invocar ejemplo: var(--gris);
+:root{
+    --celeste-principal:#00B4CC;
+    --amarillo:#FAD000;
+    --gris:#7B90A3;
+    --verde-azulado: #009CC7;
+
+    
+}
+
+// side bar 
+#sidebar-container {
+    min-height: 100vh;
+
+    //esto ayuda en lafuncionalidad de sidebar
+    margin-left: -18rem;
+    
+    //esto es para que se esconda
+    transition: margin .25s ease-in-out;
+}
+
+
+//ancho del side bar 
+#sidebar-container .menu{
+    width: 18rem;
+
+}
+
+//modificamos el logo
+
+#sidebar-container .logo{
+    padding: .875rem 1.25rem;
+    font-size: 2rem;
+
+}
+
+//boton primary
+.btn-primary{
+    background-color: var(--gris) !important;
+    border:0;
+
+}
+
+
+//funcionalidad para que cierre y expanda el sidebar incluye un script
+
+#content-wrapper.toggled #sidebar-container {
+    margin-left: 0;
+}
+
+@media (min-width: 768px ){
+    #sidebar-container{
+        margin-left: 0;
+    }
+
+    #page-container{
+        min-width: 0;
+        width:100%;
+    }
+    #content-wrapper.toggled  #sidebar-container{
+        margin-left: -18rem;
+    }
+}
+

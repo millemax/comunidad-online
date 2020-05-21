@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
@@ -35,6 +35,12 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 //Formularioreactivo
 import {ReactiveFormsModule} from '@angular/forms';
 import { HomeModule } from './home/home.module';
+import { VerificarusuarioComponent } from './verificarusuario/verificarusuario.component';
+import { CodigoverificadoComponent } from './codigoverificado/codigoverificado.component';
+import { VerificartiendaComponent } from './verificartienda/verificartienda.component';
+import { TiendaverificadoComponent } from './tiendaverificado/tiendaverificado.component';
+import { PaneldecontrolComponent } from './paneldecontrol/paneldecontrol.component';
+
 
 
 @NgModule({
@@ -47,14 +53,21 @@ import { HomeModule } from './home/home.module';
     PostComponent,
     AdminComponent,
     LoginComponent,
+    VerificarusuarioComponent,
+    CodigoverificadoComponent,
+    VerificartiendaComponent,
+    TiendaverificadoComponent,
+    PaneldecontrolComponent,
+    
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule,    
     AngularFontAwesomeModule,
     BrowserAnimationsModule,
     MatTooltipModule,
+   
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBQ2wl-PEYo_y3vpjO6E0ZzQOrKB6leYJI',
       libraries: ['places']
