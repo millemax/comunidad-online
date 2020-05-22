@@ -35,6 +35,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 //Formularioreactivo
 import {ReactiveFormsModule} from '@angular/forms';
 import { HomeModule } from './home/home.module';
+import { RegistrotiendaComponent } from './registrotienda/registrotienda.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { HomeModule } from './home/home.module';
     PostComponent,
     AdminComponent,
     LoginComponent,
+    RegistrotiendaComponent,
     
   ],
   imports: [
