@@ -1,0 +1,174 @@
+<div class="contenedor">
+    <!--la seccion de productos-->
+    <div class="row">
+        <div class="col-6 border"><span class="titulo alinear">Productos</span> </div>
+        <div class="col-6 border d-flex justify-content-end"> <button type="button" class="btn btn-primary btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><b>Agregar</b><i class="fas fa-plus ml-2 alinear"></i></button></div>
+    </div>
+    
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <!--contenido del formulario producto-->
+               <div class="row">
+                   <div class="col-sm-2 col-xs-6" style="text-align: center">
+                            <div class="border margencamera">
+                                    <!--esta relacionado el input con el imagen-->
+                                    <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photoInput>     
+                                    <img [src]="photoSelected || '/assets/images/noimage.png' " class="img-fluid img-thumbnail" alt="No image" (click)="photoInput.click()"><br>                           
+                                   
+                                     <span class="letraicono">foto 1</span> 
+                            </div>
+                    </div>
+                   <div class="col-sm-2 col-xs-6" style="text-align: center"><div class="border margencamera"> <i class="fas fa-camera iconocamara"></i><br><span class="letraicono">Portada</span> </div></div>
+                   <div class="col-sm-2 col-xs-6" style="text-align: center"><div class="border margencamera"> <i class="fas fa-camera iconocamara"></i><br><span class="letraicono">Portada</span></div></div>
+                   <div class="col-sm-2 col-xs-6" style="text-align: center"><div class="border margencamera"><i class="fas fa-camera iconocamara"></i><br><span class="letraicono">Portada</span></div></div>                   
+                   <div class="col-sm-4 col-xs-12">
+                       
+                   </div>
+               </div>
+                <br>
+               <div class="row">
+                   <div class="col-sm-5">
+                        <span>Titulo de producto</span><br>
+                        <input class="form-control" type="text">
+                        <span>Max 60 caracteres</span>
+                   </div>
+                   <div class="col-sm-3">
+                        <span>Categoria</span><br>
+                        <div class="form-group">                            
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>calzado</option>
+                              <option>alimentos</option>
+                              <option>ropa</option>
+                              <option>calzado</option>
+                              <option>primera nesecidad</option>
+                            </select>
+                          </div>
+                          
+                   </div>
+                   <div class="col-sm-2">
+                        <span>Precio</span><br>
+                        
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1">$</span>
+                            </div>
+                            <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
+                          </div>
+                   </div>
+                   <div class="col-sm-2">
+                        <span>Cantidad</span><br>
+                        <input class="form-control" type="number">
+
+                   </div>
+               </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm">
+                        <span>Colores</span><br>
+                        <mat-form-field class="example-chip-list">
+                            <mat-chip-list #chipList aria-label="Fruit selection">
+                              <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                                       [removable]="removable" (removed)="remove(fruit)">
+                                {{fruit.name}}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                              </mat-chip>
+                              <input
+                                     [matChipInputFor]="chipList"
+                                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                     [matChipInputAddOnBlur]="addOnBlur"
+                                     (matChipInputTokenEnd)="add($event)">
+                            </mat-chip-list>
+                          </mat-form-field>
+
+                    </div>
+                    <div class="col-sm">
+                       <!--  <span>Tallas</span><br>
+                        <mat-form-field class="example-chip-list">
+                            <mat-chip-list #chipList aria-label="Fruit selection">
+                              <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                                       [removable]="removable" (removed)="remove(fruit)">
+                                {{fruit.name}}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                              </mat-chip>
+                              <input
+                                     [matChipInputFor]="chipList"
+                                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                     [matChipInputAddOnBlur]="addOnBlur"
+                                     (matChipInputTokenEnd)="add($event)">
+                            </mat-chip-list>
+                          </mat-form-field> -->
+
+                    </div>
+                </div>
+
+                <br>
+               <div class="row">
+                   <div class="col-sm-2">
+                    <span>Tipo de venta</span><br>
+                    <div class="form-group">                            
+                        <select class="form-control" id="exampleFormControlSelect1">
+                          <option>normal</option>
+                          <option>oferta</option>
+                          <option>Para gold</option>
+                          
+                        </select>
+                      </div>
+
+                   </div>
+                   <div class="col-sm">
+                        <span>% descuento(opcional)</span><br>
+                        <input class="form-control" type="text">
+
+                   </div>
+                   <div class="col-sm">
+                        <span>Precio con descuento</span><br>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1">$</span>
+                            </div>
+                            <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+
+                   </div>
+                   <div class="col-sm-3">
+                        
+
+                   </div>
+                   <div class="col-sm-3">
+                        
+
+                   </div>
+               </div>
+
+               <div class="row">
+                   <div class="col-sm-6">
+                       <span>Descripcion general</span>
+                       <textarea class="form-control" rows="5" id="comment"></textarea>
+                   </div>
+                   <div class="col-sm-6">
+                       <span>Descripcion detallada</span>                      
+                       <textarea class="form-control" rows="5" id="comment"></textarea>
+                   </div>
+               </div>
+               <br>
+               <!--contenido del formulario producto-->
+               <div class="row">
+                   <div class="col-sm" style="text-align: center">
+                    <button type="button" class="btn agregar"><b>Agregar producto</b></button>
+                   </div>
+
+               </div>
+
+            
+
+                
+                
+
+            </div>
+        </div>
+
+    <!--fin seccion de productos-->
+
+</div>
+
+

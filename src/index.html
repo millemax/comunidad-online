@@ -23,6 +23,8 @@
 
 
 
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 
@@ -58,41 +60,53 @@
 </body>
 
 <script>
-      //-------------
-      $(document).ready(function()
-        {
-          
-          $("#gridSystemModal").modal("toggle");
-        });
+       
+ 
+     //esto es para el modal
+     $(document).ready(function()
+     {
+       
+       $("#gridSystemModal").modal("toggle");
+     });
 
-      //en la funcion de usuario muestra el popover al cursar encima
-      $(function () {
+
+     //esto es para el sidebar
+
+    //esta funcionalidad es de side bar con jquery pero no esta funcionando
+    $("#menu-toggle").click(function(e){                 
+                 e.preventDefault();            
+                 $('#content-wrapper').toggleClass("toggled");
+           
+      });
+           
+    // fin de funcionalidad  del sidebar con jquery
+
+//en la funcion de usuario muestra el popover al cursar encima
+$(function () {
         
-      $('[data-toggle="popover"]').popover({ triguer:"manual", html : true })
-              .on("mouseenter", function () {
-                
-                var _this = this;
-                $(this).popover("show");
-                $(".popover").on("mouseleave", function () {
-                    $(_this).popover('hide');
-                });
-            }).on("mouseleave", function () {
-                var _this = this;
-                setTimeout(function () {
-                    if (!$(".popover:hover").length) {
-                        $(_this).popover("hide");
-                    }
-                }, 300);
-        });
-        });    
+        $('[data-toggle="popover"]').popover({ triguer:"manual", html : true })
+                .on("mouseenter", function () {
+                  
+                  var _this = this;
+                  $(this).popover("show");
+                  $(".popover").on("mouseleave", function () {
+                      $(_this).popover('hide');
+                  });
+              }).on("mouseleave", function () {
+                  var _this = this;
+                  setTimeout(function () {
+                      if (!$(".popover:hover").length) {
+                          $(_this).popover("hide");
+                      }
+                  }, 300);
+          });
+          });   
+           
+
+     
       
 
-    //esta funcionalidad es de side bar
-      $("#menu-toggle").click(function(e){           
-            e.preventDefault();            
-            $('#content-wrapper').toggleClass("toggled");
-
-        });
+   
 
       
 

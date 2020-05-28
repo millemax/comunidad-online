@@ -1,0 +1,56 @@
+<ng-sidebar-container>
+    <!--sidebar-->
+    <ng-sidebar mode="slide" [(opened)]="_opened">
+        
+        <!--el menu de navegacion-->
+        <div class="row" style="text-align: center;">
+            <div class="col-sm">
+                <i class="far fa-user-circle iconuser"></i><br>
+                <button class="btn btn-sm">{{nombre}}</button><br>
+                <span class="subtitulo">¿que deseas hacer hoy?</span>
+
+            </div>
+
+            
+        </div>
+        <br><br><br>
+        
+        <div class="menu">
+            <div class="list-item"><i class="fas fa-shopping-bag mr-3 mt-3 ml-3"></i><a class="menulink" routerLink="/paneladministracion/misordenes"><b>Ver mis ordenes</b> </a></div>
+            <div class="list-item"><i class="far fa-list-alt mr-3 mt-3 ml-3"></i><a class="menulink" routerLink="/paneladministracion/mislistas"><b>Mis listas</b></a></div>
+            <div class="list-item"><i class="fas fa-store-alt mr-2 mt-3 ml-3"></i><a class="menulink" routerLink="/paneladministracion/mitienda"><b>Ir a mi tienda</b></a></div>
+            <div class="list-item"><i class="fas fa-cog mr-2 mt-3 ml-3"></i><a class="menulink" routerLink="/paneladministracion/configuracion"><b>Configuracion</b></a></div>
+            <div class="list-item"><i class="fas fa-sim-card mr-3 mt-3 ml-3"></i><a class="menulink" routerLink="/paneladministracion/miplan"><b>Mi plan</b></a></div>
+            <div class="list-item"><i class="fas fa-power-off mr-2 mt-3 ml-3"></i><a class="menulink"><b>Cerrar sesion</b></a></div>
+
+            
+        </div>
+        
+        
+    </ng-sidebar>
+
+    <div  ng-sidebar-content>
+        <!--contents sidebar-->
+        <button (click)="_toggleSidebar()">Toggle</button><br>
+        <!--las paginas cambiaran aca-->
+        
+            <router-outlet></router-outlet>
+        
+        
+    </div>
+</ng-sidebar-container>
+
+
+<!--
+<div class="contenedor">
+    <mat-sidenav-container>
+        <mat-sidenav mode="over"[(opened)]="opened">Side nav</mat-sidenav>
+        <mat-sidenav-content>Main
+            <button (click)="opened=!opened">abrir/cerrar</button>
+        </mat-sidenav-content>
+        
+    </mat-sidenav-container>
+</div>
+
+-->
+

@@ -1,31 +1,30 @@
-<div id="content-wrapper" class="d-flex">
-    <!--la parte del sidebar-->
-    <div id="sidebar-container" class="bg-light border-right">
-        <div class="logo">Templune</div>
-        <br>
-        <div class="menu list-group-flush">
-            <a href="" class="list-group-item list-group-action bg-light p-3 border-0"><i class="fas fa-shopping-bag mr-2"></i>Ver mis ordenes</a>
-            <a href="" class="list-group-item list-group-action bg-light p-3 border-0"><i class="fas fa-clipboard-list mr-2"></i>Mis listas</a>
-            <a href="" class="list-group-item list-group-action bg-light p-3 border-0"><i class="fas fa-store-alt mr-2"></i>Ir a mi tienda</a>
-            <a href="" class="list-group-item list-group-action bg-light p-3 border-0"><i class="fas fa-cog mr-2"></i>Configuracion</a>
-            <a href="" class="list-group-item list-group-action bg-light p-3 border-0"><i class="fas fa-sim-card mr-2"></i>Mi plan</a>
-            <a href="" class="list-group-item list-group-action bg-light p-3 border-0"><i class="fas fa-external-link-alt mr-2"></i>Cerrar Sesion</a>
+<div class="page-container">
+    <div class="sidebar">
+            <div class="row" style="text-align: center;">
+                <div class="col-sm">
+                    <i class="far fa-user-circle iconuser"></i>
+                </div>
+                
+            </div>
+            <br><br><br>
+           
+        <div class="list-items">
+            <div class="list-item" routerLink="/panel/misordenes"><i class="fas fa-shopping-bag mr-3 mt-3"></i><label >Ver mis ordenes</label></div>
+            <div class="list-item" routerLink="/panel/mislistas"><i class="far fa-list-alt mr-3 mt-3"></i><label >Mis listas</label></div>
+            <div class="list-item" routerLink="/panel/mitienda"><i class="fas fa-store-alt mr-2 mt-3"></i><label >Ir a mi tienda</label></div>
+            <div class="list-item" routerLink="/panel/configuracion"><i class="fas fa-cog mr-2 mt-3"></i><label >Configuracion</label></div>
+            <div class="list-item" routerLink="/panel/miplan"><i class="fas fa-sim-card mr-3 mt-3"></i><label >Mi plan</label></div>
+            <div class="list-item"><i class="fas fa-power-off mr-2 mt-3"></i><label>Cerrar sesion</label></div>
+            
         </div>
-    </div>
-
-    <!--la parte de los contenidos que tendra cada opcion-->
-    <div id="page-container" class="w-100">
-        
-
-            <!--aca el boton se agrego el id que hara que colapse y funciona con un script que estara en el index.html-->
-            <button id="menu-toggle" class="btn btn-primary text-primary">Abrir / cerrar button</button>
-
-            
-              
-            
 
     </div>
 
+    <div class="page-content-container">
+        <!--las paginas cambiaran aca-->
+        <router-outlet></router-outlet>
 
-
+    </div>
+            
+    
 </div>

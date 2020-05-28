@@ -8,7 +8,14 @@ import {VerificarusuarioComponent} from './verificarusuario/verificarusuario.com
 import { CodigoverificadoComponent} from './codigoverificado/codigoverificado.component';
 import {VerificartiendaComponent} from './verificartienda/verificartienda.component';
 import {TiendaverificadoComponent} from './tiendaverificado/tiendaverificado.component';
-import {PaneldecontrolComponent} from './paneldecontrol/paneldecontrol.component';
+import {PaneladministracionComponent} from './paneladministracion/paneladministracion.component'
+
+//componentes hijos de panel de administracion
+import {MislistasComponent} from './mislistas/mislistas.component';
+import {MisordenesComponent} from './misordenes/misordenes.component';
+import {MitiendaComponent} from './mitienda/mitienda.component';
+import {ConfiguracionComponent} from './configuracion/configuracion.component';
+import {MiplanComponent} from './miplan/miplan.component';
 
 //cremos las rutas
 const routes: Routes = [
@@ -18,7 +25,20 @@ const routes: Routes = [
   {path: 'codigoverificado', component:CodigoverificadoComponent},
   {path: 'verificartienda',component:VerificartiendaComponent},
   {path: 'tiendaverificado',component:TiendaverificadoComponent},
-  {path: 'panel', component:PaneldecontrolComponent},
+
+
+
+  //panel de administrcion con angular  material
+  {path: 'paneladministracion',component:PaneladministracionComponent, children: [
+    {path: 'misordenes', component: MisordenesComponent },
+    {path: 'mislistas', component: MislistasComponent },
+    {path: 'mitienda', component: MitiendaComponent},
+    {path: 'configuracion', component: ConfiguracionComponent},
+    {path: 'miplan', component: MiplanComponent},
+
+  ]},
+
+
 ];
 
 @NgModule({
