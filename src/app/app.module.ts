@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
@@ -25,7 +25,7 @@ import { MapaComponent } from './mapa/mapa.component';
 import { AgmCoreModule } from '@agm/core';
 
 
-import { PostComponent } from './posts/post/post.component';
+
 import { AdminModule } from './admin/admin.module';
 import { LoginModule } from './auth/login/login.module';
 import { AdminComponent } from './admin/admin.component';
@@ -33,9 +33,46 @@ import { LoginComponent } from './auth/login/login.component';
 //modulo de autentificaion 
 import {AngularFireAuthModule} from '@angular/fire/auth';
 //Formularioreactivo
-import {ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HomeModule } from './home/home.module';
 import { RegistrotiendaComponent } from './registrotienda/registrotienda.component';
+import { VerificarusuarioComponent } from './verificarusuario/verificarusuario.component';
+import { CodigoverificadoComponent } from './codigoverificado/codigoverificado.component';
+import { VerificartiendaComponent } from './verificartienda/verificartienda.component';
+import { TiendaverificadoComponent } from './tiendaverificado/tiendaverificado.component';
+import { PaneldecontrolComponent } from './paneldecontrol/paneldecontrol.component';
+
+//importamos el sidebar de
+import {SidebarModule} from 'ng-sidebar';
+
+
+
+
+//componentes dentro del panel de administracion
+import { MisordenesComponent } from './misordenes/misordenes.component';
+import { MislistasComponent } from './mislistas/mislistas.component';
+import { MitiendaComponent } from './mitienda/mitienda.component';
+import { ConfiguracionComponent } from './configuracion/configuracion.component';
+import { MiplanComponent } from './miplan/miplan.component';
+import { PaneladministracionComponent } from './paneladministracion/paneladministracion.component'
+
+
+//modulo para detectar dispositivos
+import { DeviceDetectorModule } from 'ngx-device-detector';
+
+
+//importamos para el tag input 
+
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
+
+
+
+
 
 
 @NgModule({
@@ -45,18 +82,36 @@ import { RegistrotiendaComponent } from './registrotienda/registrotienda.compone
     RegistrosComponent,
     HomeComponent,  
     MapaComponent,
-    PostComponent,
+   
     AdminComponent,
     LoginComponent,
     RegistrotiendaComponent,
+    VerificarusuarioComponent,
+    CodigoverificadoComponent,
+    VerificartiendaComponent,
+    TiendaverificadoComponent,
+    PaneldecontrolComponent,
+    MisordenesComponent,
+    MislistasComponent,
+    MitiendaComponent,
+    ConfiguracionComponent,
+    MiplanComponent,
+    PaneladministracionComponent,
+    
+    
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule,        
     AngularFontAwesomeModule,
     BrowserAnimationsModule,
     MatTooltipModule,
+    MatChipsModule,
+    MatIconModule,
+    MatFormFieldModule,        
+    SidebarModule.forRoot(),
+   
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBQ2wl-PEYo_y3vpjO6E0ZzQOrKB6leYJI',
       libraries: ['places']
@@ -77,6 +132,8 @@ import { RegistrotiendaComponent } from './registrotienda/registrotienda.compone
     AngularFireAuthModule,
     //FormularioReactivo
     ReactiveFormsModule,
+    FormsModule,
+    DeviceDetectorModule.forRoot(),
     HomeModule
   ],
   providers: [

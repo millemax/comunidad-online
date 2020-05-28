@@ -1,9 +1,8 @@
 
 
 import { Component, OnInit } from '@angular/core';
-//prueba
-import {PostService} from './posts/post.service';
-import {PostI} from './shared/models/post.interface';
+
+
 
 
 
@@ -15,10 +14,10 @@ import {PostI} from './shared/models/post.interface';
 export class AppComponent implements OnInit{
   title = 'comunidad-online';//original
 
-  constructor (private postSvc:PostService){}
+  constructor (){}
 
   ngOnInit(){
-    this.postSvc.getAllPosts().subscribe(res => console.log('POSTS',res)); 
+    
   }
 
 }

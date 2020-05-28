@@ -1,0 +1,30 @@
+<div class="page-container">
+    <div class="sidebar">
+            <div class="row" style="text-align: center;">
+                <div class="col-sm">
+                    <i class="far fa-user-circle iconuser"></i>
+                </div>
+                
+            </div>
+            <br><br><br>
+           
+        <div class="list-items">
+            <div class="list-item" routerLink="/panel/misordenes"><i class="fas fa-shopping-bag mr-3 mt-3"></i><label >Ver mis ordenes</label></div>
+            <div class="list-item" routerLink="/panel/mislistas"><i class="far fa-list-alt mr-3 mt-3"></i><label >Mis listas</label></div>
+            <div class="list-item" routerLink="/panel/mitienda"><i class="fas fa-store-alt mr-2 mt-3"></i><label >Ir a mi tienda</label></div>
+            <div class="list-item" routerLink="/panel/configuracion"><i class="fas fa-cog mr-2 mt-3"></i><label >Configuracion</label></div>
+            <div class="list-item" routerLink="/panel/miplan"><i class="fas fa-sim-card mr-3 mt-3"></i><label >Mi plan</label></div>
+            <div class="list-item"><i class="fas fa-power-off mr-2 mt-3"></i><label>Cerrar sesion</label></div>
+            
+        </div>
+
+    </div>
+
+    <div class="page-content-container">
+        <!--las paginas cambiaran aca-->
+        <router-outlet></router-outlet>
+
+    </div>
+            
+    
+</div>

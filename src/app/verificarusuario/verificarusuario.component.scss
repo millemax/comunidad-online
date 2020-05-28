@@ -1,0 +1,27 @@
+
+// tamaño del encabezado
+.encabezado{
+    font-size:25px;
+    
+    
+}
+
+//estilos de css
+.verificador{
+    background-color: #FAD000 ;
+    color: white ;
+    border-radius: 15px;
+}
+
+// estilos del input cuando ya sea dispositivo pequeño
+@media screen and (max-width: 768px){
+    .inputcodigo{
+        width:150px;
+        text-align: center;
+
+    }
+    .filapequeno{
+        justify-content: center;
+    }
+
+}

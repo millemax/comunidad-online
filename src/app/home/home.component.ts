@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-//servicefirebase
-import {PostService} from '../posts/post.service';
-import {PostI} from '../shared/models/post.interface';
-import { Observable } from 'rxjs';
-import { PassThrough } from 'stream';
-import { ɵangular_packages_platform_browser_platform_browser_d } from '@angular/platform-browser';
+
+
 
 
 @Component({
@@ -15,13 +11,12 @@ import { ɵangular_packages_platform_browser_platform_browser_d } from '@angular
 })
 export class HomeComponent implements OnInit {
 
-  public posts$: Observable<PostI[]>
-  constructor (private postSvc:PostService){}
+  
+  constructor (){}
  
 
   ngOnInit(){
-     //obtener data en pantalla de la base de datos
-    this.posts$ = this.postSvc.getAllPosts();
+     
   }
  
 

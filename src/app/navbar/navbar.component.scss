@@ -85,6 +85,16 @@ body{
   }
 
 
+@media screen and (max-width: 360px) {
+  //media cuando esta horizontal el dispositivo
+    
+      .buscador{
+        width: 130px;
+      }
+    
+ 
+}
+
 @media screen and (max-width: 1024px) {
   //media cuando esta horizontal el dispositivo
     @media screen and(orientation: landscape) {

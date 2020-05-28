@@ -1,0 +1,191 @@
+$color-principal:#00B4CC ;
+$amarillo:#FAD000;
+$gris: #7B90A3;
+$verde-azulado: #009CC7;
+
+
+.page-container{
+    display: flex;
+    height: 100%;
+    background: rgb(231, 230, 230);
+
+
+
+}
+
+.sidebar{
+    height: 100%;
+    width: 18rem;
+    background:white;
+}
+
+// la lista 
+
+.list-item{
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+
+.iconuser{
+    font-size:8rem;
+    color: $color-principal;
+    margin-top: 4rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// los colores que se usaran
+/*
+$color-principal:#00B4CC ;
+$amarillo:#FAD000;
+$gris: #7B90A3;
+$verde-azulado: #009CC7;
+
+// side bar 
+#sidebar-container {
+    min-height: 100vh;
+
+    //esto ayuda en lafuncionalidad de sidebar
+    margin-left: -18rem;
+    
+    //esto es para que se esconda
+    transition: margin .25s ease-in-out;
+}
+
+
+//ancho del side bar 
+#sidebar-container .menu{
+    width: 18rem;
+
+}
+
+//modificamos el logo
+
+#sidebar-container .logo{
+    padding: .875rem 1.25rem;
+    font-size: 2rem;
+
+}
+
+//boton primary
+.btn-primary{
+    background-color: var(--gris) !important;
+    border:0;
+
+}
+
+#content-wrapper{
+    background-color:white;
+}
+
+
+
+//funcionalidad para que cierre y expanda el sidebar incluye un script
+
+#content-wrapper.toggled #sidebar-container {
+    margin-left: 0;
+}
+
+@media (min-width: 768px ){
+    #sidebar-container{
+        margin-left: 0;
+    }
+
+    #page-container{
+        min-width: 0;
+        width:100%;
+    }
+    #content-wrapper.toggled  #sidebar-container{
+        margin-left: -18rem;
+    }
+}
+
+
+//personalizamos en icono user
+.iconouser{
+    font-size:6rem;
+    color:$color-principal !important;
+}
+
+
+//estilos el nombre del usuario
+
+.btnnombre{
+    border-radius: 2rem;
+    background-color: $amarillo; 
+    color:white;  
+    
+}
+
+// el texto debajo del boton
+.texto{
+    font-size:0.8rem;
+    color: $verde-azulado;
+}
+
+// los enlaces a las distintas pantallas
+.fas .enlaces{
+    color:$color-principal;
+    
+}
+
+//el efecto hover sobre los enlaces
+
+.enlaces:hover{
+    background-color: $color-principal;
+    color:white;
+}
+
+
+//estilos de ng sidebar
+::ng-deep .ng-sidebar{
+    background-color: white;
+    width: 18rem;
+
+
+}*/
+
+
+
+
+
