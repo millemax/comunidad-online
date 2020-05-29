@@ -18,9 +18,40 @@
                                      <span class="letraicono">foto 1</span> 
                             </div>
                     </div>
-                   <div class="col-sm-2 col-xs-6" style="text-align: center"><div class="border margencamera"> <i class="fas fa-camera iconocamara"></i><br><span class="letraicono">Portada</span> </div></div>
-                   <div class="col-sm-2 col-xs-6" style="text-align: center"><div class="border margencamera"> <i class="fas fa-camera iconocamara"></i><br><span class="letraicono">Portada</span></div></div>
-                   <div class="col-sm-2 col-xs-6" style="text-align: center"><div class="border margencamera"><i class="fas fa-camera iconocamara"></i><br><span class="letraicono">Portada</span></div></div>                   
+                   <div class="col-sm-2 col-xs-6" style="text-align: center">
+                        <div class="border margencamera">
+                          <!--esta relacionado el input con el imagen-->
+                          <input type="file" class="d-none" (change)="onPhotoSelected1($event)" #photoInput1>     
+                          <img [src]="photoSelected1 || '/assets/images/noimage.png' " class="img-fluid img-thumbnail" alt="No image" (click)="photoInput1.click()"><br>                           
+                         
+                           <span class="letraicono">foto 1</span> 
+                        
+                        </div>
+                  </div>
+
+                   <div class="col-sm-2 col-xs-6" style="text-align: center">
+                        <div class="border margencamera">
+                          <!--esta relacionado el input con el imagen-->
+                          <input type="file" class="d-none" (change)="onPhotoSelected2($event)" #photoInput2>     
+                          <img [src]="photoSelected2 || '/assets/images/noimage.png' " class="img-fluid img-thumbnail" alt="No image" (click)="photoInput2.click()"><br>                       
+                         
+                           <span class="letraicono">foto 1</span>                         
+
+                      </div>
+                  </div>
+
+                   <div class="col-sm-2 col-xs-6" style="text-align: center">
+                        <div class="border margencamera">
+                          <!--esta relacionado el input con el imagen-->
+                          <input type="file" class="d-none" (change)="onPhotoSelected3($event)" #photoInput3>     
+                          <img [src]="photoSelected3 || '/assets/images/noimage.png' " class="img-fluid img-thumbnail" alt="No image" (click)="photoInput3.click()"><br>                           
+                         
+                           <span class="letraicono">foto 1</span> 
+                        
+
+                      </div>
+                  </div>    
+
                    <div class="col-sm-4 col-xs-12">
                        
                    </div>
@@ -36,11 +67,7 @@
                         <span>Categoria</span><br>
                         <div class="form-group">                            
                             <select class="form-control" id="exampleFormControlSelect1">
-                              <option>calzado</option>
-                              <option>alimentos</option>
-                              <option>ropa</option>
-                              <option>calzado</option>
-                              <option>primera nesecidad</option>
+                              <option *ngFor="let categoria of collectionCategorias">{{categoria}}</option>                             
                             </select>
                           </div>
                           

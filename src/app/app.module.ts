@@ -17,6 +17,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 //gestionarsubida de imagenes 
 import {AngularFireStorageModule,StorageBucket} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
+
 import { environment } from 'src/environments/environment';
 import { MapaComponent } from './mapa/mapa.component';
 
@@ -30,6 +31,7 @@ import { AdminModule } from './admin/admin.module';
 import { LoginModule } from './auth/login/login.module';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './auth/login/login.component';
+
 //modulo de autentificaion 
 import {AngularFireAuthModule} from '@angular/fire/auth';
 //Formularioreactivo

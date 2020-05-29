@@ -5,6 +5,10 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Component,OnInit} from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 
+
+//importamos el servicio crud de Categoria
+import {CategoriaService} from '../servicios/categorias/categoria.service';
+
 export interface Fruit {
   name: string;
 }
@@ -23,24 +27,68 @@ interface HtmlInputEvent extends Event {
 export class MitiendaComponent implements OnInit {
   //variables para las imagenes
   file: File;
+  file1: File;
+  file2: File;
+  file3: File;
+
   photoSelected: string | ArrayBuffer;
+  photoSelected1: string | ArrayBuffer;
+  photoSelected2: string | ArrayBuffer;
+  photoSelected3: string | ArrayBuffer;
+
+  //collecion categorias
+  collectionCategorias=[];
+
+  categoria=[];
 
 
-
-  //variables de la categoria
-  categoria=["Calzado","Vestimenta", "Bebes", "Pasteleria", "Libros", "Alimentos","Flores y chocolateria","Plasticos", "Electronicos",
-"juguetes","Florerias", "Ferreteria", "Deportivos","Productos de limpieza Aseo","Productos de madera","Oficina","Cuero","Hogar"];
-
-
-
-  constructor() { }
+  constructor(private fireService: CategoriaService) { }
 
 
   ngOnInit() {
+    this.obtenercategorias();
+    this.obtenerunacategoria('Electronicos');
 
   }
+  
+  //otengo las categorias que tengo disponible
+  obtenercategorias(){
+        this.fireService.readcategorys().subscribe((resultados)=>{
+          resultados.forEach((datostarea)=>{
+            this.collectionCategorias.push(
+              datostarea.payload.doc.id,
+            );           
 
-  //recibimos la foto cargada
+          })
+
+
+        });
+        console.log("categorias : ",this.collectionCategorias);
+  }
+
+  //obtengo solo una categoria y sus datos 
+  obtenerunacategoria(dato:string){
+    
+        this.fireService.readcategory(dato).then(function(doc){          
+          if (doc.exists) {
+            console.log("document data", doc.data())
+            
+          } else {
+            console.log("no se encontro el documento");
+            
+          }
+
+        }).catch(function(err){
+          console.log("erro al obtener documento");
+
+        });
+    
+        
+  }
+
+
+
+  //...............recibimos las 4 fotos.......................
   onPhotoSelected(event: HtmlInputEvent){
     if(event.target.files && event.target.files[0]){
          this.file=<File>event.target.files[0];
@@ -52,8 +100,56 @@ export class MitiendaComponent implements OnInit {
 
 
     }
+    
   
   }
+
+  onPhotoSelected1(event: HtmlInputEvent){
+    if(event.target.files && event.target.files[0]){
+         this.file1=<File>event.target.files[0];
+         
+         //image preview
+        const reader= new FileReader();
+        reader.onload = e => this.photoSelected1 = reader.result;
+        reader.readAsDataURL(this.file1);
+
+
+    }
+    
+  
+  }
+
+  onPhotoSelected2(event: HtmlInputEvent){
+    if(event.target.files && event.target.files[0]){
+         this.file2=<File>event.target.files[0];
+         
+         //image preview
+        const reader= new FileReader();
+        reader.onload = e => this.photoSelected2 = reader.result;
+        reader.readAsDataURL(this.file2);
+
+
+    }
+    
+  
+  }
+
+  onPhotoSelected3(event: HtmlInputEvent){
+    if(event.target.files && event.target.files[0]){
+         this.file3=<File>event.target.files[0];
+         
+         //image preview
+        const reader= new FileReader();
+        reader.onload = e => this.photoSelected3 = reader.result;
+        reader.readAsDataURL(this.file3);
+
+
+    }
+    
+  
+  }
+
+//.............fin para recibir las 4 fotos...............
  
 
 //........... esto es para el tag...............
