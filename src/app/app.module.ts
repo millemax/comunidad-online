@@ -11,6 +11,14 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { RegistrosComponent } from './registros/registros.component';
 import { HomeComponent } from './home/home.component';
 
+// Import pdfmake-wrapper and the fonts to use
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+import pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
+// Set the fonts to use
+PdfMakeWrapper.setFonts(pdfFonts);
+
+
+
 
 /*firebase*/
 import {AngularFirestoreModule} from '@angular/fire/firestore';
@@ -19,6 +27,7 @@ import {AngularFireStorageModule,StorageBucket} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 
 import { environment } from 'src/environments/environment';
+
 import { MapaComponent } from './mapa/mapa.component';
 
 
@@ -70,6 +79,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 
+import { FooterComponent } from './footer/footer.component';
+import { CarritoComponent } from './carrito/carrito.component';
+import { ConfirmarDatosComponent } from './confirmar-datos/confirmar-datos.component';
+import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.component';
 
 
 @NgModule({
@@ -77,6 +90,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     AppComponent,
     NavbarComponent,
     RegistrosComponent,
+    HomeComponent,
+    RegistrotiendaComponent,
     HomeComponent,  
     MapaComponent,
    
@@ -96,6 +111,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     PaneladministracionComponent,
     
     
+    FooterComponent,
+    CarritoComponent,
+    ConfirmarDatosComponent,
+    ImprimirReciboComponent,
     
   ],
   imports: [

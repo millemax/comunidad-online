@@ -1,0 +1,50 @@
+.container{
+    color:#7B90A3;
+}
+.encabezado{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.boton{
+    width: 90px;
+    background-color:#77CEE9;
+    border-radius: 10px;
+    font-size: small;
+    text-align: center; 
+    color: white;
+
+}
+.quantity-input{
+    display: inline-block;
+    margin: 5px 10px;
+}
+.precio{
+    color: red;
+
+}
+.descuento{
+    color:#00607B;
+}
+.nombre-producto{
+    font-size: 1.2rem;
+}
+.boton-procesar{
+    border-radius: 15px; 
+    margin-top: 70px; 
+    margin-bottom: 30px; 
+    font-weight: bold; 
+    font-size: 1rem;
+    text-transform: capitalize;
+
+}
+@media screen and (max-width: 768px) {
+    .procesos, .carrito-compras{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } 
+
+    
+}
