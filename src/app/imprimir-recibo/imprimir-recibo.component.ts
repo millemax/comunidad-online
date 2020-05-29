@@ -20,7 +20,6 @@ export class ImprimirReciboComponent implements OnInit {
     async function generate() {
       const pdf = new PdfMakeWrapper();
       pdf.add(await new Img('https://blog.linio.com.co/wp-content/uploads/2016/10/Logo-co.png').build());
-      Img.
       
       pdf.add(
         new Table([
