@@ -25,18 +25,14 @@ import { MapaComponent } from './mapa/mapa.component';
 // importamos para el modulo
 import { AgmCoreModule } from '@agm/core';
 
-
-
-import { AdminModule } from './admin/admin.module';
-import { LoginModule } from './auth/login/login.module';
-import { AdminComponent } from './admin/admin.component';
-import { LoginComponent } from './auth/login/login.component';
-
+import { LoginComponent } from './login/login.component';
+import { LoginModule } from './login/login.module';
 //modulo de autentificaion 
-import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireAuthModule} from '@angular/fire/auth'; 
 //Formularioreactivo
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HomeModule } from './home/home.module';
+import { RegistrotiendaComponent } from './registrotienda/registrotienda.component';
 import { VerificarusuarioComponent } from './verificarusuario/verificarusuario.component';
 import { CodigoverificadoComponent } from './codigoverificado/codigoverificado.component';
 import { VerificartiendaComponent } from './verificartienda/verificartienda.component';
@@ -84,8 +80,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     HomeComponent,  
     MapaComponent,
    
-    AdminComponent,
+    
     LoginComponent,
+    RegistrotiendaComponent,
     VerificarusuarioComponent,
     CodigoverificadoComponent,
     VerificartiendaComponent,
@@ -125,7 +122,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     AngularFireModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
-    AdminModule,
     LoginModule,
     
     //Authentificacion

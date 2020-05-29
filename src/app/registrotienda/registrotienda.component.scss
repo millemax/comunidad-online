@@ -1,10 +1,18 @@
+.d1{
+    position: absolute;
+    z-index: 2;
+    background-image: url(https://icon-icons.com/icons2/37/PNG/64/addthefolder_a%C3%B1adir_3479.png);;
+}
+    
 // tamaño de las letras
-
-
 .letras:hover{
     color: #FAD000;
 }
 
+$custom-file-text: (
+en: "",
+es: ""
+);
 
 // Letras en tamaño responsive
 
@@ -89,5 +97,3 @@ agm-map {
    
     
 }
-
-
