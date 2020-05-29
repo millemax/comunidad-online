@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewChild,ElementRef} from '@angular/core';
 //login en modal principal
-import {AuthService} from '../services/auth.service';
-import {UserI} from '../../shared/models/user.interface';
+import {LoginService} from '../servicios/login.service';
+import {UserI} from '../models/user.interface';
 //formularioreactivo
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 //modulode routing
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   @ViewChild('closeModal',{static:false}) private closeModal: ElementRef;
 
-  constructor(private authSvc:AuthService, private route:Router) { }
+  constructor(private authSvc:LoginService, private route:Router) { }
     //definir seccion de formulario
     loginForm = new FormGroup({
       email: new FormControl('',Validators.required),

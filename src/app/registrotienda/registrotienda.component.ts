@@ -3,12 +3,35 @@ import { Component, OnInit,ViewChild,ElementRef,NgZone } from '@angular/core';
 // modulos importados para crear la mapa
 import { MapsAPILoader, MouseEvent } from '@agm/core';
 
+//incrustar video de youtube con angular
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
+//autocompletado de eneto target
+interface HtmlInputEvent extends Event{
+  target: HTMLInputElement & EventTarget;
+}
+
+
 @Component({
   selector: 'app-registrotienda',
   templateUrl: './registrotienda.component.html',
   styleUrls: ['./registrotienda.component.scss']
 })
 export class RegistrotiendaComponent implements OnInit {
+
+  //guardar logo cuando exista un archivo
+  file:File;
+  logoSelected:string | ArrayBuffer;
+  //guardar foto cuando exista un archivo
+  fileuno:File;
+  fotoSelected:string | ArrayBuffer;
+  //guardar fotodos cuando exista un archivo
+  filedos:File;
+  fotounoSelected:string | ArrayBuffer;
+  //guardar fototres cuando exista un archivo
+  filetres:File;
+  fotodosSelected:string | ArrayBuffer;
+  
 
   // varibles para almacenar datos de la mapa
   title: string = 'AGM project';
@@ -22,9 +45,11 @@ export class RegistrotiendaComponent implements OnInit {
   @ViewChild('search', {static: false})
   public searchElementRef: ElementRef;
 
-  constructor(private mapsAPILoader: MapsAPILoader,private ngZone: NgZone) { }
+  constructor(private mapsAPILoader: MapsAPILoader,private ngZone: NgZone    ) { }
 
   ngOnInit() {
+
+  //.................... metodo de mapa................
         //load Places Autocomplete
         this.mapsAPILoader.load().then(() => {
           this.setCurrentLocation();
@@ -48,6 +73,7 @@ export class RegistrotiendaComponent implements OnInit {
             });
           });
         });
+        
   }
 
    // Get Current Location Coordinates
@@ -89,5 +115,63 @@ export class RegistrotiendaComponent implements OnInit {
 
     });
   }
+
+  //............fin metodo mapa........
+    //metodo subir logo tiend
+    onLogoSelected(event: HtmlInputEvent): void {
+      if (event.target.files && event.target.files[0]){
+        this.file=<File>event.target.files[0];
+        //previsualizarimagen
+        const reader=new FileReader();
+        reader.onload= e => this.logoSelected=reader.result;
+        reader.readAsDataURL(this.file);
+      }
+    } 
+  //metodo subir foto tiend
+  onFotoSelected(event: HtmlInputEvent): void {
+    if (event.target.files && event.target.files[0]){
+      this.fileuno=<File>event.target.files[0];
+      //previsualizarimagen
+      const reader=new FileReader();
+      reader.onload= e => this.fotoSelected=reader.result;
+      reader.readAsDataURL(this.fileuno);
+    }
+  }
+  
+  //metodo subir foto uno tiend
+  onFotounoSelected(event: HtmlInputEvent): void {
+    if (event.target.files && event.target.files[0]){
+      this.filedos=<File>event.target.files[0];
+      //previsualizarimagen
+      const reader=new FileReader();
+      reader.onload= e => this.fotounoSelected=reader.result;
+      reader.readAsDataURL(this.filedos);
+    }
+  }
+  
+  //metodo subir foto dos tiend
+  onFotodosSelected(event: HtmlInputEvent): void {
+    if (event.target.files && event.target.files[0]){
+      this.filetres=<File>event.target.files[0];
+      //previsualizarimagen
+      const reader=new FileReader();
+      reader.onload= e => this.fotodosSelected=reader.result;
+      reader.readAsDataURL(this.filetres);
+    }
+  }
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
 
 }

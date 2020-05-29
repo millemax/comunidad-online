@@ -1,149 +1,154 @@
-
 <br><br><br><br>
 <!-- Default form register -->
 <div class="container">
-    <div class="row justify-content-center">      
-        <div class="border-light col-sm col-xl-5 col-md-5 justify-content-center" action="#!" >
-            <div class="form-row justify-content-center " style="padding: 0px;">
-                <div class="col-8">
-                    <p class="h4 border text-left">REGISTRO DE TIENDA</p>
-                </div>
-                <div class="col-4">
-                    <!-- Last name -->
-                    <small class="border">Ya tengo un codigo</small>
-                </div>
-            </div>
+  <div class="row justify-content-center">
+    <div class="border-light col-sm col-xl-5 col-md-5 justify-content-center" action="#!">
+      <div class="form-row justify-content-center " style="padding: 0px;">
+        <div class="col-8">
+          <p class="h4 border text-left">REGISTRO DE TIENDA</p>
+        </div>
+        <div class="col-4">
+          <!-- Last name -->
+          <small class="border">Ya tengo un codigo</small>
+        </div>
+      </div>
 
-            <div class="form-row mb-1">
-                <div class="col">
-                    <!-- First name-->
-                    <label class="aviso">Nombre legal:</label>
-                    <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
-                </div>
-            </div>
-            <div class="form-row mb-1">
-                <!-- Ruc-->
-                <div class="col">
-                    <label class="aviso">RUC:</label>
-                    <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Ruc">
-                </div>
-                <!-- E-mail -->
-                <div class="col form-row">
-                    <label for="exampleFormControlSelect1">Categoría</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option selected>Elige...</option>
-                      <option value="1">Uno</option>
-                      <option value="2">Dos</option>
-                      <option value="3">Tres</option>
-                      <option value="4">Cuatro</option>
-                      
-                    </select>
-                  </div>
-            </div>
-            <!-- Phone number -->
-            <label class="aviso ">Persona de contacto:</label>
-            <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Contact Person " aria-describedby="defaultRegisterFormPhoneHelpBlock">
+      <div class="form-row mb-1">
+        <div class="col">
+          <!-- First name-->
+          <label class="aviso">Nombre legal:</label>
+          <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
+        </div>
+      </div>
+      <div class="form-row mb-1">
+        <!-- Ruc-->
+        <div class="col">
+          <label class="aviso">RUC:</label>
+          <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Ruc">
+        </div>
+        <!-- E-mail -->
+        <div class="col form-row">
+          <label class="aviso"> Categoría:</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option selected>Elige...</option>
+            <option value="1">Uno</option>
+            <option value="2">Dos</option>
+            <option value="3">Tres</option>
+            <option value="4">Cuatro</option>
 
-            <!-- Phone number -->
-            <label class="aviso">Teléfono:</label>
-            <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+          </select>
+        </div>
+      </div>
+      <!-- Phone number -->
+      <label class="aviso ">Persona de contacto:</label>
+      <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Contact Person "
+        aria-describedby="defaultRegisterFormPhoneHelpBlock">
 
-            <!-- Direcction -->
-            <label class="aviso">Dirección:</label>
-            <input type="text" id="defaultRegisterPhonePassword" class="form-control " placeholder="Direcction" aria-describedby="defaultRegisterFormPhoneHelpBlock"value="{{address}}">
-            
-            <!--la mapa de google-->
-            <div class="container" style="text-align: center;">
-                <label for="formGroupExampleInput"><b class="aviso">Arrastra el puntero hasta la ubicacion exacta </b></label>
-            </div>
+      <!-- Phone number -->
+      <label class="aviso">Teléfono:</label>
+      <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number"
+        aria-describedby="defaultRegisterFormPhoneHelpBlock">
 
-            <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="busca tu ciudad" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
-              
-            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
-                <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
-                (dragEnd)="markerDragEnd($event)"></agm-marker>
-            </agm-map>
+      <!-- Direcction -->
+      <label class="aviso">Dirección:</label>
+      <input type="text" id="defaultRegisterPhonePassword" class="form-control " placeholder="Direcction"
+        aria-describedby="defaultRegisterFormPhoneHelpBlock" value="{{address}}">
 
-              <!--fin de la mapa-->
-             
-            <!--Subir fotos-->
-            <label class="aviso" style="margin-top: 0.5rem;"> Subir fotos (opcional):</label>
-            <div class="form-row">
-              <!-- Grid column -->
-              <div class="col col-xl col-md logo-tienda" >
-                <a href="" class="btn btn-primary" type="button"  style="padding: 0rem;  margin: 0rem;" >
-                  <input type="file" value="button" style="position: absolute; z-index:1; height: 5rem; opacity: 0;" >
-                  <img src="https://mdbootstrap.com/img/Photos/Avatars/img(30).jpg" class="img-fluid z-depth-1" alt="Responsive image" style="margin: 0rem;">
-                </a>
-              </div>
-              <!-- Grid column -->
+      <!--la mapa de google-->
+      <div class="container" style="text-align: center;">
+        <label for="formGroupExampleInput"><b class="aviso">Arrastra el puntero hasta la ubicacion exacta </b></label>
+      </div>
 
-              <!-- Grid column -->
-              <div class="col col-xl col-md img1-tienda ">
-                <a href="" class="btn btn-primary" type="button"  style="padding: 0rem; margin: 0rem" >
-                  <input type="file" value="button" style="position: absolute; z-index:1; height: 5rem; opacity: 0;" >
-                  <img src="https://mdbootstrap.com/img/Photos/Avatars/img(30).jpg" class="img-fluid z-depth-1" alt="Responsive image" style="margin: 0rem;">
-                </a>
-              </div>
-              <!-- Grid column -->
+      <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="busca tu ciudad"
+        autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
 
-              <!-- Grid column -->
-              <div class="col col-xl col-md img2-tienda ">
-                <a href="" class="btn btn-primary" type="button"  style="padding: 0rem;  margin: 0rem" >
-                  <input type="file" value="button" style="position: absolute; z-index:1; height: 5rem; opacity: 0;" >
-                  <img src="https://mdbootstrap.com/img/Photos/Avatars/img(30).jpg" class="img-fluid z-depth-1" alt="Responsive image" style="margin: 0rem;">
-                </a>
-              </div>
-              <!-- Grid column -->
+      <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+        <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+          (dragEnd)="markerDragEnd($event)"></agm-marker>
+      </agm-map>
 
-              <!-- Grid column -->
-              <div class="col col-xl col-md img3-tienda">
-                <a href="" class="btn btn-primary" type="button"  style="padding: 0rem; margin: 0rem" >
-                  <input type="file" value="button" style="position: absolute; z-index:1; height: 5rem; opacity: 0;" >
-                  <img src="https://mdbootstrap.com/img/Photos/Avatars/img(30).jpg" class="img-fluid z-depth-1" alt="Responsive image" style="margin: 0rem;">
-                </a>
-              </div>
-              <!-- Grid column -->
+      <!--fin de la mapa-->
 
-              <!-- Grid column -->
-              <div class="col col-xl col-md video-tienda">
-                <a href="" class="btn btn-primary" type="button"  style="padding: 0rem; margin: 0rem" >
-                  <input type="file" value="button" style="position: absolute; z-index:1; height: 5rem; opacity: 0;" >
-                  <img src="https://mdbootstrap.com/img/Photos/Avatars/img(30).jpg" class="img-fluid z-depth-1" alt="Responsive image" style="margin: 0rem;">
-                </a>
-              </div>
+      <!--Subir fotos-->
+      <label class="aviso" style="margin-top: 0.5rem;"> Subir fotos (opcional):</label>
+      <div class="form-row ">
+        <!-- Grid column -->
+        <div class="col col-xl col-md logo-tienda text-center border" style="border-radius: 5px;">
 
-            </div>
-            <!-- Grid row -->  
-            <!--fin subir fotos-->
+          <input type="file" class="d-none" (change)="onLogoSelected($event)" #logoInput>
+          <img [src]="logoSelected || '/assets/images/tiendalogo.png'" class="img-fluid " style="border-radius: 3px;" alt=""
+            (click)="logoInput.click()">
 
-            <!--Subir documentos-->
-         
-            <label class="aviso" style="margin-top: 0.5rem;" > Subir documentos legales (opcional):</label>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-            </div>
-            <!--Fin subir documentos-->
+        </div>
+        <!-- Grid column -->
 
-            <!-- Newsletter -->
-            <div class="form-check  mt-5 text-center ">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1" class="aviso">Acepto los <a href="" >terminos y condiciones</a> de privacidad </label>
-              </div>
+        <!-- Grid column -->
+        <div class="col col-xl col-md img1-tienda text-center border mr-2 ml-2" style="border-radius: 5px;">
+          <input type="file" class="d-none" (change)="onFotoSelected($event)" #fotoInput>
+          <img [src]="fotoSelected || '/assets/images/tiendafoto.png'" class="img-fluid" alt=""
+            (click)="fotoInput.click()">
 
-            <!-- Sign up button -->
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn botoninicio" >REGISTRARME</button>
-            </div>
-            <!-- Social register -->
-            <div class="text-center"> 
-            <p>or sign up with:</p>
+        </div>
+        <!-- Grid column -->
 
-                <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
-                <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
-                <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-                <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
-            </div>
-    </div> 
-</div> 
+        <!-- Grid column -->
+        <div class="col col-xl col-md img2-tienda text-center border mr-2" style="border-radius: 5px;">
+          <input type="file" class="d-none" (change)="onFotounoSelected($event)" #fotounoInput>
+          <img [src]="fotounoSelected || '/assets/images/tiendafoto.png'" class="img-fluid" alt=""
+            (click)="fotounoInput.click()">
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col col-xl col-md img3-tienda text-center border " style="border-radius: 5px;">
+          <input type="file" class="d-none" (change)="onFotodosSelected($event)" #fotodosInput>
+          <img [src]="fotodosSelected || '/assets/images/tiendafoto.png'" class="img-fluid" alt=""
+            (click)="fotodosInput.click()">
+
+        </div>
+        <!-- Grid column -->
+        <!-- Grid row -->
+        </div>
+        <!--fin subir videos-->
+        <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de video (opcional):</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2"><i class="fas fa-film"></i></span>
+          </div>
+        </div>
+        <!--Subir documentos-->
+
+        <label class="aviso" style="margin-top: 0.5rem;"> Subir documentos legales (opcional):</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2"><i class="fas fa-cloud-upload-alt"></i></span>
+          </div>
+        </div>
+        
+        <!--Fin subir documentos-->
+
+        <!-- Newsletter -->
+        <div class="form-check  mt-5 text-center ">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1" class="aviso">Acepto los <a href="">terminos y
+              condiciones</a> de privacidad </label>
+        </div>
+
+        <!-- Sign up button -->
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn botoninicio">REGISTRARME</button>
+        </div>
+        <!-- Social register -->
+        <div class="text-center">
+          <p>or sign up with:</p>
+
+          <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+          <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+          <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+          <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+        </div>
+      </div>
+    </div>
