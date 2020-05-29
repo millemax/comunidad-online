@@ -1,0 +1,104 @@
+
+<div class="container pb-4">
+    <div class="encabezado row">
+        <div class="confirma-datos col-12 col-sm-8">
+          <span class="font-weight-bold">LISTO</span><br>
+          <small>Compra exitosa, puedes imprimir tu recibo</small> 
+        </div>
+        <div class="col-12 col-sm-4 procesos" style="text-align: right;">
+          <img src="/assets/images/proceso2.png" class="img-fluid mx-auto" style="height: 3rem;">
+        </div>
+    </div>
+ 
+    <div class="row" style="text-align: center;"> 
+        <div class="col">
+            <img src="/assets/images/logo.png" class="img-fluid mx-auto" style="height: 5rem;">
+        </div>
+    </div>
+
+    <div class="row" style=" justify-content: center;">
+        <div class="card" style="width: 30rem;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4 border">Nombre</div>
+                    <div class="col-8 border"></div>
+                    <div class="w-100"></div>
+                    <div class="col-4 border">Telefono</div>
+                    <div class="col-8 border"></div>
+                    <div class="w-100"></div>
+                    <div class="col-4 border">Dirección</div>
+                    <div class="col-8 border"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <div class="card border-info card-recibo shadow" style="width: 30rem;">
+            <div class="card-body text-info">
+                <div class="row" style="border-bottom:1px solid #7890A3;">
+                    <div class="col-4 "><small class="font-weight-bold">Producto</small></div>
+                    <div class="col-2 "><small class="font-weight-bold">Cant</small></div>
+                    <div class="col-3 "><small class="font-weight-bold">P.Unidad</small></div>
+                    <div class="col-3 "><small class="font-weight-bold">P.Total</small></div>
+            
+                </div>
+                <div class="row">
+                    <div class="col-4"><small>Camisa jhon holden</small></div>
+                    <div class="col-2"><small>01</small></div>
+                    <div class="col-3"><small>$18.00</small></div>
+                    <div class="col-3"><small>$18.00</small></div>
+                </div>
+                <div class="row">
+                    <div class="col-4"><small>Camisa jhon holden</small></div>
+                    <div class="col-2"><small>01</small></div>
+                    <div class="col-3"><small>$18.00</small></div>
+                    <div class="col-3"><small>$18.00</small></div>
+                </div>
+                <div class="row">
+                    <div class="col-4"><small>Camisa jhon holden</small></div>
+                    <div class="col-2"><small>01</small></div>
+                    <div class="col-3"><small>$18.00</small></div>
+                    <div class="col-3"><small>$18.00</small></div>
+                </div>
+                <div class="row">
+                    <div class="col-4"><small>Camisa jhon holden</small></div>
+                    <div class="col-2"><small>01</small></div>
+                    <div class="col-3"><small>$18.00</small></div>
+                    <div class="col-3"><small>$18.00</small></div>
+                </div>
+
+                <div class="font-weight-bold row " style="border-top: 1px solid #7890A3;" >
+                    <div class="col-8">TOTAL</div>
+                    <div class="col-4" style="text-align: center">$100.00</div>
+                </div>
+               
+                <br>
+                <div class="row ">
+                    <div class="col-8 col-md-9 text-right"><strong>
+                    Sub Total:<br>
+                    Impuestos (IVA 12%):<br>
+                    Total:<br>
+                    Servicio de entrega:<br>
+                    Final a pagar:
+                    </strong></div>
+                    <div class="col-4 col-md-3 text-left "><strong>
+                    $1,200.00 <br>
+                    $252.00 <br>
+                    $41,452.00 <br>
+                    $41,452.00 <br>
+                    $141,45.00 <br>
+
+                    </strong></div>
+                </div>
+
+                <div class="row justify-content-center">
+                <button type="button" (click) ="generatePDF()"class="btn boton-procesar btn-warning btn-sm ">Imprimir recibo</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

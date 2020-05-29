@@ -3,7 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 //prueba
 import {PostService} from './posts/post.service';
-import {PostI} from './shared/modals/post.interface';
+import {PostI} from './shared/models/post.interface';
 
 
 

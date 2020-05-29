@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Modalg1Component } from './modalg1.component';
+import { ConfirmarDatosComponent } from './confirmar-datos.component';
 
-describe('Modalg1Component', () => {
-  let component: Modalg1Component;
-  let fixture: ComponentFixture<Modalg1Component>;
+describe('ConfirmarDatosComponent', () => {
+  let component: ConfirmarDatosComponent;
+  let fixture: ComponentFixture<ConfirmarDatosComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Modalg1Component ]
+      declarations: [ ConfirmarDatosComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Modalg1Component);
+    fixture = TestBed.createComponent(ConfirmarDatosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
