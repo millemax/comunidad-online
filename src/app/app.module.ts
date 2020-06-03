@@ -10,12 +10,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { RegistrosComponent } from './registros/registros.component';
 import { HomeComponent } from './home/home.component';
+//import mask
+import { NgxMaskModule} from 'ngx-mask';
+
 
 // Import pdfmake-wrapper and the fonts to use
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
 import pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
 // Set the fonts to use
 PdfMakeWrapper.setFonts(pdfFonts);
+
 
 
 
@@ -69,6 +73,8 @@ import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.compo
     
   ],
   imports: [
+    NgxMaskModule.forRoot(),
+
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,

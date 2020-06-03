@@ -19,4 +19,19 @@
 .card-recibo{
     border-radius: 10px;
     transition: .3s linear all;
-  }
+}
+
+@media screen and (max-width: 768px) {
+    .procesos{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } 
+    .confirma-datos{
+        text-align: center;
+
+    }
+
+
+    
+}
