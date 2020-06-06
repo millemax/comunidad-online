@@ -141,7 +141,6 @@ import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.compo
     //importamos google Maps
     
 
-    
     //firebasebase parametro de conexion
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireModule,

@@ -1,10 +1,13 @@
-import { Component, OnInit,ViewChild,ElementRef,NgZone } from '@angular/core';
+import { Component, OnInit,ViewChild,ElementRef,NgZone, Input} from '@angular/core';
+
 
 // modulos importados para crear la mapa
 import { MapsAPILoader, MouseEvent } from '@agm/core';
 
 //incrustar video de youtube con angular
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Url } from 'url';
+import { R3TargetBinder } from '@angular/compiler';
 
 //autocompletado de eneto target
 interface HtmlInputEvent extends Event{
@@ -32,6 +35,11 @@ export class RegistrotiendaComponent implements OnInit {
   filetres:File;
   fotodosSelected:string | ArrayBuffer;
   
+  //guardar video en registro teinda
+  video:any;
+  
+  
+  
 
   // varibles para almacenar datos de la mapa
   title: string = 'AGM project';
@@ -45,11 +53,14 @@ export class RegistrotiendaComponent implements OnInit {
   @ViewChild('search', {static: false})
   public searchElementRef: ElementRef;
 
-  constructor(private mapsAPILoader: MapsAPILoader,private ngZone: NgZone    ) { }
+  
+
+  constructor(private mapsAPILoader: MapsAPILoader,private ngZone: NgZone, private Dom:DomSanitizer  ) { }
 
   ngOnInit() {
-
-  //.................... metodo de mapa................
+    //--video por defecto de la tienda
+    this.video=this.Dom.bypassSecurityTrustResourceUrl('/assets/videos/tiendavideo.mp4');
+     //.................... metodo de mapa................
         //load Places Autocomplete
         this.mapsAPILoader.load().then(() => {
           this.setCurrentLocation();
@@ -148,7 +159,8 @@ export class RegistrotiendaComponent implements OnInit {
       reader.readAsDataURL(this.filedos);
     }
   }
-  
+  //983624838
+  //932328103
   //metodo subir foto dos tiend
   onFotodosSelected(event: HtmlInputEvent): void {
     if (event.target.files && event.target.files[0]){
@@ -159,10 +171,28 @@ export class RegistrotiendaComponent implements OnInit {
       reader.readAsDataURL(this.filetres);
     }
   }
+//---registro video de tienda---
+  pasarurlvideo(urlvideo:HTMLInputElement){
+   
+    console.log(urlvideo.value);
+    this.renderVideo(urlvideo.value)
+  
 
+  }
 
+  renderVideo(video:string){
+  //reemplazar whatch?v por embed/ obligatorio  
+    if(!video){
+      this.video=this.Dom.bypassSecurityTrustResourceUrl(video);
+    }
+    if(video){
+      video = video.replace('watch?v=','embed/');
+      }
+      //previsualizarvideo
+      this.video=this.Dom.bypassSecurityTrustResourceUrl(video);
+    }
 
-
+  //---registro fin tieeda video
 
   
 

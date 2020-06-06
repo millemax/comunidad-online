@@ -1,33 +1,44 @@
-.d1{
-    position: absolute;
-    z-index: 2;
-    background-image: url(https://icon-icons.com/icons2/37/PNG/64/addthefolder_a%C3%B1adir_3479.png);;
-}
+
     
 // tamaño de las letras
-.letras:hover{
-    color: #FAD000;
+$coloryelow:#FAD000;
+
+//----titulo----------
+.titulo{
+    color: $coloryelow;
+    font-size: 168%;
+    font-weight: 800;
 }
 
-$custom-file-text: (
-en: "",
-es: ""
-);
+.border-bottom{
+    color: $coloryelow;
+}
 
-// Letras en tamaño responsive
-
+// titulo en responsive
 @media screen and (max-width: 768px){
-    .letras{
-        font-size:20px;
+    .titulo{
+       font-size:120%;
+    }
+    .enlace{
+        //font-size: 100%;
+        text-align: center;
+        margin: 0;
     }
 
 }
+//--fin titulo------
+//---lenguaje de entrada--
+$custom-file-text: (
+en: "Browse",
+es: "Elegir"
+);
 
 
 //colores del boton de iniciar Sesion
-.botoninicio{
-    background-color:#FAD000 ;
+.botonregistrarme{
+    background-color:$coloryelow;
     border-radius: 15px;
+    //letra
     color:white;
 }
 
@@ -36,12 +47,6 @@ es: ""
 .columna{
     border-color: #7B90A3;
 }
-
-
-
-
-
-
 
 // el parrafo de aviso en el registro
 .aviso{
@@ -55,45 +60,3 @@ agm-map {
     height: 300px;
 }
 
-
-
-//prueba de css para registro e inicio de sesion
- .nav-tabs .nav-item.show .nav-link, .nav-link.active {
-    color: #FAD000;
-    background-color: transparent;
-  //  border-color: transparent transparent #7B90A3;
-    border-bottom: 4px solid !important;
-    font-size: 30px;
-    font-weight: bold;
-}
-.nav-link {
-    
-    border: 1px solid transparent;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
-    color: #7B90A3;
-    font-size: 30px;
-}
-
-//cuando sea para responsive
-@media screen and (max-width: 1024px){
-            //prueba de css para registro e inicio de sesion
-        .nav-tabs .nav-item.show .nav-link, .nav-link.active {
-            color: #FAD000;
-            background-color: transparent;
-        //  border-color: transparent transparent #7B90A3;
-            border-bottom: 4px solid !important;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .nav-link {
-            
-            border: 1px solid transparent;
-            border-top-left-radius: .25rem;
-            border-top-right-radius: .25rem;
-            color: #7B90A3;
-            font-size: 20px;
-        }
-   
-    
-}
