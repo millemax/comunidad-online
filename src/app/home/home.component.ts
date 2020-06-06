@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {CategoriaService} from '../servicios/categorias/categoria.service'
 
 
 
@@ -10,15 +10,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  //esta es la colección categoria
+  collectionCategorias=[]; 
 
-  
-  constructor (){}
- 
+  constructor (private crudCategoria: CategoriaService){
 
-  ngOnInit(){
-     
   }
  
 
-    
+  ngOnInit(){
+    this.recuperarCategoria();
+     
+  }
+  
+
+  recuperarCategoria(){
+    this.crudCategoria.readcategorys().subscribe((resultados)=>{
+      resultados.forEach((datostarea)=>{
+        this.collectionCategorias.push(
+          datostarea.payload.doc.id,
+        );
+      })
+    });
+    console.log("categorias : ",this.collectionCategorias);
+
+  } 
+  
+  
+  
+
+
 }
