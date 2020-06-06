@@ -61,7 +61,7 @@
                <div class="row">
                    <div class="col-sm-5">
                         <span>Titulo de producto</span><br>
-                        <input class="form-control" type="text">
+                        <input class="form-control" type="text" [(ngModel)]="titulo">
                         <span>Max 60 caracteres</span>
                    </div>
                    <div class="col-sm-3">
@@ -74,17 +74,21 @@
                           
                    </div>
                    <div class="col-sm-2">
-                    <span>Sub categoria</span><br>
-                    <div class="form-group">                            
-                        <select class="form-control"  id="exampleFormControlSelect1" >
-                          <option  *ngFor="let sub of subcategoria">{{sub}}</option>                             
-                        </select>
-                      </div>
+                     <div *ngIf="estadosubcategoria">
+                      <span>Sub categoria</span><br>
+                      <div class="form-group">                            
+                          <select class="form-control"  id="exampleFormControlSelect1" (change)="subCategoria($event.target.value)" >
+                            <option  *ngFor="let sub of subcategoria">{{sub}}</option>                             
+                          </select>
+                        </div>
+
+                     </div>
+                    
                        
                    </div>
                    <div class="col-sm-2">
                         <span>Cantidad</span><br>
-                        <input class="form-control" type="number">
+                        <input class="form-control" type="number"  [(ngModel)]="cantidad">
 
                    </div>
                </div>
@@ -92,18 +96,23 @@
                 <div class="row">
                   <div class="col-sm">
                     <span>altura (cm)</span><br>
-                        <input class="form-control" type="number">
+                        <input class="form-control" type="number" [(ngModel)]="altura">
 
 
                   </div>
                   <div class="col-sm">
                     <span>Ancho(cm)</span><br>
-                     <input class="form-control" type="number">
+                     <input class="form-control" type="number"  [(ngModel)]="ancho">
+
+                  </div>
+                  <div class="col-sm">
+                    <span>Espesor(cm)</span><br>
+                     <input class="form-control" type="number"  [(ngModel)]="espesor">
 
                   </div>
                   <div class="col-sm">
                     <span>peso(kg)</span><br>
-                        <input class="form-control" type="number">
+                        <input class="form-control" type="number" [(ngModel)]="peso">
 
                   </div>
 
@@ -114,7 +123,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="number" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="precio">
                           </div>
                   </div>
 
@@ -127,11 +136,11 @@
                   <div class="col-sm-2">
                     <span>Tiempo de entrega</span><br>
                     <div class="form-group">                            
-                      <select class="form-control" id="exampleFormControlSelect1">
-                        <option>1 dia</option>   
-                        <option value="">2 a 3 dias</option>
-                        <option value="">3 a 5 dias</option>
-                        <option value="">5 a 8 dias</option>                          
+                      <select class="form-control" id="exampleFormControlSelect1" (change)="tiempoentrega($event.target.value)">
+                        <option value=1 type="number">1 dia</option>   
+                        <option value=2 type="number">2 a 3 dias</option>
+                        <option value=3 type="number">3 a 5 dias</option>
+                        <option value=5 type= number>5 a 8 dias</option>                          
                       </select>
                     </div>
 
@@ -228,8 +237,8 @@
                     <div class="form-group">                            
                         <select class="form-control" id="exampleFormControlSelect1" (change)="tipoventa($event.target.value)">
                           <option value="normal">normal</option>
-                          <option value="oferta">oferta</option>
-                          <option value="gold">Para gold</option>
+                          <!-- <option value="oferta">oferta</option>
+                          <option value="gold">Para gold</option> -->
                           
                         </select>
                       </div>
@@ -237,7 +246,7 @@
                    </div>
                    <div class="col-sm" *ngIf="tipoVenta">
                         <span>% descuento(opcional)</span><br>
-                        <input class="form-control" type="text">
+                        <input class="form-control" type="number" (ngModel)="porcentaje">
 
                    </div>
                    <div class="col-sm" *ngIf="tipoVenta">
@@ -246,7 +255,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="number" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="descuento">
                         </div>
 
                    </div>
@@ -263,18 +272,18 @@
                <div class="row">
                    <div class="col-sm-6">
                        <span>Descripcion general</span>
-                       <textarea class="form-control" rows="5" id="comment"></textarea>
+                       <textarea class="form-control" rows="5" id="comment" [(ngModel)]="descripciongeneral"></textarea>
                    </div>
                    <div class="col-sm-6">
                        <span>Descripcion detallada</span>                      
-                       <textarea class="form-control" rows="5" id="comment"></textarea>
+                       <textarea class="form-control" rows="5" id="comment" [(ngModel)]="descripciondetallada"></textarea>
                    </div>
                </div>
                <br>
                <!--contenido del formulario producto-->
                <div class="row">
                    <div class="col-sm" style="text-align: center">
-                    <button type="button" class="btn agregar"><b>Agregar producto</b></button>
+                    <button type="button" class="btn agregar" (click)="agregarProducto()"><b>Agregar producto</b></button>
                    </div>
 
                </div>

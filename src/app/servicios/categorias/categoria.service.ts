@@ -37,8 +37,7 @@ export class CategoriaService {
 
   //solo obtenemos el valor un documento
   readcategory(documento:string){
-    var db = firebase.firestore();
-    
+    var db = firebase.firestore();    
     return db.collection('categorias').doc(documento).get();
 
   }
