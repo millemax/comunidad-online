@@ -4,12 +4,12 @@
   <div class="row justify-content-center">
     <div class="border-light col-sm col-xl-5 col-md-5 justify-content-center" action="#!">
       <div class="form-row justify-content-center " style="padding: 0px;">
-        <div class="col-8">
-          <p class="h4 border text-left">REGISTRO DE TIENDA</p>
+        <div class="col-8 col-sm-8 col-md-8">
+          <h3 class=" titulo text-left" style="border-bottom: 3px solid;">REGISTRO DE TIENDA</h3>
         </div>
-        <div class="col-4">
+        <div class="col-4 col-sm-4 col-md-4 d-flex justify-content-end align-items-center " >
           <!-- Last name -->
-          <small class="border">Ya tengo un codigo</small>
+         <a href="" class="enlace"><small >Ya tengo un codigo</small></a> 
         </div>
       </div>
 
@@ -69,20 +69,20 @@
 
       <!--fin de la mapa-->
 
-      <!--Subir fotos-->
+      <!--Subir fotos y video-->
       <label class="aviso" style="margin-top: 0.5rem;"> Subir fotos (opcional):</label>
       <div class="form-row ">
-        <!-- Grid column -->
+        <!-- Grid column1 -->
         <div class="col col-xl col-md logo-tienda text-center border" style="border-radius: 5px;">
 
           <input type="file" class="d-none" (change)="onLogoSelected($event)" #logoInput>
-          <img [src]="logoSelected || '/assets/images/tiendalogo.png'" class="img-fluid " style="border-radius: 3px;" alt=""
-            (click)="logoInput.click()">
+          <img [src]="logoSelected || '/assets/images/tiendalogo.png'" class="img-fluid " style="border-radius: 3px;"
+            alt="" (click)="logoInput.click()">
 
         </div>
         <!-- Grid column -->
 
-        <!-- Grid column -->
+        <!-- Grid column2 -->
         <div class="col col-xl col-md img1-tienda text-center border mr-2 ml-2" style="border-radius: 5px;">
           <input type="file" class="d-none" (change)="onFotoSelected($event)" #fotoInput>
           <img [src]="fotoSelected || '/assets/images/tiendafoto.png'" class="img-fluid" alt=""
@@ -91,7 +91,7 @@
         </div>
         <!-- Grid column -->
 
-        <!-- Grid column -->
+        <!-- Grid column 3-->
         <div class="col col-xl col-md img2-tienda text-center border mr-2" style="border-radius: 5px;">
           <input type="file" class="d-none" (change)="onFotounoSelected($event)" #fotounoInput>
           <img [src]="fotounoSelected || '/assets/images/tiendafoto.png'" class="img-fluid" alt=""
@@ -100,7 +100,7 @@
         </div>
         <!-- Grid column -->
 
-        <!-- Grid column -->
+        <!-- Grid column 4-->
         <div class="col col-xl col-md img3-tienda text-center border " style="border-radius: 5px;">
           <input type="file" class="d-none" (change)="onFotodosSelected($event)" #fotodosInput>
           <img [src]="fotodosSelected || '/assets/images/tiendafoto.png'" class="img-fluid" alt=""
@@ -108,47 +108,78 @@
 
         </div>
         <!-- Grid column -->
-        <!-- Grid row -->
-        </div>
-        <!--fin subir videos-->
-        <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de video (opcional):</label>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <span class="input-group-text" id="basic-addon2"><i class="fas fa-film"></i></span>
-          </div>
-        </div>
-        <!--Subir documentos-->
 
-        <label class="aviso" style="margin-top: 0.5rem;"> Subir documentos legales (opcional):</label>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <span class="input-group-text" id="basic-addon2"><i class="fas fa-cloud-upload-alt"></i></span>
-          </div>
-        </div>
+        <!-- Grid column 5-->
+        <!-- Grid column video de la tienda --> 
+        <div class="col col-xl col-md img3-tienda text-center ml-2 border embed-responsive embed-responsive-16by9 "
+          style="border-radius: 5px;">
         
-        <!--Fin subir documentos-->
-
-        <!-- Newsletter -->
-        <div class="form-check  mt-5 text-center ">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1" class="aviso">Acepto los <a href="">terminos y
-              condiciones</a> de privacidad </label>
+          <iframe class=" video-fluid border img-thumbnail embed-responsive-item autoplay loop controls muted" [src]='video' type="video/mp4"></iframe>
+        
         </div>
 
-        <!-- Sign up button -->
-        <div class="d-flex justify-content-center">
-          <button type="submit" class="btn botoninicio">REGISTRARME</button>
-        </div>
-        <!-- Social register -->
-        <div class="text-center">
-          <p>or sign up with:</p>
-
-          <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
-          <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
-          <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-          <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+        <!-- Grid column -->
+        <!-- fin Grid row -->
+      </div>
+      <!--fin subir fotos y videos-->
+      <!--subir enlace de video-->
+      <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de video (opcional):</label>
+      <div class="input-group">
+        <input type="text" (ngModel)="video" #urlvideo (change)="pasarurlvideo(urlvideo)" class="form-control"
+          placeholder="Ejemplo: https://www.youtube..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append justify-content-center" >
+          <span class="input-group-text "  id="basic-addon2"><i class="fas fa-film purple-text" style="width: 2.5rem;"></i></span>
         </div>
       </div>
+      <!--Subir documentos-->
+
+      <label class="aviso" style="margin-top: 0.5rem;"> Subir documentos legales (opcional):</label>
+      <div class="input-group  border " style="border-radius: 5px;"  >
+        <!--
+        <input type="file" class="form-control  " style="opacity: 0;" placeholder="Elegir archivo" aria-label="Recipient's username"
+          aria-describedby="basic-addon2">-->
+        <div class="custom-file float-left" >
+          <input type="file" class="custom-file-input"  lang="es" >
+        <label class="custom-file-label" for="customFileLang"></label>
+        </div>
+        <div class="input-group-append" style="float: right; position: abolute; left: 5rem;">
+          <span class="input-group-text" id="basic-addon2"><i class="fas fa-cloud-upload-alt purple-text" style="width: 2.5rem;"></i></span>
+        </div>
+      </div>
+
+      <!--Fin subir documentos-->
+      <!--subir enlace de facebook de tienda-->
+      <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de facebook:</label>
+      <div class="input-group ">
+        <input type="text"  #urlvideo (change)="pasarurlfacebook(urlvideo)" class="form-control"
+          placeholder="Ejemplo: https://www.facebook..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append justify-content-center" >
+          <span class="input-group-text "  id="basic-addon2"><i class="fab fa-facebook-f purple-text" style="width: 2.5rem;"></i></span>
+        </div>
+      </div>
+      <!--Subir fin enlace de facebook de tienda-->
+      <!--subir enlace de twiter de tienda-->
+      <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de twiter:</label>
+      <div class="input-group mb-3">
+        <input type="text"  #urlvideo (change)="pasarurltwiter(urlvideo)" class="form-control"
+          placeholder="Ejemplo: https://www.twiter..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append justify-content-center" >
+          <span class="input-group-text "  id="basic-addon2"><i class="fab fa-twitter purple-text" style="width: 2.5rem;"></i></span>
+        </div>
+      </div>
+      <!--Subir fin enlace de twiter de tienda-->
+
+      <!-- Newsletter -->
+      <div class="form-check  mt-5 text-center  ">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label " for="exampleCheck1" class="aviso">Acepto los <a href="">terminos y
+            condiciones</a> de privacidad </label>
+      </div>
+
+      <!-- Sign up button -->
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn botonregistrarme ">REGISTRARME</button>
+      </div>
+      
     </div>
+  </div>

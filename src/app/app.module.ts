@@ -115,7 +115,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     //importamos google Maps
     
 
-    
     //firebasebase parametro de conexion
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireModule,
