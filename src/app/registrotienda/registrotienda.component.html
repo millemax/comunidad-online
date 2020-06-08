@@ -75,9 +75,9 @@
         <!-- Grid column1 -->
         <div class="col col-xl col-md logo-tienda text-center border" style="border-radius: 5px;">
 
-          <input type="file" class="d-none" (change)="onLogoSelected($event)" #logoInput>
-          <img [src]="logoSelected || '/assets/images/tiendalogo.png'" class="img-fluid " style="border-radius: 3px;"
-            alt="" (click)="logoInput.click()">
+          <input type="file" class="d-none" (change)="onFotoceroSelected($event)" #fotoceroInput>
+          <img [src]="fotoceroSelected || '/assets/images/tiendafoto.png'" class="img-fluid " style="border-radius: 3px;"
+            alt="" (click)="fotoceroInput.click()">
 
         </div>
         <!-- Grid column -->
@@ -126,7 +126,7 @@
       <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de video (opcional):</label>
       <div class="input-group">
         <input type="text" (ngModel)="video" #urlvideo (change)="pasarurlvideo(urlvideo)" class="form-control"
-          placeholder="Ejemplo: https://www.youtube..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+          placeholder="https://www.youtube..." aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append justify-content-center" >
           <span class="input-group-text "  id="basic-addon2"><i class="fas fa-film purple-text" style="width: 2.5rem;"></i></span>
         </div>
@@ -148,11 +148,21 @@
       </div>
 
       <!--Fin subir documentos-->
+      <!--subir enlace de web de tienda-->
+      <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de Pagina web:</label>
+      <div class="input-group">
+        <input type="text"  #urlweb (change)="pasarurlweb(urlweb)" class="form-control"
+          placeholder="https://www...." aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append justify-content-center" >
+          <span class="input-group-text "  id="basic-addon2"><i class="fas fa-globe purple-text" style="width: 2.5rem;"></i></span>
+        </div>
+      </div>
+      <!--Subir fin enlace de web de tienda-->
       <!--subir enlace de facebook de tienda-->
       <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de facebook:</label>
       <div class="input-group ">
-        <input type="text"  #urlvideo (change)="pasarurlfacebook(urlvideo)" class="form-control"
-          placeholder="Ejemplo: https://www.facebook..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <input type="text"  #urlfacebook (change)="pasarurlfacebook(urlfacebook)" class="form-control"
+          placeholder="https://www.facebook..." aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append justify-content-center" >
           <span class="input-group-text "  id="basic-addon2"><i class="fab fa-facebook-f purple-text" style="width: 2.5rem;"></i></span>
         </div>
@@ -161,8 +171,8 @@
       <!--subir enlace de twiter de tienda-->
       <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de twiter:</label>
       <div class="input-group mb-3">
-        <input type="text"  #urlvideo (change)="pasarurltwiter(urlvideo)" class="form-control"
-          placeholder="Ejemplo: https://www.twiter..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <input type="text"  #urltwiter (change)="pasarurltwiter(urltwiter)" class="form-control"
+          placeholder=" https://www.twiter..." aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append justify-content-center" >
           <span class="input-group-text "  id="basic-addon2"><i class="fab fa-twitter purple-text" style="width: 2.5rem;"></i></span>
         </div>

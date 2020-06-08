@@ -24,7 +24,7 @@ export class RegistrotiendaComponent implements OnInit {
 
   //guardar logo cuando exista un archivo
   file:File;
-  logoSelected:string | ArrayBuffer;
+  fotoceroSelected:string | ArrayBuffer;
   //guardar foto cuando exista un archivo
   fileuno:File;
   fotoSelected:string | ArrayBuffer;
@@ -129,12 +129,12 @@ export class RegistrotiendaComponent implements OnInit {
 
   //............fin metodo mapa........
     //metodo subir logo tiend
-    onLogoSelected(event: HtmlInputEvent): void {
+    onFotoceroSelected(event: HtmlInputEvent): void {
       if (event.target.files && event.target.files[0]){
         this.file=<File>event.target.files[0];
         //previsualizarimagen
         const reader=new FileReader();
-        reader.onload= e => this.logoSelected=reader.result;
+        reader.onload= e => this.fotoceroSelected=reader.result;
         reader.readAsDataURL(this.file);
       }
     } 
