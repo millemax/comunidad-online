@@ -9,6 +9,15 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Url } from 'url';
 import { R3TargetBinder } from '@angular/compiler';
 
+//importamos el servicio crud de Categoria
+import {CategoriaService} from '../servicios/categorias/categoria.service';
+
+//importamo el crud para cargar tiendas
+import {RegistrotiendaService} from '../servicios/registrotienda/registrotienda.service'; 
+
+import { storage } from 'firebase';
+import * as firebase from 'firebase/app';
+
 //autocompletado de eneto target
 interface HtmlInputEvent extends Event{
   target: HTMLInputElement & EventTarget;
@@ -22,24 +31,46 @@ interface HtmlInputEvent extends Event{
 })
 export class RegistrotiendaComponent implements OnInit {
 
-  //guardar logo cuando exista un archivo
+  //variables guardar fotos cuando exista un archivo
+  
   file:File;
-  fotoceroSelected:string | ArrayBuffer;
-  //guardar foto cuando exista un archivo
   fileuno:File;
-  fotoSelected:string | ArrayBuffer;
-  //guardar fotodos cuando exista un archivo
   filedos:File;
-  fotounoSelected:string | ArrayBuffer;
-  //guardar fototres cuando exista un archivo
   filetres:File;
+
+  //url de las imagenes para cargar
+  urlfile:string;
+  urlfileuno:string;
+  urlfiledos:string;
+  urlfiletres:string;
+
+  fotoceroSelected:string | ArrayBuffer;
+  fotoSelected:string | ArrayBuffer;
+  fotounoSelected:string | ArrayBuffer;
   fotodosSelected:string | ArrayBuffer;
   
   //guardar video en registro teinda
   video:any;
   
+  //collecion categorias
+  collectionCategorias=["Selecciona:"];
   
-  
+  //variables de la tienda 
+  nombrelegal:string;
+  ruc:number;
+  categoria:string;
+  personacontacto:string;
+  telefono:number;
+  direccion:string;
+  //guardarr documento
+  //filedoc:File;
+  urlvideo:string;
+  urlweb:string;
+  urlfacebook:string;
+  urltwiter:string;
+
+
+
 
   // varibles para almacenar datos de la mapa
   title: string = 'AGM project';
@@ -55,11 +86,17 @@ export class RegistrotiendaComponent implements OnInit {
 
   
 
-  constructor(private mapsAPILoader: MapsAPILoader,private ngZone: NgZone, private Dom:DomSanitizer  ) { }
+  constructor(private mapsAPILoader: MapsAPILoader,private ngZone: NgZone, private Dom:DomSanitizer,
+  private storageService:RegistrotiendaService,private fireService: CategoriaService, ) { }
 
   ngOnInit() {
     //--video por defecto de la tienda
     this.video=this.Dom.bypassSecurityTrustResourceUrl('/assets/videos/tiendavideo.mp4');
+
+    //---------
+    this.obtenercategorias();
+   
+
      //.................... metodo de mapa................
         //load Places Autocomplete
         this.mapsAPILoader.load().then(() => {
@@ -85,6 +122,11 @@ export class RegistrotiendaComponent implements OnInit {
           });
         });
         
+  }
+
+  cargarcategoria(valor:any){
+    this.categoria=valor;
+    console.log("Este es el valor de categoria",valor)
   }
 
    // Get Current Location Coordinates
@@ -128,7 +170,28 @@ export class RegistrotiendaComponent implements OnInit {
   }
 
   //............fin metodo mapa........
-    //metodo subir logo tiend
+
+  //otengo las categorias que tengo disponible
+    obtenercategorias(){
+      this.fireService.readcategorys().subscribe((resultados)=>{
+        resultados.forEach((datostarea)=>{
+          this.collectionCategorias.push(
+            datostarea.payload.doc.id,
+          );           
+
+        })
+
+
+      });
+
+     
+      console.log("categorias : ",this.collectionCategorias);
+    
+}
+
+
+
+    //----------------------------------------metodo subir logo tiend
     onFotoceroSelected(event: HtmlInputEvent): void {
       if (event.target.files && event.target.files[0]){
         this.file=<File>event.target.files[0];
@@ -136,9 +199,33 @@ export class RegistrotiendaComponent implements OnInit {
         const reader=new FileReader();
         reader.onload= e => this.fotoceroSelected=reader.result;
         reader.readAsDataURL(this.file);
+
+      //cuando selecciona carga la foto y recupera la url
+      const filename = Math.floor(Date.now() / 1000);
+      var nameImage='pictures'+filename;
+      const pictures= storage().ref(nameImage);
+      pictures.put(this.file).then((resp)=>{
+
+            var storage = firebase.storage();
+            var storageRef=storage.ref();
+            storageRef.child(nameImage).getDownloadURL()
+              .then((resp:any)=>{
+                  /* console.log("la url foto", resp); */
+                  this.urlfile=resp;                      
+                  
+              })
+              .catch((err)=>{
+                console.log("error al obtener","=>",err);
+              })
+          
+      })
+
+
       }
     } 
-  //metodo subir foto tiend
+  
+    
+  //-----------------------------------------metodo subir foto tiend
   onFotoSelected(event: HtmlInputEvent): void {
     if (event.target.files && event.target.files[0]){
       this.fileuno=<File>event.target.files[0];
@@ -146,7 +233,31 @@ export class RegistrotiendaComponent implements OnInit {
       const reader=new FileReader();
       reader.onload= e => this.fotoSelected=reader.result;
       reader.readAsDataURL(this.fileuno);
+
+      //cuando selecciona carga la foto y recupera la url
+      const filename = Math.floor(Date.now() / 1000);
+      var nameImage='pictures'+filename;
+      const pictures= storage().ref(nameImage);
+      pictures.put(this.fileuno).then((resp)=>{
+
+            var storage = firebase.storage();
+            var storageRef=storage.ref();
+            storageRef.child(nameImage).getDownloadURL()
+              .then((resp:any)=>{
+                  /* console.log("la url foto", resp); */
+                  this.urlfileuno=resp;                      
+                  
+              })
+              .catch((err)=>{
+                console.log("error al obtener","=>",err);
+              })
+          
+      })
+
+
     }
+
+
   }
   
   //metodo subir foto uno tiend
@@ -157,11 +268,36 @@ export class RegistrotiendaComponent implements OnInit {
       const reader=new FileReader();
       reader.onload= e => this.fotounoSelected=reader.result;
       reader.readAsDataURL(this.filedos);
+
+      //cuando selecciona carga la foto y recupera la url
+      const filename = Math.floor(Date.now() / 1000);
+      var nameImage='pictures'+filename;
+      const pictures= storage().ref(nameImage);
+      pictures.put(this.filedos).then((resp)=>{
+
+            var storage = firebase.storage();
+            var storageRef=storage.ref();
+            storageRef.child(nameImage).getDownloadURL()
+              .then((resp:any)=>{
+                  /* console.log("la url foto", resp); */
+                  this.urlfiledos=resp;                      
+                  
+              })
+              .catch((err)=>{
+                console.log("error al obtener","=>",err);
+              })
+          
+      })
+
+
+
+
     }
   }
   //983624838
   //932328103
-  //metodo subir foto dos tiend
+
+  //----------------------------------------------------metodo subir foto dos tiend
   onFotodosSelected(event: HtmlInputEvent): void {
     if (event.target.files && event.target.files[0]){
       this.filetres=<File>event.target.files[0];
@@ -169,17 +305,43 @@ export class RegistrotiendaComponent implements OnInit {
       const reader=new FileReader();
       reader.onload= e => this.fotodosSelected=reader.result;
       reader.readAsDataURL(this.filetres);
+
+      //cuando selecciona carga la foto y recupera la url
+      const filename = Math.floor(Date.now() / 1000);
+      var nameImage='pictures'+filename;
+      const pictures= storage().ref(nameImage);
+      pictures.put(this.filetres).then((resp)=>{
+
+            var storage = firebase.storage();
+            var storageRef=storage.ref();
+            storageRef.child(nameImage).getDownloadURL()
+              .then((resp:any)=>{
+                  /* console.log("la url foto", resp); */
+                  this.urlfiletres=resp;                      
+                  
+              })
+              .catch((err)=>{
+                console.log("error al obtener","=>",err);
+              })
+          
+      })
+
+
     }
   }
-//---registro video de tienda---
-  pasarurlvideo(urlvideo:HTMLInputElement){
-   
-    console.log(urlvideo.value);
-    this.renderVideo(urlvideo.value)
+
+
+  //--------------------------obtener documento legal
   
+//---registro video de tienda---
+  pasarurlvideo(urlvideos:HTMLInputElement){
+   
+    console.log(urlvideos.value);
+    this.renderVideo(urlvideos.value)
+    this.urlvideo=urlvideos.value;
 
   }
-
+//----------previsualizar video------
   renderVideo(video:string){
   //reemplazar whatch?v por embed/ obligatorio  
     if(!video){
@@ -192,12 +354,44 @@ export class RegistrotiendaComponent implements OnInit {
       this.video=this.Dom.bypassSecurityTrustResourceUrl(video);
     }
 
-  //---registro fin tieeda video
+//-------------------metodo para agregar a bd -----
+    agregarTienda(){
 
+    var record={
+
+        nombrelegal:this.nombrelegal,
+        ruc:this.ruc,
+        categoria:this.categoria,
+        personacontacto:this.personacontacto,
+        telefono:this.telefono,
+        direccion:this.address,
+        //filedoc:File;
+        foto1:this.urlfile,
+        foto2: this.urlfileuno,
+        foto3: this.urlfiledos,
+        foto4: this.urlfiletres,
+
+        urlvideo:this.urlvideo,
+        urlweb:this.urlweb,
+        urlfacebook:this.urlfacebook,
+        urltwiter:this.urltwiter,
+
+      };
+    
+    
+    // esta es la funcion para poder enviar  a la base de datos
+    this.storageService.createstorage(record).then((resp)=>{
+
+      console.log("datos enviados correctamente a firebase");
   
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
 
+    }
 
-
+//------fin metodo para enviar a bd-------
 
 
 

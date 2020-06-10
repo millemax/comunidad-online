@@ -17,6 +17,10 @@ import {MisordenesComponent} from './misordenes/misordenes.component';
 import {MitiendaComponent} from './mitienda/mitienda.component';
 import {ConfiguracionComponent} from './configuracion/configuracion.component';
 import {MiplanComponent} from './miplan/miplan.component';
+import {CarritoComponent} from './carrito/carrito.component'
+import {ConfirmarDatosComponent} from './confirmar-datos/confirmar-datos.component'
+import {ImprimirReciboComponent} from './imprimir-recibo/imprimir-recibo.component'
+
 
 //cremos las rutas
 const routes: Routes = [
@@ -27,6 +31,10 @@ const routes: Routes = [
   {path: 'codigoverificado', component:CodigoverificadoComponent},
   {path: 'verificartienda',component:VerificartiendaComponent},
   {path: 'tiendaverificado',component:TiendaverificadoComponent},
+  {path:'carrito', component:CarritoComponent},
+  {path:'confirmar-datos', component:ConfirmarDatosComponent},
+  {path:'imprimir-recibo', component:ImprimirReciboComponent},
+
 
 
 
@@ -42,6 +50,8 @@ const routes: Routes = [
 
 
 ];
+  
+  
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

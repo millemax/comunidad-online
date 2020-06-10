@@ -15,7 +15,8 @@ $verde-azulado: #009CC7;
 .contenedor{
     padding-left: 1rem;
     padding-right: 2rem;
-    width: 85%;    
+    width: 85%;
+    
     
 }
 
@@ -73,6 +74,18 @@ $verde-azulado: #009CC7;
 .example-chip-list{
     width: 100%;
 }
+
+
+
+//color de tamaño
+.btn-sm{
+    background: $color-principal;
+    color: white;
+}
+
+
+
+
 
 
 

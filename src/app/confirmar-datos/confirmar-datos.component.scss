@@ -1,0 +1,39 @@
+.container{
+    color:#7B90A3;
+}
+.encabezado{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1.3rem;
+}
+h6{
+    font-size: 1.4rem;
+}
+.aviso{
+    font-size: x-small;
+}
+//tamño de la mapa
+agm-map {
+    height: 300px;
+   
+}
+
+.boton-procesar{
+    border-radius: 15px; 
+    margin-top: 70px; 
+    margin-bottom: 30px; 
+    font-weight: bold; 
+    font-size: 1rem;
+    text-transform: capitalize;
+
+}
+
+@media screen and (max-width: 768px) {
+    .procesos, .confirma-datos{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } 
+
+    
+}

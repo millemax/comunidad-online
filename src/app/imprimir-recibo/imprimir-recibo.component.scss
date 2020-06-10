@@ -1,0 +1,37 @@
+.container{
+    color:#7B90A3;
+}
+.encabezado{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.boton-procesar{
+    border-radius: 15px; 
+    margin-top: 30px; 
+    margin-bottom: 10px; 
+    font-weight: bold; 
+    font-size: 1rem;
+    text-transform: capitalize;
+
+}
+.card-recibo{
+    border-radius: 10px;
+    transition: .3s linear all;
+}
+
+@media screen and (max-width: 768px) {
+    .procesos{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } 
+    .confirma-datos{
+        text-align: center;
+
+    }
+
+
+    
+}

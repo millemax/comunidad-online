@@ -28,18 +28,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLogin(form:UserI){
-    this.authSvc
-    .loginByEmail(form)
-    .then(res =>{
-      console.log('Succesfully',res);
-      this.route.navigate(['/']);
-    })
-    .catch(err =>console.log('Error',err));
-  }
-//funcion para cerrar modal despues de logearse
-    public hideModel() {
-      this.closeModal.nativeElement.click();      
-  }
+
 
 }

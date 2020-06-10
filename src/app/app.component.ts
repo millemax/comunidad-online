@@ -1,5 +1,7 @@
 
 
+
+
 import { Component, OnInit } from '@angular/core';
 
 
@@ -13,6 +15,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{
   title = 'comunidad-online';//original
+  
+  public posts:{
+    id:string;
+    titlePost:string;
+    contentPost:string;
+  }
 
   constructor (){}
 

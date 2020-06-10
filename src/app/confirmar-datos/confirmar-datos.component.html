@@ -1,0 +1,191 @@
+
+<div class="container">
+    <div class="encabezado row">
+        <div class="confirma-datos font-weight-bold col-12 col-sm-8">
+          CONFIRMA DATOS
+        </div>
+        <div class="col-12 col-sm-4 procesos" style="text-align: right;">
+          <img src="/assets/images/proceso1.png" class="img-fluid mx-auto" style="height: 3rem;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-7" >
+            <div class="form-group">
+                <div class="form-row">
+                    <span style="margin-right: 30px; margin-left: 4px;">Datos de envio</span>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1"><small>Utilizar datos de registro</small></label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="nombres">Nombres</label>
+                      <input type="text" class="form-control" id="nombres" >
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="apellidos">Apellidos</label>
+                      <input type="text" class="form-control" id="apellidos">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                      <label for="telefono">N° Telefono</label>
+                      <input type="text" class="form-control" id="telefono" >
+                    </div>
+                    <div class="form-group col-md-9">
+                      <label for="correo">Correo Electronico</label>
+                      <input type="text" class="form-control" id="correo">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+
+                        <!--la mapa de google-->
+                        <label for="direccion">Dirección <span class="aviso">(Arrastra el puntero hasta la ubicación exacta)</span></label>
+                        
+                        <input type="text" class="form-control mb-2" placeholder=" Ingrese su Dirección" id="direccion" value="{{address}}">
+                        
+                        <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+                            <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+                            (dragEnd)="markerDragEnd($event)"></agm-marker>
+                        </agm-map>
+
+                        <!--fin de la mapa-->
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="referencia">Referencia</label>
+                      <input type="text" class="form-control" id="referencia">
+                    </div>
+                </div>
+                <div class="form-row">
+                  <h6 >Método  de pago</h6>
+                </div>
+ 
+                <div class="form-row">
+                  <div id="accordion" style="width: 100%;">
+                    <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Tarjeta débito o crédito
+                          </button>
+                        </h5>
+                      </div>
+                  
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="nombreTitular">Nombre de titular</label>
+                              <input type="text" class="form-control" id="nombreTitular" >
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="Ntarjeta">Número de tarjeta</label>
+                              <input type="text" class="form-control" id="Ntarjeta" mask="0000-0000-0000-0000" >
+
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-3">
+                              <label for="Mes">Mes de expiración</label>
+                              <select class="form-control" id="mes">
+                                <option selected></option>
+                                <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                                <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                                <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                                <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                              </select>              
+                            </div>
+                            <div class="form-group col-md-3">
+                              <label for="año">Año de expiración</label>
+                              <select class="form-control" id="año">
+                                <option selected></option>
+                                <option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option>
+                                <option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option>
+                                <option value="2026">2026</option><option value="2027">2027</option><option value="2028">2028</option>
+                                <option value="2029">2029</option><option value="2030">2030</option><option value="2031">2031</option>
+                                <option value="2032">2032</option><option value="2033">2033</option><option value="2034">2034</option>
+                                <option value="2035">2035</option><option value="2036">2036</option><option value="2037">2037</option>
+                                <option value="2038">2038</option><option value="2039">2039</option><option value="2040">2040</option>
+                              </select>  
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="CCV">CCV</label>
+                              <input type="text" class="form-control" id="CCV" placeholder="Ingresa 3 dígitos" mask="000">
+                            </div>
+                          </div>
+                          <div class="row" >
+                            <div class="col" style=" text-align: center;">
+                              <button type="button" class="btn btn-warning" style="border-radius: 10px;">Guardar y continuar</button>
+                            </div>
+                            
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Transferencia o depósito
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                          Se enviará el recibo y detalles de pago al correo que proporcionaste, en cuanto
+                          lo tengas realiza la Transacción y sube la imagen del voucher en la seccion de "Mis Ordenes".
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+      
+              
+            </div>
+            
+        </div>
+        <div class="col-sm-1" ></div>
+
+        <div class="col pb-3">
+          <div class="row justify-content-center " style="border-radius: 10px; border: 1px solid #7890A3;"> 
+            <div class="container pt-4 pb-4" style="width: 90%;"  >
+              <h3 class="font-weight-bold" style="text-align: center;">TICKET</h3>
+              <div class="row" style="border-bottom:1px solid #7890A3;">
+              
+                  <div class="col-4 "><small class="font-weight-bold">Producto</small></div>
+                  <div class="col-2 "><small class="font-weight-bold">Cant</small></div>
+                  <div class="col-3 "><small class="font-weight-bold">P.Unidad</small></div>
+                  <div class="col-3 "><small class="font-weight-bold">P.Total</small></div>
+
+              </div>
+              <div class="row">
+                  <div class="col-4"><small>Camisa jhon holden</small></div>
+                  <div class="col-2"><small>01</small></div>
+                  <div class="col-3"><small>$18.00</small></div>
+                  <div class="col-3"><small>$18.00</small></div>
+              </div>
+              <div class="row">
+                  <div class="col-4"><small>Camisa jhon holden</small></div>
+                  <div class="col-2"><small>01</small></div>
+                  <div class="col-3"><small>$18.00</small></div>
+                  <div class="col-3"><small>$18.00</small></div>
+              </div>
+              <div class="font-weight-bold row " style="border-top: 1px solid #7890A3;" >
+                  <div class="col-8">TOTAL</div>
+                  <div class="col-4" style="text-align: center">$100.00</div>
+              </div>
+              <button type="button" class="btn boton-procesar btn-warning btn-sm btn-block"routerLink="/imprimir-recibo">Procesar Pago</button>
+
+            </div>
+
+          </div>
+      </div>
+    </div>
+</div>
+
+    
+

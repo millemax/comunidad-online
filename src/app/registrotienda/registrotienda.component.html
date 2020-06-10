@@ -17,36 +17,31 @@
         <div class="col">
           <!-- First name-->
           <label class="aviso">Nombre legal:</label>
-          <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
+          <input type="text" id="defaultRegisterFormFirstName" [(ngModel)]="nombrelegal" class="form-control" placeholder="First name">
         </div>
       </div>
       <div class="form-row mb-1">
         <!-- Ruc-->
         <div class="col">
           <label class="aviso">RUC:</label>
-          <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Ruc">
+          <input type="text" id="defaultRegisterFormLastName" [(ngModel)]="ruc" class="form-control" placeholder="Ruc">
         </div>
         <!-- E-mail -->
         <div class="col form-row">
           <label class="aviso"> Categoría:</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option selected>Elige...</option>
-            <option value="1">Uno</option>
-            <option value="2">Dos</option>
-            <option value="3">Tres</option>
-            <option value="4">Cuatro</option>
-
+          <select class="form-control" id="exampleFormControlSelect1"  (change)="cargarcategoria($event.target.value)">
+            <option *ngFor="let categoria of collectionCategorias">{{categoria}}</option>
           </select>
         </div>
       </div>
-      <!-- Phone number -->
+      <!-- contact person-->
       <label class="aviso ">Persona de contacto:</label>
-      <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Contact Person "
+      <input type="text" id="defaultRegisterPhonePassword" [(ngModel)]="personacontacto" class="form-control" placeholder="Contact Person "
         aria-describedby="defaultRegisterFormPhoneHelpBlock">
 
       <!-- Phone number -->
       <label class="aviso">Teléfono:</label>
-      <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number"
+      <input type="text" id="defaultRegisterPhonePassword" [(ngModel)]="telefono" class="form-control" placeholder="Phone number"
         aria-describedby="defaultRegisterFormPhoneHelpBlock">
 
       <!-- Direcction -->
@@ -81,8 +76,7 @@
 
         </div>
         <!-- Grid column -->
-
-        <!-- Grid column2 -->
+       <!-- Grid column -->
         <div class="col col-xl col-md img1-tienda text-center border mr-2 ml-2" style="border-radius: 5px;">
           <input type="file" class="d-none" (change)="onFotoSelected($event)" #fotoInput>
           <img [src]="fotoSelected || '/assets/images/tiendafoto.png'" class="img-fluid" alt=""
@@ -90,8 +84,7 @@
 
         </div>
         <!-- Grid column -->
-
-        <!-- Grid column 3-->
+        <!-- Grid column -->
         <div class="col col-xl col-md img2-tienda text-center border mr-2" style="border-radius: 5px;">
           <input type="file" class="d-none" (change)="onFotounoSelected($event)" #fotounoInput>
           <img [src]="fotounoSelected || '/assets/images/tiendafoto.png'" class="img-fluid" alt=""
@@ -99,7 +92,6 @@
 
         </div>
         <!-- Grid column -->
-
         <!-- Grid column 4-->
         <div class="col col-xl col-md img3-tienda text-center border " style="border-radius: 5px;">
           <input type="file" class="d-none" (change)="onFotodosSelected($event)" #fotodosInput>
@@ -108,8 +100,6 @@
 
         </div>
         <!-- Grid column -->
-
-        <!-- Grid column 5-->
         <!-- Grid column video de la tienda --> 
         <div class="col col-xl col-md img3-tienda text-center ml-2 border embed-responsive embed-responsive-16by9 "
           style="border-radius: 5px;">
@@ -133,15 +123,15 @@
       </div>
       <!--Subir documentos-->
 
-      <label class="aviso" style="margin-top: 0.5rem;"> Subir documentos legales (opcional):</label>
+      <label class="aviso" style="margin-top: 0.5rem;"> Subir documento legal (opcional):</label>
       <div class="input-group  border " style="border-radius: 5px;"  >
         <!--
         <input type="file" class="form-control  " style="opacity: 0;" placeholder="Elegir archivo" aria-label="Recipient's username"
           aria-describedby="basic-addon2">-->
         <div class="custom-file float-left" >
-          <input type="file" class="custom-file-input"  lang="es" >
+          <input type="file" class="custom-file-input"  lang="es" (change)="obtenerdocumento($event)">
         <label class="custom-file-label" for="customFileLang"></label>
-        </div>
+        </div>  
         <div class="input-group-append" style="float: right; position: abolute; left: 5rem;">
           <span class="input-group-text" id="basic-addon2"><i class="fas fa-cloud-upload-alt purple-text" style="width: 2.5rem;"></i></span>
         </div>
@@ -151,7 +141,7 @@
       <!--subir enlace de web de tienda-->
       <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de Pagina web:</label>
       <div class="input-group">
-        <input type="text"  #urlweb (change)="pasarurlweb(urlweb)" class="form-control"
+        <input type="text"  [(ngModel)]="urlweb" class="form-control"
           placeholder="https://www...." aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append justify-content-center" >
           <span class="input-group-text "  id="basic-addon2"><i class="fas fa-globe purple-text" style="width: 2.5rem;"></i></span>
@@ -161,7 +151,7 @@
       <!--subir enlace de facebook de tienda-->
       <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de facebook:</label>
       <div class="input-group ">
-        <input type="text"  #urlfacebook (change)="pasarurlfacebook(urlfacebook)" class="form-control"
+        <input type="text" [(ngModel)]="urlfacebook" class="form-control"
           placeholder="https://www.facebook..." aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append justify-content-center" >
           <span class="input-group-text "  id="basic-addon2"><i class="fab fa-facebook-f purple-text" style="width: 2.5rem;"></i></span>
@@ -171,7 +161,7 @@
       <!--subir enlace de twiter de tienda-->
       <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de twiter:</label>
       <div class="input-group mb-3">
-        <input type="text"  #urltwiter (change)="pasarurltwiter(urltwiter)" class="form-control"
+        <input type="text" [(ngModel)]="urltwiter" class="form-control"
           placeholder=" https://www.twiter..." aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append justify-content-center" >
           <span class="input-group-text "  id="basic-addon2"><i class="fab fa-twitter purple-text" style="width: 2.5rem;"></i></span>
@@ -188,7 +178,7 @@
 
       <!-- Sign up button -->
       <div class="d-flex justify-content-center">
-        <button type="submit" class="btn botonregistrarme ">REGISTRARME</button>
+        <button type="submit" class="btn botonregistrarme " (click)="agregarTienda()">REGISTRARME</button>
       </div>
       
     </div>
