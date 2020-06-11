@@ -3,6 +3,9 @@ $amarillo:#FAD000;
 $gris: #7B90A3;
 $verde-azulado: #009CC7;
 
+
+
+
 .boton-slide{
     height: 3rem;
     width: 3rem;
@@ -226,6 +229,100 @@ $verde-azulado: #009CC7;
         visibility: visible;
     }
 
+
 }
+
+
+
+
+
+// este el css del ofertas de liquidacion
+.titulo{
+    color: $gris;
+    font-size:1.3rem;
+    font-weight: 900;
+    
+}
+
+
+//estilo de titulos de los productos
+.titulosproductos{
+    color: $gris;
+    font-size:1.3rem;
+    font-weight: 700;
+
+}
+
+//tectoprecio
+.textoprecio{
+    color: red;
+    font-size:1.3rem;
+    font-weight: 600;
+}
+
+
+//tamaño de los icono
+
+.iconocarrito{
+    font-size:1.5rem;
+    
+}
+
+
+//estilos del card
+.card{
+    width:18rem;    
+    border-radius: 1rem;
+
+
+}
+//tmaño del contenedor
+.contenedor{
+    width: 90%;
+}
+
+.imagen{
+    height: 12rem;
+}
+
+@media screen and (max-width: 768px){
+    
+    .card-productos{
+        width: 11rem;
+        height:auto;
+        margin-top: 2rem;
+
+
+    }
+    .contenedor{
+        width:100%;
+       
+
+    }
+
+    .titulosproductos{
+        font-size:1rem;
+    }
+
+    .textoprecio{
+        font-size:1rem;
+
+    }
+    .row-estrellitas{
+        display:none;
+    }
+    .imagen{
+        height: 8rem;
+    }
+    
+} 
+
+
+
+
+
+
+
+
 
 

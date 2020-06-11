@@ -79,6 +79,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 
+//estoy importando el tag las estrellitas
+import { RatingModule } from 'ng-starrating';
+
 
 
 
@@ -125,6 +128,7 @@ import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.compo
     NgxMaskModule.forRoot(),
 
     BrowserModule,
+    RatingModule,
     AppRoutingModule,        
     AngularFontAwesomeModule,
     BrowserAnimationsModule,

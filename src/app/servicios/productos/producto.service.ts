@@ -20,7 +20,8 @@ export class ProductoService {
 
   }
 
-  readcaproduct(){
+  readcaproducts(){
+      
 
   }
 
@@ -30,6 +31,14 @@ export class ProductoService {
 
   deleteproduct(){
 
+  }
+
+
+  //fin de crud
+  readproduct(tipo:string){        
+    var refproduct = firebase.firestore();    
+    return refproduct.collection('productos').where("tipoventa", "==", tipo).limit(5).get()
+    
   }
 
 

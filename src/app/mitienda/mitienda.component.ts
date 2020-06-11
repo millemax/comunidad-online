@@ -34,6 +34,12 @@ interface HtmlInputEvent extends Event {
   styleUrls: ['./mitienda.component.scss']
 })
 export class MitiendaComponent implements OnInit {
+
+  //precio de las ofertas
+ porcentaje:number=0;
+ descuento:number=0;
+
+
   //variables para las imagenes
   file: File;
   file1: File;
@@ -56,10 +62,10 @@ export class MitiendaComponent implements OnInit {
   precio:number;
   valorcategoria: string;
   valorsubcategoria: string="sin categoria";
-  tiempoEntrega: number=1;
+  tiempoEntrega: number=0;
   valortipoventa: string="normal";
   descripciongeneral: string;
-  descripciondetallada:string;
+  
   
 
   
@@ -377,7 +383,7 @@ export class MitiendaComponent implements OnInit {
               tag=0;
               readonly separatorKeysCodes: number[] = [ENTER, COMMA];
               fruits: Fruit[] = [
-                {name: 'negro'},
+                {name: 'ejemplo'},
                 
                 
               ];
@@ -418,7 +424,7 @@ export class MitiendaComponent implements OnInit {
               tag1=0
          //    readonly separatorKeysCodes: number[] = [ENTER, COMMA];
               fruits1: Fruit[] = [
-                {name: 'S'},  
+                {name: 'ejemplo'},  
                 
                 
               ];
@@ -498,23 +504,16 @@ export class MitiendaComponent implements OnInit {
       //-......................tipo de venta.............
       tipoventa(valor:string){
         console.log("valor :",  valor);
-        /* if (valor=='oferta') {
-           this.tipoVenta=true;
-          
-        } else {
-          if (valor=='gold'){
-            this.tipoVenta=true;
-
-          }
-          
-        } */
+        
 
         switch (valor) {
           case 'normal':  
            this.tipoVenta=false;          
             break;
           case 'oferta': 
-            this.tipoVenta=true;           
+            this.tipoVenta=true;
+            this.valortipoventa="oferta";   
+            
             break;
           case 'gold':
             this.tipoVenta=true;            
@@ -569,8 +568,7 @@ export class MitiendaComponent implements OnInit {
       subcategoria: this.valorsubcategoria,
       tiempoentrega: this.tiempoEntrega,
       tipoventa:this.valortipoventa,
-      descripciongeneral:this.descripciongeneral,
-      descripciondetallada:this.descripciondetallada,
+      descripciongeneral:this.descripciongeneral,      
       fotouno:this.urlfile,
       fotosdos: this.urlfile1,
       fototres: this.urlfile2,
@@ -578,6 +576,8 @@ export class MitiendaComponent implements OnInit {
       etiquetaproducto: this.etiquetaproducto,
       etiquetacolor: this.etiquetacolor,
       etiquetatalla: this.etiquetatalla,
+      descuento: this.porcentaje,
+      preciodescuento: this.descuento,
     
     
     };
@@ -595,6 +595,19 @@ export class MitiendaComponent implements OnInit {
     })
 
   }
+
+
+  Descuento(valor:any){
+     if(valor >0 && valor < 100){
+      var cantidaddescontada=(valor/100) * this.precio;        
+      this.descuento= this.precio-cantidaddescontada;
+
+     }else{
+       this.descuento=null;
+     }
+     
+
+  } 
 
   
 

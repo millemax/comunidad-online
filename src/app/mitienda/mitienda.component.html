@@ -9,54 +9,54 @@
         <div class="collapse" id="collapseExample">
             <div class="card card-body" style="border-radius: 2rem;">
                 <!--contenido del formulario producto-->
-               <div class="row">
-                   <div class="col-sm-2 col-xs-6" style="text-align: center">
+              
+               <div class="form-row">
+                   <div class="col-sm-1 col" style="text-align: center">
                             <div class="border margencamera">
                                     <!--esta relacionado el input con el imagen-->
                                     <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photoInput>     
-                                    <img [src]="photoSelected || '/assets/images/foto.png' " class="img-fluid img-thumbnail" alt="No image" (click)="photoInput.click()"><br>                           
+                                    <img [src]="photoSelected || '/assets/images/foto.png' " class="img-fluid" alt="No image" (click)="photoInput.click()"><br>                           
                                    
-                                     <span class="letraicono">foto</span> 
+                                     
                             </div>
                     </div>
-                   <div class="col-sm-2 col-xs-6" style="text-align: center">
+                   <div class="col-sm-1 col" style="text-align: center">
                         <div class="border margencamera">
                           <!--esta relacionado el input con el imagen-->
                           <input type="file" class="d-none" (change)="onPhotoSelected1($event)" #photoInput1>     
-                          <img [src]="photoSelected1 || '/assets/images/foto.png' " class="img-fluid img-thumbnail" alt="No image" (click)="photoInput1.click()"><br>                           
+                          <img [src]="photoSelected1 || '/assets/images/foto.png' " class="img-fluid" alt="No image" (click)="photoInput1.click()"><br>                           
                          
-                           <span class="letraicono">foto</span> 
+                           
                         
                         </div>
                   </div>
 
-                   <div class="col-sm-2 col-xs-6" style="text-align: center">
+                   <div class="col-sm-1 col" style="text-align: center">
                         <div class="border margencamera">
                           <!--esta relacionado el input con el imagen-->
                           <input type="file" class="d-none" (change)="onPhotoSelected2($event)" #photoInput2>     
-                          <img [src]="photoSelected2 || '/assets/images/foto.png' " class="img-fluid img-thumbnail" alt="No image" (click)="photoInput2.click()"><br>                       
-                         
-                           <span class="letraicono">foto</span>                         
+                          <img [src]="photoSelected2 || '/assets/images/foto.png' " class="img-fluid" alt="No image" (click)="photoInput2.click()"><br>                       
+                                              
 
                       </div>
                   </div>
 
-                   <div class="col-sm-2 col-xs-6" style="text-align: center">
+                   <div class="col-sm-1 col" style="text-align: center">
                         <div class="border margencamera">
                           <!--esta relacionado el input con el imagen-->
                           <input type="file" class="d-none" (change)="onPhotoSelected3($event)" #photoInput3>     
-                          <img [src]="photoSelected3 || '/assets/images/foto.png' " class="img-fluid img-thumbnail" alt="No image" (click)="photoInput3.click()"><br>                           
+                          <img [src]="photoSelected3 || '/assets/images/foto.png' " class="img-fluid" alt="No image" (click)="photoInput3.click()"><br>                           
                          
-                           <span class="letraicono">foto</span> 
+                           
                         
 
                       </div>
                   </div>    
 
-                   <div class="col-sm-4 col-xs-12">
-                       
-                   </div>
+                  
                </div>
+
+              
                 <br>
                <div class="row">
                    <div class="col-sm-5">
@@ -238,8 +238,8 @@
                     <div class="form-group">                            
                         <select class="form-control" id="exampleFormControlSelect1" (change)="tipoventa($event.target.value)">
                           <option value="normal">normal</option>
-                          <!-- <option value="oferta">oferta</option>
-                          <option value="gold">Para gold</option> -->
+                          <option value="oferta">oferta</option>
+                          <!-- <option value="gold">Para gold</option> -->
                           
                         </select>
                       </div>
@@ -247,7 +247,7 @@
                    </div>
                    <div class="col-sm" *ngIf="tipoVenta">
                         <span>% descuento(opcional)</span><br>
-                        <input class="form-control" type="number" (ngModel)="porcentaje">
+                        <input class="form-control" type="number" [(ngModel)]="porcentaje"  (ngModelChange)="Descuento($event)">
 
                    </div>
                    <div class="col-sm" *ngIf="tipoVenta">
@@ -256,7 +256,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input type="number" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="descuento">
+                            <input type="number" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="descuento" readonly="readonly">
                         </div>
 
                    </div>
@@ -271,14 +271,11 @@
                </div>
 
                <div class="row">
-                   <div class="col-sm-6">
+                   <div class="col-sm-6 justify-content-center">
                        <span>Descripcion general</span>
                        <textarea class="form-control" rows="5" id="comment" [(ngModel)]="descripciongeneral"></textarea>
                    </div>
-                   <div class="col-sm-6">
-                       <span>Descripcion detallada</span>                      
-                       <textarea class="form-control" rows="5" id="comment" [(ngModel)]="descripciondetallada"></textarea>
-                   </div>
+                   
                </div>
                <br>
                <!--contenido del formulario producto-->
