@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {CategoriaService} from '../servicios/categorias/categoria.service';
 import { StarRatingComponent } from 'ng-starrating';
 import {ProductoService} from '../servicios/productos/producto.service'
@@ -17,9 +17,14 @@ export class HomeComponent implements OnInit {
 
   //collecion de los productos oferta
   collectionOferta=[];
+  collectionOfertainverso=[];
 
   //collection productos
   collectionNormal=[];
+  collectionNormalinverso=[];
+
+  //collection productos Populares
+  collectionPopulate=[];
 
   constructor (private crudCategoria: CategoriaService, private crudProductos: ProductoService){
 
@@ -30,6 +35,7 @@ export class HomeComponent implements OnInit {
     this.recuperarCategoria();
     this.recuperarProductosoferta();
     this.recuperarProductos();
+    this.productospopulares();
   } 
 
   recuperarProductosoferta(){
@@ -37,11 +43,16 @@ export class HomeComponent implements OnInit {
     this.crudProductos.readproduct(tipoproducto).then((res)=>{      
       res.forEach((datos)=>{
             // console.log(doc.id, " => ", doc.data());
-            this.collectionOferta.push(
-               datos.data()
+            this.collectionOferta.push({
+              iud: datos.id,
+              data:datos.data()
+            }
+               
             );
          });
-
+        
+      this.collectionOfertainverso=this.collectionOferta.reverse();
+      console.log("colleccion ofertas", this.collectionOfertainverso);
       
 
     })
@@ -49,6 +60,7 @@ export class HomeComponent implements OnInit {
       console.log("no se puedo recuperar de la base de datos", err);
 
     })
+    
 
   }
 
@@ -61,10 +73,35 @@ export class HomeComponent implements OnInit {
         );
 
       });
+      this.collectionNormalinverso=this.collectionNormal.reverse();
 
     })
     .catch((err)=>{
       console.log("no se puedo recuperar productos");
+    })
+
+    
+
+
+  }
+
+  //recuperar los productos populares
+  productospopulares(){
+    console.log("obteniendo productos populares");
+    this.crudProductos.readproductpopulate().then((doc)=>{
+      doc.forEach((datos)=>{
+        
+        this.collectionPopulate.push(
+          datos.data()
+        );
+
+      })
+      
+
+    })
+    .catch((err)=>{
+      console.log("no se pudo obtener el documento",err);
+
     })
 
   }
@@ -89,6 +126,16 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
       New Value: ${$event.newValue}, 
       Checked Color: ${$event.starRating.checkedcolor}, 
       Unchecked Color: ${$event.starRating.uncheckedcolor}`);
+
+  }
+
+
+
+  // mostrar detalles de producto seleccionado ofertas
+  detallesProductos(valor:string){
+
+    console.log("hola soy el producto mi id", valor);
+    
 
   }
   

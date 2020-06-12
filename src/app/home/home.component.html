@@ -79,17 +79,17 @@
 
 
   <div class="form-row">
-    <div class="col  d-flex justify-content-center align-content-center" *ngFor="let product of collectionOferta">
-      <div class="card card-productos">
-        <img class="card-img-top img-fluid imagen" src="{{product.fotouno}}" alt="Card image cap" style="border-radius: 1rem;">
+    <div class="col  d-flex justify-content-center align-content-center" *ngFor="let product of collectionOfertainverso">
+      <div class="card card-productos" (click)="detallesProductos(product.iud)">
+        <img class="card-img-top img-fluid imagen" src="{{product.data.fotouno}}" alt="Card image cap" style="border-radius: 1rem;">
         <div class="card-body border-top">
           
-          <span class="card-title  titulosproductos">{{product.titulo}}</span><br>
-          <label class="textoprecio">${{product.precio}}</label>     
+          <span class="card-title  titulosproductos">{{product.data.titulo}}</span><br>
+          <label class="textoprecio">${{product.data.precio}}</label>     
               <div class="form-row row-estrellitas">
-                 <div class="col-7 " style="text-align:left;">
+                 <div class="col-7" style="text-align:left;">
                   
-                  <star-rating  value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
+                  <star-rating  class="estrellitas" value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
   
                  </div>
                  <div class="col-2">
@@ -99,7 +99,7 @@
                      
   
                  </div>
-                 <div class="col-3   my-auto d-flex justify-content-end col" style="text-align: right;">                   
+                 <div class="col-3    my-auto d-flex justify-content-end col" style="text-align: right;">                   
   
                       <span class="fa-stack fa-lg">                      
                         <i class="fas fa-circle fa-stack-2x"></i>
@@ -141,7 +141,7 @@
 
 
   <div class="form-row">
-    <div class="col  d-flex justify-content-center align-content-center" *ngFor="let product of collectionNormal">
+    <div class="col  d-flex justify-content-center align-content-center" *ngFor="let product of collectionNormalinverso">
       <div class="card card-productos">
         <img class="card-img-top img-fluid imagen" src="{{product.fotouno}}" alt="Card image cap" style="border-radius: 1rem;">
         <div class="card-body border-top">
@@ -190,9 +190,50 @@
 <!--productos mas populares-->
 <div class="container-fluid contenedor">
   <div class="row">
-    <div class="col-sm-3"> <span class="titulo">Recientemente Agregados</span> </div>
+    <div class="col-sm-3"> <span class="titulo">Mas Populares</span> </div>
   </div>
   <br>
+
+  <div class="form-row">
+    <div class="col  d-flex justify-content-center align-content-center" *ngFor="let product of collectionPopulate">
+      <div class="card card-productos">
+        <img class="card-img-top img-fluid imagen" src="{{product.fotouno}}" alt="Card image cap" style="border-radius: 1rem;">
+        <div class="card-body border-top">
+          
+          <span class="card-title  titulosproductos">{{product.titulo}}</span><br>
+          <label class="textoprecio">${{product.precio}}</label>     
+              <div class="form-row row-estrellitas">
+                 <div class="col-7 " style="text-align:left;">
+                  
+                  <star-rating  value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
+  
+                 </div>
+                 <div class="col-2">
+                    <div class="container">
+                      <i class="fas fa-clipboard-list  pt-3"></i>
+                    </div>
+                     
+  
+                 </div>
+                 <div class="col-3   my-auto d-flex justify-content-end col" style="text-align: right;">                   
+  
+                      <span class="fa-stack fa-lg">                      
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fas fa-shopping-cart fa-stack-1x" style="color:white;"></i>
+                      </span>
+                       
+                      
+                     
+                 </div>
+              </div>               
+  
+        
+        </div>
+      </div>
+
+    </div>   
+
+  </div>
 
   
 
@@ -207,7 +248,7 @@
 
 
 
-
+<br><br><br>
 
   <!--login modal-->
     <app-login></app-login>

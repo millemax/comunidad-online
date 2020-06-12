@@ -90,6 +90,7 @@ import { FooterComponent } from './footer/footer.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { ConfirmarDatosComponent } from './confirmar-datos/confirmar-datos.component';
 import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.component';
+import { DetalleproductComponent } from './detalleproduct/detalleproduct.component';
 
 
 @NgModule({
@@ -122,6 +123,7 @@ import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.compo
     CarritoComponent,
     ConfirmarDatosComponent,
     ImprimirReciboComponent,
+    DetalleproductComponent,
     
   ],
   imports: [

@@ -273,6 +273,7 @@ $verde-azulado: #009CC7;
 .card{
     width:18rem;    
     border-radius: 1rem;
+    cursor: pointer;
 
 
 }
@@ -284,6 +285,8 @@ $verde-azulado: #009CC7;
 .imagen{
     height: 12rem;
 }
+
+
 
 @media screen and (max-width: 768px){
     
@@ -316,6 +319,48 @@ $verde-azulado: #009CC7;
     }
     
 } 
+
+
+// para pantallas mas pequeños 
+@media screen and (min-width: 992px) and (max-width: 1400px){
+    .card-productos{
+        width: 13rem;
+        height:auto;
+       
+        display: flex;
+        justify-content: center;
+        align-content: center;
+       
+
+
+    }
+    .contenedor{
+        width:90%;
+       
+
+    }
+
+    .titulosproductos{
+        font-size:1rem;
+    }
+
+    .textoprecio{
+        font-size:1rem;
+
+    }
+    
+    .imagen{
+        height: 8rem;
+    }
+    .card-body{
+        padding:12px;
+    }
+    .fa-stack{
+        font-size: 0.8rem;
+    }
+
+
+}
 
 
 

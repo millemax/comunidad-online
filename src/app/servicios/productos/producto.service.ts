@@ -41,6 +41,13 @@ export class ProductoService {
     
   }
 
+  //recuperar productos mas vendidos en el servico
+  readproductpopulate(){
+    var refproduct = firebase.firestore(); 
+    return refproduct.collection('productos').where("cantidadventas",">",0).orderBy("cantidadventas","desc").limit(5).get()
+  }
+
+
 
  
 

@@ -10,6 +10,7 @@ import { CodigoverificadoComponent} from './codigoverificado/codigoverificado.co
 import {VerificartiendaComponent} from './verificartienda/verificartienda.component';
 import {TiendaverificadoComponent} from './tiendaverificado/tiendaverificado.component';
 import {PaneladministracionComponent} from './paneladministracion/paneladministracion.component'
+import {DetalleproductComponent} from './detalleproduct/detalleproduct.component'
 
 //componentes hijos de panel de administracion
 import {MislistasComponent} from './mislistas/mislistas.component';
@@ -34,6 +35,8 @@ const routes: Routes = [
   {path:'carrito', component:CarritoComponent},
   {path:'confirmar-datos', component:ConfirmarDatosComponent},
   {path:'imprimir-recibo', component:ImprimirReciboComponent},
+  {path:'detallesproducto/:id', component:DetalleproductComponent},
+  
 
 
 
