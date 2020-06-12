@@ -93,6 +93,10 @@ import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.compo
 import { DetalleproductComponent } from './detalleproduct/detalleproduct.component';
 
 
+//el carrousel
+
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -139,6 +143,9 @@ import { DetalleproductComponent } from './detalleproduct/detalleproduct.compone
     MatIconModule,
     MatFormFieldModule,        
     SidebarModule.forRoot(),
+
+    //para el carrousel
+    CarouselModule,
    
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBQ2wl-PEYo_y3vpjO6E0ZzQOrKB6leYJI',

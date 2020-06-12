@@ -1,7 +1,10 @@
 import { Component, OnInit} from '@angular/core';
 import {CategoriaService} from '../servicios/categorias/categoria.service';
 import { StarRatingComponent } from 'ng-starrating';
-import {ProductoService} from '../servicios/productos/producto.service'
+import {ProductoService} from '../servicios/productos/producto.service';
+
+//el carrousel
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
 
@@ -12,6 +15,31 @@ import {ProductoService} from '../servicios/productos/producto.service'
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  //para el carrousel
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText: ['<', '>'],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  }
   //esta es la colección categoria
   collectionCategorias=[]; 
 
