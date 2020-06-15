@@ -1,5 +1,5 @@
 
-
+<!------------- esta es la parte inicia el banner.....-->
 
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -27,48 +27,45 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+<!--.............fin de banner.......................-->
 
 
+<!--.............inicio de categorias.......................-->
 
-  <div class="container-fluid my-3">
-    <div class="form-row d-flex align-items-center">
-      <div class="col-1 d-flex align-items-center justify-content-center">
-        <a class="carousel-control-prev item-prev" href="#carouselExample" role="button" data-slide="prev">
-          <i class="fa fa-chevron-left fa-lg text-muted"></i>
-          <span class="sr-only">Previous</span>
-        </a>
-      </div>
-      <div class="col-10 border align-items-center justify-content-center ">
-        <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
-          <div class="container-fluid">
-            <div class="carousel-inner form-row w-80 mx-auto categoria" role="listbox">
+<div class="container-fluid pt-4 ">
+  
+    
+     
+  <owl-carousel-o [options]="customOptions" class="">
 
-              <div class="carousel-item col-2 col-md-1 active categoriass ">
-                <span>
-                  <i class="fas fa-laptop"></i>
-                </span>
-                <h6><small>electro</small></h6>
-              </div>
-              <div class="carousel-item col-2 col-md-1 categoriass ml-2" *ngFor="let ctegoria of collectionCategorias">
-                <span>
-                  <i class="fas fa-laptop"></i>
-                </span>
-                <h6><small>{{ctegoria}}</small></h6>
-              </div>
+        <ng-template carouselSlide *ngFor="let categoria of collectionCategorias" >
+          <div class="container ">
+            
+    
+              <div class="card " style="width: 10rem;"  >
+                <img class="card-img-top img-fluid imagenCategorias" src="{{categoria.data.icono}}" >
+                <div class="card-body" style="text-align: center !important; text-transform: uppercase;">
+                  <h5 class="card-title" style="color: #00B4CC;"><small>{{categoria.id}}</small></h5>
+                </div>
+
             </div>
-          </div>
         </div>
-      </div>
-      <div class="col-1 d-flex align-items-center justify-content-center">
-        <a class="carousel-control-next item-next text-faded" href="#carouselExample" role="button" data-slide="next">
-          <i class="fa fa-chevron-right fa-lg text-muted"></i>
-          <span class="sr-only">Next</span>
-         </a>
-      </div>
-    </div>
-  </div>
 
-<br>
+        </ng-template>  
+        
+  </owl-carousel-o>
+
+</div>
+
+<!--.............inicio de categorias.......................-->
+
+
+
+
+
+
+
+
 
 <!------------- esta es la parte donde muestra los productos liquidacion------------------------>
 <div class="container-fluid contenedor">
@@ -240,33 +237,6 @@
 </div>
 
 <br><br><br>
-<div class="container border">
-        <div>Some tags before</div>
-        <owl-carousel-o [options]="customOptions">
-              <ng-template carouselSlide>
-                <img src="/assets/images/zapatilla.png">
-              </ng-template>  
-              <ng-template carouselSlide>
-                <img src="/assets/images/zapatilla.png">
-              </ng-template>  
-              <ng-template carouselSlide>
-                <img src="/assets/images/zapatilla.png">
-              </ng-template>  
-              <ng-template carouselSlide>
-                <img src="/assets/images/zapatilla.png">
-              </ng-template> 
-              <ng-template carouselSlide>
-                <img src="/assets/images/zapatilla.png">
-              </ng-template> 
-              <ng-template carouselSlide>
-                <img src="/assets/images/zapatilla.png">
-              </ng-template> 
-      </owl-carousel-o>
-      <div>Some tags after</div>
-</div>
-
-
-
 
 
 

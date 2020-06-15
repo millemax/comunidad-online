@@ -4,8 +4,6 @@ $gris: #7B90A3;
 $verde-azulado: #009CC7;
 
 
-
-
 .boton-slide{
     height: 3rem;
     width: 3rem;
@@ -13,229 +11,17 @@ $verde-azulado: #009CC7;
     border-radius: 10px;
 }
 
-/*
-.carrosel {
-    height: 100px;
-}
-*/
-.boton-categoria{
-    background-color: black;
-}
-
 .carousel-nav-icon {
     height: 30px;
     width: 30px;
  }
- 
- .categoriass{
-     border: 1px solid $color-principal;
-     border-radius: 5px;
- }
- 
-
- .fas{
+ .imagenCategorias{
+     width: 7rem !important;
+     padding-left: 3rem;
+     padding-top: 1rem;
+     height: 5rem;
      color: $color-principal;
  }
-
- .span3{
-     display: inline-block;
-
- }
-
-@media screen and (max-width: 768px) { //cambios en tamaño ipad a celular
-
-
-    h6{
-       font-size: 0.5rem;
-    }
-    /* show 6 items */
-    .categoria .active,
-    .categoria .active + .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        display: block;
-    }
-
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item + .carousel-item{
-        transition: none;
-        margin-right: initial;
-    }
-
-    .categoria .item-next,
-    .categoria .item-prev {
-    position: relative;
-    transform: translate3d(0, 0, 0);
-    }
-
-    .categoria .active.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        position: absolute;
-        top: 0;
-        right: -25%;
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-
-    /* left or forward direction */
-    .active.carousel-item-left + .item-next.item-left,
-    .item-next.item-left + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        position: relative;
-        transform: translate3d(-100%, 0, 0);
-        visibility: visible;
-    }
-    
-    
-    /* farthest right hidden item must be abso position for animations */
-    .categoria .item-prev.item-right {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-    
-    /* right or prev direction */
-    .active.carousel-item-right + .item-prev.item-right,
-    .item-prev.item-right + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        position: relative;
-        transform: translate3d(100%, 0, 0);
-        visibility: visible;
-        display: block;
-        visibility: visible;
-    }
-
-    
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-}
-
-
-@media (min-width: 768px) {
-
-
-    /* show 6 items */
-    .categoria .active,
-    .categoria .active + .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item+ .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item+ .carousel-item+ .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item+ .carousel-item+ .carousel-item+ .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item+ .carousel-item+ .carousel-item+ .carousel-item+ .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item+ .carousel-item+ .carousel-item+ .carousel-item+ .carousel-item+ .carousel-item{
-        display: block;
-    }
-
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item + .carousel-item + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        transition: none;
-        margin-right: initial;
-    }
-
-    .categoria .item-next,
-    .categoria .item-prev {
-      position: relative;
-      transform: translate3d(0, 0, 0);
-    }
-
-    .categoria .active.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item  + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        position: absolute;
-        top: 0;
-        right: -25%;
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-
-    /* left or forward direction */
-    .active.carousel-item-left + .item-next.item-left,
-    .item-next.item-left + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        position: relative;
-        transform: translate3d(-100%, 0, 0);
-        visibility: visible;
-    }
-    
-    
-    /* farthest right hidden item must be abso position for animations */
-    .categoria .item-prev.item-right {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-    
-    /* right or prev direction */
-    .active.carousel-item-right + .item-prev.item-right,
-    .item-prev.item-right + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        position: relative;
-        transform: translate3d(100%, 0, 0);
-        visibility: visible;
-        display: block;
-        visibility: visible;
-    }
-
-
-}
-
-
-
-
-
 // este el css del ofertas de liquidacion
 .titulo{
     color: $gris;
