@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
     navText: ['<', '>'],
     responsive: {
       0: {
-        items: 1
+        items: 2
       },
       400: {
         items: 2
@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
         items: 3
       },
       940: {
-        items: 4
+        items: 6
       }
     },
     nav: true
@@ -138,8 +138,11 @@ export class HomeComponent implements OnInit {
   recuperarCategoria(){
     this.crudCategoria.readcategorys().subscribe((resultados)=>{
       resultados.forEach((datostarea)=>{
-        this.collectionCategorias.push(
-          datostarea.payload.doc.id,
+        this.collectionCategorias.push({
+          id:datostarea.payload.doc.id,
+          data:datostarea.payload.doc.data(),
+        }
+          
         );
       })
     });
