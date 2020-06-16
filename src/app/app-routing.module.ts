@@ -11,6 +11,7 @@ import {VerificartiendaComponent} from './verificartienda/verificartienda.compon
 import {TiendaverificadoComponent} from './tiendaverificado/tiendaverificado.component';
 import {PaneladministracionComponent} from './paneladministracion/paneladministracion.component'
 import {DetalleproductComponent} from './detalleproduct/detalleproduct.component'
+import {DetallesCategoriaComponent} from './detalles-categoria/detalles-categoria.component'
 
 //componentes hijos de panel de administracion
 import {MislistasComponent} from './mislistas/mislistas.component';
@@ -21,6 +22,7 @@ import {MiplanComponent} from './miplan/miplan.component';
 import {CarritoComponent} from './carrito/carrito.component'
 import {ConfirmarDatosComponent} from './confirmar-datos/confirmar-datos.component'
 import {ImprimirReciboComponent} from './imprimir-recibo/imprimir-recibo.component'
+import { from } from 'rxjs';
 
 
 //cremos las rutas
@@ -36,6 +38,7 @@ const routes: Routes = [
   {path:'confirmar-datos', component:ConfirmarDatosComponent},
   {path:'imprimir-recibo', component:ImprimirReciboComponent},
   {path:'detallesproducto/:id', component:DetalleproductComponent},
+  {path:'detallescategoria', component:DetallesCategoriaComponent},
   
 
 

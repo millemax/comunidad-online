@@ -3,6 +3,13 @@ $amarillo:#FAD000;
 $gris: #7B90A3;
 $verde-azulado: #009CC7;
 
+.fa-lg{
+    color: $color-principal;
+}
+.list{
+    color: $color-principal;
+}
+
 .categorias{
     width:80%
 }
@@ -67,12 +74,17 @@ $verde-azulado: #009CC7;
 
 }
 //tmaño del contenedor
-.contenedor{
+/* .contenedor{
     width: 90%;
 }
-
+ */
 .imagen{
     height: 12rem;
+}
+
+//contenedor categorias
+.categorias{
+    width: 90%;
 }
 
 
@@ -109,12 +121,18 @@ $verde-azulado: #009CC7;
     .categorias{
         width:100%;
     }
+    .fa-lg{
+        color: $color-principal;
+    }
+    .list{
+        color: $color-principal;
+    }
     
 } 
 
 
 // para pantallas mas pequeños 
-@media screen and (min-width: 992px) and (max-width: 1400px){
+@media screen and (min-width: 992px) and (max-width: 1400px) {
     .card-productos{
         width: 13rem;
         height:auto;
@@ -152,6 +170,12 @@ $verde-azulado: #009CC7;
     }
     .categorias{
         width: 100%;
+    }
+    .fa-lg{
+        color: $color-principal;
+    }
+    .list{
+        color: $color-principal;
     }
 
 

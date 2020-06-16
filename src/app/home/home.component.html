@@ -41,8 +41,7 @@
         <ng-template carouselSlide *ngFor="let categoria of collectionCategorias" >
           <div class="container ">
             
-    
-              <div class="card " style="width: 10rem;"  >
+              <div class="card " style="width: 10rem;" routerLink="/detallescategoria" >
                 <img class="card-img-top img-fluid imagenCategorias" src="{{categoria.data.icono}}" >
                 <div class="card-body" style="text-align: center !important; text-transform: uppercase;">
                   <h5 class="card-title" style="color: #00B4CC;"><small>{{categoria.id}}</small></h5>
@@ -92,7 +91,7 @@
                  </div>
                  <div class="col-2">
                     <div class="container">
-                      <i class="fas fa-clipboard-list  pt-3"></i>
+                      <i class="fas fa-clipboard-list  pt-3 list"></i>
                     </div>
                      
   
@@ -246,7 +245,7 @@
 <br><br><br>
 
   <!--login modal-->
-    <app-login></app-login>
+   <!--  <app-login></app-login> -->
   <!--fin login modal-->
   <div class="container border">
         <div>

@@ -18,6 +18,10 @@ import { storage } from 'firebase';
 import * as firebase from 'firebase/app';
 
 
+
+
+
+
 export interface Fruit {
   name: string;
 }
@@ -79,7 +83,7 @@ export class MitiendaComponent implements OnInit {
   collectionCategorias=["Selecciona:"];
 
   //obteniendo la subcategorias
-  subcategoria=[];
+  //subcategoria:any;
   categoria=[];
 
 
@@ -173,19 +177,20 @@ export class MitiendaComponent implements OnInit {
   }
 
   //obtengo solo una categoria y sus datos 
-  obtenerunacategoria(dato:string){
+ subcategoria:any;
+ obtenerunacategoria(dato:string){
     
-     var subcategoria=["Selecciona:"];
-        var value:any;
-     this.fireService.readcategory(dato).then(function(doc){          
+  
+      
+     this.fireService.readcategory(dato).then(function(doc){   
+               
           if (doc.exists) {
-            
-                for(let key in doc.data()){               
-                  
-                  value=doc.data()[key];                    
-                  subcategoria.push(value);                  
-                  
-                }
+                
+
+            this.subcategoria.push(doc.data().categorias);
+            console.log("subcategorias",this.subcategoria);          
+              
+               
                 
                       
              
@@ -204,17 +209,17 @@ export class MitiendaComponent implements OnInit {
           console.log("erro al obtener documento", err);
 
         });         
-
-       
-       
-       
-        this.subcategoria=subcategoria ;
-        
         
 
         
     
         
+  }
+
+  asignaracategoria(valor:any){
+    console.log("la subcategoria",valor);
+
+
   }
 
 
