@@ -22,6 +22,8 @@ import * as firebase from 'firebase/app';
 
 
 
+
+
 export interface Fruit {
   name: string;
 }
@@ -83,7 +85,7 @@ export class MitiendaComponent implements OnInit {
   collectionCategorias=["Selecciona:"];
 
   //obteniendo la subcategorias
-  //subcategoria:any;
+  subcategoria:any;
   categoria=[];
 
 
@@ -97,18 +99,21 @@ export class MitiendaComponent implements OnInit {
 
   //para poder ver si tiene subcategoria 
 
-   estadosubcategoria=true;
+   estadosubcategoria:boolean;
 
 
    //  variable para el nuevo objeto de tags productos
-   etiquetaproducto = new Object();
+   etiquetaproducto = [];
 
    // etiqueta de las color
-   etiquetacolor= new Object();
+   etiquetacolor= [];
 
    //etiqueta Tallas
 
-   etiquetatalla= new Object();
+   etiquetatalla= [];
+
+   //valor de subcategoria se activa en caso exista
+   
 
 
   
@@ -177,41 +182,51 @@ export class MitiendaComponent implements OnInit {
   }
 
   //obtengo solo una categoria y sus datos 
- subcategoria:any;
- obtenerunacategoria(dato:string){
-    
-  
+ 
+  async obtenerunacategoria(dato:string){
+     //asicronia con asyn await
+    try {
+      var doc= await this.fireService.readcategory(dato);
+      this.subcategoria= await doc.data().subcategorias;
+      console.log("tamaño de la subcategoria", this.subcategoria.length);
+
+       if(this.subcategoria.length>0){
+         this.estadosubcategoria=true;
+
+       }else{
+        
+
+       }
       
+    } catch (error) {
+      this.estadosubcategoria=false;
+      console.log("no se pudo obtener las subcategorias",error);
+      
+      
+    } 
+
+    
+
+
+    //asicronia con then y catch
+    /* 
      this.fireService.readcategory(dato).then(function(doc){   
                
-          if (doc.exists) {
-                
+          if (doc.exists) {                
 
             this.subcategoria.push(doc.data().categorias);
-            console.log("subcategorias",this.subcategoria);          
-              
-               
-                
-                      
-             
-                       
-            
+            console.log("subcategorias",this.subcategoria);       
+                         
             
           } else {
-            console.log("no se encontro el documento");
-            
-            
-            
+            console.log("no se encontro el documento");                        
             
           }
 
         }).catch(function(err){
           console.log("erro al obtener documento", err);
 
-        });         
-        
-
-        
+        });   */  
     
         
   }
@@ -384,7 +399,7 @@ export class MitiendaComponent implements OnInit {
               selectable = true;
               removable = true;
               addOnBlur = true;
-              tag=0;
+              
               readonly separatorKeysCodes: number[] = [ENTER, COMMA];
               fruits: Fruit[] = [
                 {name: 'ejemplo'},
@@ -400,8 +415,8 @@ export class MitiendaComponent implements OnInit {
                 if ((value || '').trim()) {
                   this.fruits.push({name: value.trim()});
 
-                  this.etiquetacolor["tag"+this.tag.toString()]=value.trim();            
-                  this.tag=this.tag+1;
+                  this.etiquetacolor.push(value.trim());            
+                  
                 }
 
                 // Reset the input value
@@ -425,7 +440,7 @@ export class MitiendaComponent implements OnInit {
               selectable1 = true;
               removable1 = true;
               addOnBlur1 = true;
-              tag1=0
+              
          //    readonly separatorKeysCodes: number[] = [ENTER, COMMA];
               fruits1: Fruit[] = [
                 {name: 'ejemplo'},  
@@ -440,8 +455,8 @@ export class MitiendaComponent implements OnInit {
                 // Add our fruit
                 if ((value || '').trim()) {
                   this.fruits1.push({name: value.trim()});                  
-                  this.etiquetatalla["tag"+this.tag1.toString()]=value.trim();            
-                  this.tag1=this.tag1+1;
+                  this.etiquetatalla.push(value.trim());            
+                  
                 }
 
                 // Reset the input value
@@ -464,7 +479,7 @@ export class MitiendaComponent implements OnInit {
          selectable2 = true;
          removable2 = true;
          addOnBlur2 = true;
-         tag2=0
+         
          
     //    readonly separatorKeysCodes: number[] = [ENTER, COMMA];
           fruits2: Fruit[] = [
@@ -481,9 +496,9 @@ export class MitiendaComponent implements OnInit {
            if ((value || '').trim()) {
              this.fruits2.push({name: value.trim()});
              
-             this.etiquetaproducto["tag"+this.tag2.toString()]=value.trim();
+             this.etiquetaproducto.push(value.trim());
             
-             this.tag2=this.tag2+1;
+             
             
              
            }
@@ -534,30 +549,7 @@ export class MitiendaComponent implements OnInit {
  // crear los productos
   agregarProducto(){   
     
-   /*  console.log("el titulo", this.titulo);
-    console.log("cantidad", this.cantidad);
-    console.log("altura", this.altura);
-    console.log("ancho", this.ancho);
-    console.log("espesor", this.espesor);
-    console.log("peso", this.peso);
-    console.log("precio", this.precio);
-    console.log("categoria", this.valorcategoria);
-    console.log("subcategoria",this.valorsubcategoria);
-    console.log("tiempo entrega", this.tiempoEntrega);
-    console.log("tipo venta", this.valortipoventa);
-    console.log("desgeneral", this.descripciongeneral);
-    console.log("desdetallada", this.descripciondetallada);
-
-    //estos son arrays
-    console.log("etiquetas prod", this.fruits2);
-    console.log("color", this.fruits);
-    console.log("talla", this.fruits1);
-
-    //las url de las fotos
-    console.log("urlfoto", this.urlfile);
-    console.log("urlfoto1", this.urlfile1);
-    console.log("urlfoto2", this.urlfile2);
-    console.log("urlfoto3", this.urlfile3); */
+    var idtime=Date.now();
     
 
     var record={
@@ -582,6 +574,7 @@ export class MitiendaComponent implements OnInit {
       etiquetatalla: this.etiquetatalla,
       descuento: this.porcentaje,
       preciodescuento: this.descuento,
+      tiempo:idtime
     
     
     };

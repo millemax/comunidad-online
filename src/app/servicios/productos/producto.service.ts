@@ -16,7 +16,9 @@ export class ProductoService {
     
     //var record={nombre:"romel",apellido:"huaraca", apellido1:"pocco"}
     var idtime=Date.now();
-    return this.afs.collection("productos").doc(""+idtime).set(record)
+    var tiempofuturo=2537654400999
+    var tiempo=tiempofuturo-idtime;    
+    return this.afs.collection("productos").doc(""+tiempo).set(record)
 
   }
 

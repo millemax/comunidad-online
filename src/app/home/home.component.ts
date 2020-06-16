@@ -79,8 +79,8 @@ export class HomeComponent implements OnInit {
             );
          });
         
-      this.collectionOfertainverso=this.collectionOferta.reverse();
-      console.log("colleccion ofertas", this.collectionOfertainverso);
+    
+      
       
 
     })
@@ -101,12 +101,14 @@ export class HomeComponent implements OnInit {
         );
 
       });
-      this.collectionNormalinverso=this.collectionNormal.reverse();
+      
 
     })
     .catch((err)=>{
-      console.log("no se puedo recuperar productos");
+      console.log("no se puede recuperar productos normales");
     })
+
+    console.log("la collecion normal",this.collectionNormal);
 
     
 
