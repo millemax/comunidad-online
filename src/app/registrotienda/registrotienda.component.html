@@ -7,9 +7,9 @@
         <div class="col-8 col-sm-8 col-md-8">
           <h3 class=" titulo text-left" style="border-bottom: 3px solid;">REGISTRO DE TIENDA</h3>
         </div>
-        <div class="col-4 col-sm-4 col-md-4 d-flex justify-content-end align-items-center " >
+        <div class="col-4 col-sm-4 col-md-4 d-flex justify-content-end align-items-center ">
           <!-- Last name -->
-         <a href="" class="enlace"><small >Ya tengo un codigo</small></a> 
+          <a href="" class="enlace"><small>Ya tengo un codigo</small></a>
         </div>
       </div>
 
@@ -17,7 +17,8 @@
         <div class="col">
           <!-- First name-->
           <label class="aviso">Nombre legal:</label>
-          <input type="text" id="defaultRegisterFormFirstName" [(ngModel)]="nombrelegal" class="form-control" placeholder="First name">
+          <input type="text" id="defaultRegisterFormFirstName" [(ngModel)]="nombrelegal" class="form-control"
+            placeholder="First name">
         </div>
       </div>
       <div class="form-row mb-1">
@@ -29,20 +30,20 @@
         <!-- E-mail -->
         <div class="col form-row">
           <label class="aviso"> Categoría:</label>
-          <select class="form-control" id="exampleFormControlSelect1"  (change)="cargarcategoria($event.target.value)">
+          <select class="form-control" id="exampleFormControlSelect1" (change)="cargarcategoria($event.target.value)">
             <option *ngFor="let categoria of collectionCategorias">{{categoria}}</option>
           </select>
         </div>
       </div>
       <!-- contact person-->
       <label class="aviso ">Persona de contacto:</label>
-      <input type="text" id="defaultRegisterPhonePassword" [(ngModel)]="personacontacto" class="form-control" placeholder="Contact Person "
-        aria-describedby="defaultRegisterFormPhoneHelpBlock">
+      <input type="text" id="defaultRegisterPhonePassword" [(ngModel)]="personacontacto" class="form-control"
+        placeholder="Contact Person " aria-describedby="defaultRegisterFormPhoneHelpBlock">
 
       <!-- Phone number -->
       <label class="aviso">Teléfono:</label>
-      <input type="text" id="defaultRegisterPhonePassword" [(ngModel)]="telefono" class="form-control" placeholder="Phone number"
-        aria-describedby="defaultRegisterFormPhoneHelpBlock">
+      <input type="text" id="defaultRegisterPhonePassword" [(ngModel)]="telefono" class="form-control"
+        placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
 
       <!-- Direcction -->
       <label class="aviso">Dirección:</label>
@@ -71,12 +72,12 @@
         <div class="col col-xl col-md logo-tienda text-center border" style="border-radius: 5px;">
 
           <input type="file" class="d-none" (change)="onFotoceroSelected($event)" #fotoceroInput>
-          <img [src]="fotoceroSelected || '/assets/images/tiendafoto.png'" class="img-fluid " style="border-radius: 3px;"
-            alt="" (click)="fotoceroInput.click()">
+          <img [src]="fotoceroSelected || '/assets/images/tiendafoto.png'" class="img-fluid "
+            style="border-radius: 3px;" alt="" (click)="fotoceroInput.click()">
 
         </div>
         <!-- Grid column -->
-       <!-- Grid column -->
+        <!-- Grid column -->
         <div class="col col-xl col-md img1-tienda text-center border mr-2 ml-2" style="border-radius: 5px;">
           <input type="file" class="d-none" (change)="onFotoSelected($event)" #fotoInput>
           <img [src]="fotoSelected || '/assets/images/tiendafoto.png'" class="img-fluid" alt=""
@@ -100,12 +101,13 @@
 
         </div>
         <!-- Grid column -->
-        <!-- Grid column video de la tienda --> 
+        <!-- Grid column video de la tienda -->
         <div class="col col-xl col-md img3-tienda text-center ml-2 border embed-responsive embed-responsive-16by9 "
           style="border-radius: 5px;">
-        
-          <iframe class=" video-fluid border img-thumbnail embed-responsive-item autoplay loop controls muted" [src]='video' type="video/mp4"></iframe>
-        
+
+          <iframe class=" video-fluid border img-thumbnail embed-responsive-item autoplay loop controls muted"
+            [src]='video' type="video/mp4"></iframe>
+
         </div>
 
         <!-- Grid column -->
@@ -117,54 +119,72 @@
       <div class="input-group">
         <input type="text" (ngModel)="video" #urlvideo (change)="pasarurlvideo(urlvideo)" class="form-control"
           placeholder="https://www.youtube..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append justify-content-center" >
-          <span class="input-group-text "  id="basic-addon2"><i class="fas fa-film purple-text" style="width: 2.5rem;"></i></span>
-        </div>
-      </div>
-      <!--Subir documentos-->
-
-      <label class="aviso" style="margin-top: 0.5rem;"> Subir documento legal (opcional):</label>
-      <div class="input-group  border " style="border-radius: 5px;"  >
-        <!--
-        <input type="file" class="form-control  " style="opacity: 0;" placeholder="Elegir archivo" aria-label="Recipient's username"
-          aria-describedby="basic-addon2">-->
-        <div class="custom-file float-left" >
-          <input type="file" class="custom-file-input"  lang="es" (change)="obtenerdocumento($event)">
-        <label class="custom-file-label" for="customFileLang"></label>
-        </div>  
-        <div class="input-group-append" style="float: right; position: abolute; left: 5rem;">
-          <span class="input-group-text" id="basic-addon2"><i class="fas fa-cloud-upload-alt purple-text" style="width: 2.5rem;"></i></span>
+        <div class="input-group-append justify-content-center">
+          <span class="input-group-text " id="basic-addon2"><i class="fas fa-film purple-text"
+              style="width: 2.5rem;"></i></span>
         </div>
       </div>
 
-      <!--Fin subir documentos-->
+      <!---------------------------------Subir documentos-->
+      <div class="dropzone" appDropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)"
+        [class.hovering]="isHovering">
+
+        <img src="/assets/images/uploaddoc.png" width="63" height="64" viewBox="0 0 63 64" >
+        
+        <small class="">Arrastra tu archivo aqui</small>
+        <div class="file">
+         <label  class="file-label" for="fileDropRef" (click)="fileDropRef.click()"> 
+
+          <span> Buscar archivo</span>
+
+          <input class="file-input" #fileDropRef type="file" (change)="onDrop($event.target.files)" >
+          <!-- <label for="fileDropRef" class="mt-2" (click)="fileDropRef.click()" >Buscar archivo</label>   -->      
+        
+        </label> 
+        </div>
+      </div>
+
+      <p><small>Subidos</small></p>
+
+      <div *ngFor="let file of files">
+        
+        <!--llamando a componente donde sube documentos-->
+        <app-upload-task [file]="file"></app-upload-task>
+      </div>
+
+      <!-------------------------------------------Fin subir documentos------------->
+
+
       <!--subir enlace de web de tienda-->
       <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de Pagina web:</label>
       <div class="input-group">
-        <input type="text"  [(ngModel)]="urlweb" class="form-control"
-          placeholder="https://www...." aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append justify-content-center" >
-          <span class="input-group-text "  id="basic-addon2"><i class="fas fa-globe purple-text" style="width: 2.5rem;"></i></span>
+        <input type="text" [(ngModel)]="urlweb" class="form-control" placeholder="https://www...."
+          aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append justify-content-center">
+          <span class="input-group-text " id="basic-addon2"><i class="fas fa-globe purple-text"
+              style="width: 2.5rem;"></i></span>
         </div>
       </div>
       <!--Subir fin enlace de web de tienda-->
       <!--subir enlace de facebook de tienda-->
       <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de facebook:</label>
       <div class="input-group ">
-        <input type="text" [(ngModel)]="urlfacebook" class="form-control"
-          placeholder="https://www.facebook..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append justify-content-center" >
-          <span class="input-group-text "  id="basic-addon2"><i class="fab fa-facebook-f purple-text" style="width: 2.5rem;"></i></span>
+        <input type="text" [(ngModel)]="urlfacebook" class="form-control" placeholder="https://www.facebook..."
+          aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append justify-content-center">
+          <span class="input-group-text " id="basic-addon2"><i class="fab fa-facebook-f purple-text"
+              style="width: 2.5rem;"></i></span>
         </div>
       </div>
       <!--Subir fin enlace de facebook de tienda-->
       <!--subir enlace de twiter de tienda-->
       <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de twiter:</label>
       <div class="input-group mb-3">
-        <input type="text" [(ngModel)]="urltwiter" class="form-control"
-          placeholder=" https://www.twiter..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append justify-content-center" >
-          <span class="input-group-text "  id="basic-addon2"><i class="fab fa-twitter purple-text" style="width: 2.5rem;"></i></span>
+        <input type="text" [(ngModel)]="urltwiter" class="form-control" placeholder=" https://www.twiter..."
+          aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append justify-content-center">
+          <span class="input-group-text " id="basic-addon2"><i class="fab fa-twitter purple-text"
+              style="width: 2.5rem;"></i></span>
         </div>
       </div>
       <!--Subir fin enlace de twiter de tienda-->
@@ -180,6 +200,6 @@
       <div class="d-flex justify-content-center">
         <button type="submit" class="btn botonregistrarme " (click)="agregarTienda()">REGISTRARME</button>
       </div>
-      
+
     </div>
   </div>

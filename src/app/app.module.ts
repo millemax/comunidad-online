@@ -79,14 +79,15 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 
-
-
-
-
 import { FooterComponent } from './footer/footer.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { ConfirmarDatosComponent } from './confirmar-datos/confirmar-datos.component';
 import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.component';
+
+//directiva arrastrar y soltar
+import { DropzoneDirective } from './dropzone.directive';
+import { UploadTaskComponent } from './upload-task/upload-task.component';
+
 
 
 @NgModule({
@@ -119,6 +120,9 @@ import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.compo
     CarritoComponent,
     ConfirmarDatosComponent,
     ImprimirReciboComponent,
+    DropzoneDirective,
+    UploadTaskComponent,
+    
     
   ],
   imports: [
@@ -127,7 +131,7 @@ import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.compo
     BrowserModule,
     AppRoutingModule,        
     AngularFontAwesomeModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule, 
     MatTooltipModule,
     MatChipsModule,
     MatIconModule,

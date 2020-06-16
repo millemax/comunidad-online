@@ -15,6 +15,7 @@ import {CategoriaService} from '../servicios/categorias/categoria.service';
 //importamo el crud para cargar tiendas
 import {RegistrotiendaService} from '../servicios/registrotienda/registrotienda.service'; 
 
+
 import { storage } from 'firebase';
 import * as firebase from 'firebase/app';
 
@@ -30,7 +31,10 @@ interface HtmlInputEvent extends Event{
   styleUrls: ['./registrotienda.component.scss']
 })
 export class RegistrotiendaComponent implements OnInit {
+  //subir multiples archivos 
+  
 
+ 
   //variables guardar fotos cuando exista un archivo
   
   file:File;
@@ -69,6 +73,9 @@ export class RegistrotiendaComponent implements OnInit {
   urlfacebook:string;
   urltwiter:string;
 
+  //objetos para recibir los archivos
+  collectionfotos= new Object();
+  foto=0;
 
 
 
@@ -123,6 +130,9 @@ export class RegistrotiendaComponent implements OnInit {
         });
         
   }
+  //cargar multiples archivos pdf
+
+
 
   cargarcategoria(valor:any){
     this.categoria=valor;
@@ -331,7 +341,48 @@ export class RegistrotiendaComponent implements OnInit {
   }
 
 
-  //--------------------------obtener documento legal
+  //--------------------------obtener documento legales----
+  isHovering: boolean;
+
+  files: File[] = [];
+
+  toggleHover(event: boolean) {
+    this.isHovering = event;
+  }
+
+  onDrop(files: FileList) {
+    for (let i = 0; i < files.length; i++) {
+      this.files.push(files.item(i));
+      console.log("estes son las fotoss ",files)
+      /* this.cargarfotos(files[i]); */
+     
+      
+      
+    }
+    
+  }
+
+/*   cargarfotos(file: File){
+    const filename=Math.floor(Date.now()/1000);
+    var nameImage='archivos'+filename;
+    
+    const pictures=storage().ref(nameImage);
+    pictures.put(file).then((resp)=>{
+            var storage=firebase.storage();
+            var storageRef=storage.ref();
+            storageRef.child(nameImage).getDownloadURL()
+            .then((resp)=>{
+              this.collectionfotos["foto"+this.foto.toString()]=resp;
+              this.foto=this.foto+1;
+              
+              
+            })
+    })
+
+    console.log("coleeccion de fotos", this.collectionfotos);
+
+
+  }  */
   
 //---registro video de tienda---
   pasarurlvideo(urlvideos:HTMLInputElement){
@@ -375,7 +426,7 @@ export class RegistrotiendaComponent implements OnInit {
         urlweb:this.urlweb,
         urlfacebook:this.urlfacebook,
         urltwiter:this.urltwiter,
-
+        
       };
     
     
@@ -392,8 +443,6 @@ export class RegistrotiendaComponent implements OnInit {
     }
 
 //------fin metodo para enviar a bd-------
-
-
 
 
 
