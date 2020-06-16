@@ -96,6 +96,7 @@ import { DetalleproductComponent } from './detalleproduct/detalleproduct.compone
 //el carrousel
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { DetallesCategoriaComponent } from './detalles-categoria/detalles-categoria.component';
 
 @NgModule({
   declarations: [
@@ -128,6 +129,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     ConfirmarDatosComponent,
     ImprimirReciboComponent,
     DetalleproductComponent,
+    DetallesCategoriaComponent,
     
   ],
   imports: [

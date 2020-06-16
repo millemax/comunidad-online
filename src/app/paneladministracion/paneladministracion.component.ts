@@ -56,9 +56,4 @@ export class PaneladministracionComponent implements OnInit {
 
         }
 
-
-
-
-
-
 }

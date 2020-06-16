@@ -64,12 +64,17 @@ $verde-azulado: #009CC7;
 
 }
 //tmaño del contenedor
-.contenedor{
+/* .contenedor{
     width: 90%;
 }
-
+ */
 .imagen{
     height: 12rem;
+}
+
+//contenedor categorias
+.categorias{
+    width: 90%;
 }
 
 
@@ -108,7 +113,7 @@ $verde-azulado: #009CC7;
 
 
 // para pantallas mas pequeños 
-@media screen and (min-width: 992px) and (max-width: 1400px){
+@media screen and (min-width: 992px) and (max-width: 1400px) {
     .card-productos{
         width: 13rem;
         height:auto;
@@ -144,8 +149,6 @@ $verde-azulado: #009CC7;
     .fa-stack{
         font-size: 0.8rem;
     }
-
-
 }
 
 

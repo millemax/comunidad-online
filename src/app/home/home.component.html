@@ -32,7 +32,7 @@
 
 <!--.............inicio de categorias.......................-->
 
-<div class="container-fluid pt-4 ">
+<div class="container-fluid pt-4  categorias">
   
     
      
@@ -41,8 +41,7 @@
         <ng-template carouselSlide *ngFor="let categoria of collectionCategorias" >
           <div class="container ">
             
-    
-              <div class="card " style="width: 10rem;"  >
+              <div class="card " style="width: 10rem;" routerLink="/detallescategoria" >
                 <img class="card-img-top img-fluid imagenCategorias" src="{{categoria.data.icono}}" >
                 <div class="card-body" style="text-align: center !important; text-transform: uppercase;">
                   <h5 class="card-title" style="color: #00B4CC;"><small>{{categoria.id}}</small></h5>
