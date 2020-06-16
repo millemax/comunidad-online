@@ -125,7 +125,7 @@
         </div>
       </div>
 
-      <!---------------------------------Subir documentos-->
+<!--       ------------------------------Subir documentos
       <div class="dropzone" appDropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)"
         [class.hovering]="isHovering">
 
@@ -138,7 +138,7 @@
           <span> Buscar archivo</span>
 
           <input class="file-input" #fileDropRef type="file" (change)="onDrop($event.target.files)" >
-          <!-- <label for="fileDropRef" class="mt-2" (click)="fileDropRef.click()" >Buscar archivo</label>   -->      
+                
         
         </label> 
         </div>
@@ -148,11 +148,11 @@
 
       <div *ngFor="let file of files">
         
-        <!--llamando a componente donde sube documentos-->
+        llamando a componente donde sube documentos
         <app-upload-task [file]="file"></app-upload-task>
       </div>
 
-      <!-------------------------------------------Fin subir documentos------------->
+      -------------------------------------------Fin subir documentos------------- -->
 
 
       <!--subir enlace de web de tienda-->

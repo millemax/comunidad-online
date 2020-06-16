@@ -27,7 +27,7 @@ PdfMakeWrapper.setFonts(pdfFonts);
 /*firebase*/
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 //gestionarsubida de imagenes 
-import {AngularFireStorageModule,StorageBucket} from '@angular/fire/storage';
+import {AngularFireStorageModule,StorageBucket,BUCKET} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 
 import { environment } from 'src/environments/environment';
@@ -85,8 +85,7 @@ import { ConfirmarDatosComponent } from './confirmar-datos/confirmar-datos.compo
 import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.component';
 
 //directiva arrastrar y soltar
-import { DropzoneDirective } from './dropzone.directive';
-import { UploadTaskComponent } from './upload-task/upload-task.component';
+
 
 
 
@@ -120,8 +119,6 @@ import { UploadTaskComponent } from './upload-task/upload-task.component';
     CarritoComponent,
     ConfirmarDatosComponent,
     ImprimirReciboComponent,
-    DropzoneDirective,
-    UploadTaskComponent,
     
     
   ],
