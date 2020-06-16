@@ -3,6 +3,7 @@ $amarillo:#FAD000;
 $gris: #7B90A3;
 $verde-azulado: #009CC7;
 
+
 ng-sidebar-container{
     height: 100vh;
     background-color:rgb(231, 230, 230) ;
@@ -14,13 +15,19 @@ ng-sidebar-container{
     width: 18rem;
 
 }
+.custom-checkbox{
+    color: $gris;
+}
+h5{
+    color: $gris;
+}
 
 // la lista 
 
 .list-item{
-    font-size: 1.2rem;
+    font-size: 1rem;
     //margin-left: 1rem;
-    color:$color-principal;
+    color:$gris;
 }
 
 .list-item:hover{
@@ -34,18 +41,11 @@ ng-sidebar-container{
 }
 
 .menulink{
-    color: $color-principal;
+    color: $gris;
 }
 .menulink:hover{
     color:white;
     
 }
-
-.iconuser{
-    font-size:8rem;
-    color: $color-principal;
-    margin-top: 4rem;
-}
-
 
 

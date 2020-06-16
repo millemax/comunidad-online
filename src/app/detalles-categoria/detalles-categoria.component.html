@@ -4,32 +4,44 @@
         <!--el menu de navegacion-->
         <div class="menu">
             <div class="col">
-                <h5>Ordenar por: </h5>
+                <h5 class="font-weight-bold ">ORDENAR POR: </h5>
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck1" >
+                        <input type="checkbox" class="custom-control-input" id="customCheck1" [checked]="currentlyChecked === check_box_type.mayor" (click)="selectCheckBoxOrdenar(check_box_type.mayor)" >
                         <label class="custom-control-label" for="customCheck1">Mayor precio</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck2" [checked]="checks">
+                        <input type="checkbox" class="custom-control-input" id="customCheck2" [checked]="currentlyChecked === check_box_type.menor" (click)="selectCheckBoxOrdenar(check_box_type.menor)">
                         <label class="custom-control-label" for="customCheck2">Menor precio</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck3" [checked]="checks">
+                        <input type="checkbox" class="custom-control-input" id="customCheck3" [checked]="currentlyChecked === check_box_type.liquidacion" (click)="selectCheckBoxOrdenar(check_box_type.liquidacion)">
                         <label class="custom-control-label" for="customCheck3">En liquidación</label>
                     </div>
-                <h5>Ubicación: </h5>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4" >
-                    <label class="custom-control-label" for="customCheck4">Todos</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5">
-                    <label class="custom-control-label" for="customCheck5">Mi ciudad</label>
-                </div>
-                <h5>Categorias: </h5>
+                <h5 class="font-weight-bold ">UBICACION: </h5>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck4" [checked]="currentChecked === check_box.todos" (click)="selectCheckBoxUbicacion(check_box.todos)">
+                        <label class="custom-control-label" for="customCheck4">Todos</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck5" [checked]="currentChecked === check_box.miciudad" (click)="selectCheckBoxUbicacion(check_box.miciudad)">
+                        <label class="custom-control-label" for="customCheck5">Mi ciudad</label>
+                    </div>
+                <h5 class="font-weight-bold " >CATEGORIAS: </h5>
+                    <div class="menu">
+                        <div class="list-item mt-1" *ngFor="let categoria of collectionCategorias" >
+                            <img class="mr-3 ml-3" style="width: 2rem; height: 2rem;" src="{{categoria.data.icono}}" >
 
-               
-  
+                            <a class="menulink" routerLink="/paneladministracion/misordenes">
+                                <b style="text-transform: capitalize;">{{categoria.id}}</b> 
+                            </a>
+                        </div>
+                        
+                    </div>
+                <!-- <h5>Categorias: </h5>
+                    <div class="custom-control custom-checkbox" *ngFor="let categoria of collectionCategorias" >
+                        <input type="checkbox" class="custom-control-input" id="{{categoria.id}}" >
+                        <label class="custom-control-label" for="{{categoria.id}}">{{categoria.id}}</label>
+                    </div>  -->
             </div>
 
         </div>
@@ -42,3 +54,4 @@
 
     </div>
 </ng-sidebar-container>
+
