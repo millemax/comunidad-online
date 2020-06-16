@@ -33,8 +33,16 @@ export class ProductoService {
 
   }
 
+  //recuperar un solo producto
+  recuperarproducto(id:string){
+    var refproduct = firebase.firestore(); 
+    return refproduct.collection('productos').doc(id).get();
+
+  }
 
   //fin de crud
+  
+  //recuperarpoducto cuando cumpla una condicion
   readproduct(tipo:string){        
     var refproduct = firebase.firestore();    
     return refproduct.collection('productos').where("tipoventa", "==", tipo).limit(5).get()

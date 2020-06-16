@@ -3,6 +3,9 @@ $amarillo:#FAD000;
 $gris: #7B90A3;
 $verde-azulado: #009CC7;
 
+.categorias{
+    width:80%
+}
 
 .boton-slide{
     height: 3rem;
@@ -103,6 +106,9 @@ $verde-azulado: #009CC7;
     .imagen{
         height: 8rem;
     }
+    .categorias{
+        width:100%;
+    }
     
 } 
 
@@ -143,6 +149,9 @@ $verde-azulado: #009CC7;
     }
     .fa-stack{
         font-size: 0.8rem;
+    }
+    .categorias{
+        width: 100%;
     }
 
 

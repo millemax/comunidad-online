@@ -1,19 +1,30 @@
 <br><br><br>
 
-<div class="container-fluid contenedor">
-    <div class="row">
+<div class="container-fluid contenedor" *ngFor="let producto of product">
+    <div class="row" >
         <div class="col-sm-2 imagenespequeñas">
-            <img src="/assets/images/zapatilla.png" alt="..." class="img-fluid img-thumbnail mt-3 image">
-            <img src="/assets/images/zapatilla.png" alt="..." class="img-fluid img-thumbnail mt-3 image">
-            <img src="/assets/images/zapatilla.png" alt="..." class="img-fluid img-thumbnail mt-3 image">
-            <img src="/assets/images/zapatilla.png" alt="..." class="img-fluid img-thumbnail mt-3 image">
+            <div>
+                <img src="{{producto.fotouno}}" alt="..." class="img-fluid img-thumbnail mt-3 image">
+            </div>
+            <div>
+                <img src="{{producto.fotosdos}}" alt="..." class="img-fluid img-thumbnail mt-3 image">
+            </div>
+            <div>
+                <img src="{{producto.fototres}}" alt="..." class="img-fluid img-thumbnail mt-3 image">
+            </div>
+            <div>
+                <img src="{{producto.fotocuatro}}" alt="..." class="img-fluid img-thumbnail mt-3 image">
+            </div>
+            
+            
+            
             
 
 
         </div>
         <div class="col-sm-5">
             <div class="container border my-5" style="width: 90%; border-radius: 1rem;">
-                <img src="/assets/images/zapatilla.png" alt="..." class="img-fluid">
+                <img src="{{producto.fotouno}}" alt="..." class="img-fluid">
             </div>
            
 
@@ -23,8 +34,8 @@
 
             
                 <div class="row ">                  
-                    <span class="titulo">zapatillas nike de color blanco</span>
-                    <star-rating  class="estrellitas ml-3" value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
+                    <span class="titulo">{{producto.titulo}}</span>
+                    <star-rating  class="estrellitas ml-3" value="{{producto.puntaje}}" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
                                 
                 </div>
 
@@ -38,7 +49,7 @@
                 </div>  
 
                 <div class="row">
-                    <label class="textoprecio">USD 800.00</label>
+                    <label class="textoprecio">USD {{producto.precio}}</label>
                 </div>
 
                 <div class="row">
@@ -83,16 +94,12 @@
                 </div>
 
                 <div class="row mt-3">
-                    <span class="subtitulo">Descripcion general :</span>
-                    <span class="texto"> Lorem Ipsum is simply dummy text of the 
-                        printing and typesetting industry. Lorem Ipsum has been the industry's 
-                        standard dummy text ever since the 1500s, when an unknown printer took a 
-                        galley of type and scrambled it to make a type specimen book. It has survived 
-                        not only five centuries, but also the leap into electronic typesetting, remaining
-                         essentially unchanged. It was popularised in the 1960s with the release of Letraset 
-                         sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
-                         like Aldus PageMaker including versions of Lorem Ipsum. </span>
+                    <span class="subtitulo">Descripcion general :</span>                   
 
+                </div>
+
+                <div class="row mt-3">
+                    <span class="texto">{{producto.descripciongeneral}} </span>
                 </div>
 
 

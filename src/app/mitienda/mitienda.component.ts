@@ -183,8 +183,7 @@ export class MitiendaComponent implements OnInit {
                 for(let key in doc.data()){               
                   
                   value=doc.data()[key];                    
-                  subcategoria.push(value);
-                  
+                  subcategoria.push(value);                  
                   
                 }
                 
