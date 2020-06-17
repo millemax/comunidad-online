@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
   recuperarProductosoferta(){
     var variabledb="tipoventa";
     var tipoproducto="oferta";
-    this.crudProductos.readproduct(variabledb,tipoproducto).then((res)=>{      
+    this.crudProductos.readproduct(variabledb,tipoproducto).limit(5).get().then((res)=>{      
       res.forEach((datos)=>{
             // console.log(doc.id, " => ", doc.data());
             this.collectionOferta.push({
@@ -96,7 +96,7 @@ export class HomeComponent implements OnInit {
   recuperarProductos(){
     var variabledb="tipoventa";
     var tipoproducto="normal";
-    this.crudProductos.readproduct(variabledb,tipoproducto).then((res)=>{
+    this.crudProductos.readproduct(variabledb,tipoproducto).limit(5).get().then((res)=>{
       res.forEach((datos)=>{
         this.collectionNormal.push(
           datos.data()
