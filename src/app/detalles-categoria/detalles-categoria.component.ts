@@ -42,6 +42,11 @@ export class DetallesCategoriaComponent implements OnInit {
     //this.recuperarCategoria();
   }
 
+  recuperarProductos(){
+    
+  }
+
+
 
   //esta es la parte del sidebar
   private _toggleSidebar() {
@@ -59,6 +64,7 @@ export class DetallesCategoriaComponent implements OnInit {
 
     this.currentlyChecked = targetType;
   }
+
 
   selectCheckBoxUbicacion(targetType: CheckBoxUbicacion) {
     // Si la casilla de verificación ya estaba marcada, borre la variable actualmente Comprobada
