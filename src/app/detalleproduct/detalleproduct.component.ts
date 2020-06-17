@@ -35,6 +35,7 @@ export class DetalleproductComponent implements OnInit {
     this.obtenerproducto();
 
   }
+  
 
    //esto recibe los puntajes de la estrella
 onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {

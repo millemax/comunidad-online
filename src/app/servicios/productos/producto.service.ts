@@ -41,7 +41,6 @@ export class ProductoService {
     return refproduct.collection('productos').doc(id).get();
 
   }
-
   //fin de crud
   
   //recuperarpoducto cuando cumpla una condicion

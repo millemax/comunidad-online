@@ -41,7 +41,4 @@ export class CategoriaService {
     return db.collection('categorias').doc(documento).get();
   }
 
-
-
-
 }

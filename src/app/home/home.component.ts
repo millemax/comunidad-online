@@ -141,7 +141,7 @@ export class HomeComponent implements OnInit {
     this.crudCategoria.readcategorys().subscribe((resultados)=>{
       resultados.forEach((datostarea)=>{
         this.collectionCategorias.push({
-          id:datostarea.payload.doc.id,
+          iud:datostarea.payload.doc.id,
           data:datostarea.payload.doc.data(),
         }
           
@@ -151,6 +151,9 @@ export class HomeComponent implements OnInit {
     console.log("categorias : ",this.collectionCategorias);
 
   } 
+
+
+
 
 
   //esto recibe los puntajes de la estrella

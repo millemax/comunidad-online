@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {CategoriaService} from '../servicios/categorias/categoria.service';
 enum CheckBoxOrdenar { mayor, menor, liquidacion, NONE };
 enum CheckBoxUbicacion{todos, miciudad, NONE};
@@ -21,17 +22,33 @@ export class DetallesCategoriaComponent implements OnInit {
   check_box= CheckBoxUbicacion;
   currentChecked: CheckBoxUbicacion;
 
+  // para recuperar los IDs
+  idProducto:string;
+  product=[];
+
     
 
-  constructor(private crudCategoria: CategoriaService) { }
+  constructor(private _route: ActivatedRoute, private crudCategoria: CategoriaService) { }
 
   ngOnInit() {
     this.recuperarCategoria()
+    this.obtenerid();
  
   }
+  //esta funcion recupera le ID
+  obtenerid(){
+    console.log("el id del producto detalles", this._route.snapshot.paramMap.get('id'))
+  /*   this.idProducto=this._route.snapshot.paramMap.get('id'); */
+    //this.recuperarCategoria();
+  }
+
+
+  //esta es la parte del sidebar
   private _toggleSidebar() {
     this._opened = !this._opened;
   }
+
+  // ------------------esta es para validar los checkbox
 
   selectCheckBoxOrdenar(targetType: CheckBoxOrdenar) {
     // Si la casilla de verificación ya estaba marcada, borre la variable actualmente Comprobada
@@ -53,7 +70,10 @@ export class DetallesCategoriaComponent implements OnInit {
     this.currentChecked = targetType;
   }
 
+  // ------------------esta es el final para validar los checkbox
 
+
+  //recupera la lista de categorias del sidebar
   recuperarCategoria(){
     this.crudCategoria.readcategorys().subscribe((resultados)=>{
       resultados.forEach((datostarea)=>{
@@ -70,3 +90,5 @@ export class DetallesCategoriaComponent implements OnInit {
   } 
 
 }
+
+
