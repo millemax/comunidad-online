@@ -1,7 +1,7 @@
 <br><br><br>
 
 <div class="container-fluid contenedor">
-    <div class="row" >
+    <div class="row" *ngFor="let product of producto">
         <div class="col-sm-2 imagenespequeñas">
             <div>
                 <img src="{{product.fotouno}}" alt="..." class="img-fluid img-thumbnail mt-3 image" (click)="cambiarimagen(product.fotouno)" style="cursor: pointer;">
@@ -55,26 +55,33 @@
                 </div>
 
                 <div class="row">
-                    <div class="dropdown">
-                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Color
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">hola</a>                        
-                          
-                        </div>
+                    <span class="subtitulo">colores disponibles:</span>
+                    <div class="form-group">                        
+                        <select class="form-control ml-2" id="exampleFormControlSelect1" (change)=capturarcolor($event.target.value)>
+                          <option>Selecciona:</option>
+                          <option *ngFor="let color of valorcolor">{{color}}</option>                          
+                        </select>
                       </div>
 
-                      <div class="dropdown">
-                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Talla
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">talla</a>
+
                          
-                        </div>
-                      </div>
+
                       
+                </div>
+
+                <div class="row">
+                    
+                        <span class="subtitulo">tallas disponibles:</span>           
+                    
+                        <div class="form-group ml-4">                        
+                            <select class="form-control" id="exampleFormControlSelect1" (change)=capturarcolor($event.target.value)>
+                              <option>Selecciona: </option>
+                              <option *ngFor="let talla of valortalla">{{talla}}</option>                          
+                            </select>
+                          </div> 
+                    
+                    
+
                 </div>
 
                 <div class="row mt-4">
