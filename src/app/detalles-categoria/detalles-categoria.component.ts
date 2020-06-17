@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CategoriaService} from '../servicios/categorias/categoria.service';
+import {ProductoService} from '../servicios/productos/producto.service';
 enum CheckBoxOrdenar { mayor, menor, liquidacion, NONE };
 enum CheckBoxUbicacion{todos, miciudad, NONE};
 @Component({
@@ -10,6 +11,9 @@ enum CheckBoxUbicacion{todos, miciudad, NONE};
 })
 export class DetallesCategoriaComponent implements OnInit {
   private _opened: boolean = true;
+
+  //collection productos categoria
+  collectionNormal=[];
 
   //esta es la colección categoria
   collectionCategorias=[]; 
@@ -23,12 +27,12 @@ export class DetallesCategoriaComponent implements OnInit {
   currentChecked: CheckBoxUbicacion;
 
   // para recuperar los IDs
-  idProducto:string;
+  idCategoria:string;
   product=[];
 
     
 
-  constructor(private _route: ActivatedRoute, private crudCategoria: CategoriaService) { }
+  constructor(private _route: ActivatedRoute, private crudCategoria: CategoriaService,  private crudProduct: ProductoService) { }
 
   ngOnInit() {
     this.recuperarCategoria()
@@ -38,12 +42,26 @@ export class DetallesCategoriaComponent implements OnInit {
   //esta funcion recupera le ID
   obtenerid(){
     console.log("el id del producto detalles", this._route.snapshot.paramMap.get('id'))
-  /*   this.idProducto=this._route.snapshot.paramMap.get('id'); */
-    //this.recuperarCategoria();
+    this.idCategoria=this._route.snapshot.paramMap.get('id')
+    this.recuperarProductos();
   }
 
   recuperarProductos(){
-    
+    this.crudProduct.readproduct("categoria",this.idCategoria).then((doc)=>{
+      doc.forEach((datos)=>{
+        this.collectionNormal.push({
+          iud: datos.id,
+          data:datos.data()
+        }
+        );
+
+      })
+    })
+    .catch((err)=>{
+      console.log("no se puede obtener el documento",err);
+    });
+
+    console.log("categorias productos: ",this.collectionNormal);
   }
 
 

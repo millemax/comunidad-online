@@ -3,6 +3,9 @@ $amarillo:#FAD000;
 $gris: #7B90A3;
 $verde-azulado: #009CC7;
 
+body{
+    color: $gris;
+}
 
 ng-sidebar-container{
     height: 100vh;
@@ -15,19 +18,13 @@ ng-sidebar-container{
     width: 18rem;
 
 }
-.custom-checkbox{
-    color: $gris;
-}
-h5{
-    color: $gris;
-}
 
-// la lista 
+
+
+// la lista  categorias
 
 .list-item{
     font-size: 1rem;
-    //margin-left: 1rem;
-    color:$gris;
 }
 
 .list-item:hover{
@@ -39,7 +36,6 @@ h5{
     color:white;
 
 }
-
 .menulink{
     color: $gris;
 }
@@ -48,4 +44,14 @@ h5{
     
 }
 
+.textoprecio{
+    color: red;
+    font-size: 1.3rem;
+
+}
+
+//icono carrito en los cards
+.fas{
+    color: $color-principal;
+}
 

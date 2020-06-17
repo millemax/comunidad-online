@@ -20,6 +20,12 @@ export class DetalleproductComponent implements OnInit {
   idProducto:string;
   product=[];
 
+  //variable para cambiar cuando le da click
+  fotoproduct: string;
+
+  //variable para recpeionar los colores y tallas
+  valortalla=["s","m","x","l"];
+  valorcolor=["rojo","verde","azul"];
 
 
   constructor( private _route: ActivatedRoute, private crudProduct:ProductoService) { }
@@ -47,11 +53,15 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
 }
 
 obtenerproducto(){ 
-  
+  var imagen:string;
   var product=[]; 
   this.crudProduct.recuperarproducto(this.idProducto).then((doc)=>{
         if (doc.exists) {
-          product.push(doc.data());
+         product.push(doc.data());
+          this.fotoproduct=doc.data().fotouno;
+         /*  this.valorcolor=doc.data().etiquetacolor;
+          this.valortalla=doc.data().etiquetatalla; */
+
           
 
       } else {
@@ -59,7 +69,7 @@ obtenerproducto(){
           console.log("no se encuentra el documento!");
       } 
     
-
+    
   })
   .catch((err)=>{
     console.log("no se pudo obtener el documento");
@@ -67,11 +77,20 @@ obtenerproducto(){
   })
 
   this.product=product;
-  console.log("el producto papa:", this.product);
+  console.log("la lista de los productos", this.product)
+  
+  
 
   
 }
 
+
+//funcion para cambiar las fotos
+cambiarimagen(image:any){
+  console.log("imagen", image);
+  this.fotoproduct=image;
+
+}
 
 
 

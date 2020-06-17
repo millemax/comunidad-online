@@ -1,19 +1,19 @@
 <br><br><br>
 
-<div class="container-fluid contenedor" *ngFor="let producto of product">
+<div class="container-fluid contenedor">
     <div class="row" >
         <div class="col-sm-2 imagenespequeñas">
             <div>
-                <img src="{{producto.fotouno}}" alt="..." class="img-fluid img-thumbnail mt-3 image">
+                <img src="{{product.fotouno}}" alt="..." class="img-fluid img-thumbnail mt-3 image" (click)="cambiarimagen(product.fotouno)" style="cursor: pointer;">
             </div>
             <div>
-                <img src="{{producto.fotosdos}}" alt="..." class="img-fluid img-thumbnail mt-3 image">
+                <img src="{{product.fotosdos}}" alt="..." class="img-fluid img-thumbnail mt-3 image" (click)="cambiarimagen(product.fotosdos)" style="cursor: pointer;">
             </div>
             <div>
-                <img src="{{producto.fototres}}" alt="..." class="img-fluid img-thumbnail mt-3 image">
+                <img src="{{product.fototres}}" alt="..." class="img-fluid img-thumbnail mt-3 image" (click)="cambiarimagen(product.fototres)" style="cursor: pointer;">
             </div>
             <div>
-                <img src="{{producto.fotocuatro}}" alt="..." class="img-fluid img-thumbnail mt-3 image">
+                <img src="{{product.fotocuatro}}" alt="..." class="img-fluid img-thumbnail mt-3 image" (click)="cambiarimagen(product.fotocuatro)" style="cursor: pointer;">
             </div>
             
             
@@ -23,8 +23,10 @@
 
         </div>
         <div class="col-sm-5">
-            <div class="container border my-5" style="width: 90%; border-radius: 1rem;">
-                <img src="{{producto.fotouno}}" alt="..." class="img-fluid">
+            <div class="container border my-5" style="width: auto; border-radius: 1rem;text-align: center;">
+                <img src="{{fotoproduct}}" alt="..." class="img-fluid">
+                
+                
             </div>
            
 
@@ -34,8 +36,8 @@
 
             
                 <div class="row ">                  
-                    <span class="titulo">{{producto.titulo}}</span>
-                    <star-rating  class="estrellitas ml-3" value="{{producto.puntaje}}" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
+                    <span class="titulo">{{product.titulo}}</span>
+                    <star-rating  class="estrellitas ml-3" value="{{product.puntaje}}" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
                                 
                 </div>
 
@@ -49,7 +51,7 @@
                 </div>  
 
                 <div class="row">
-                    <label class="textoprecio">USD {{producto.precio}}</label>
+                    <label class="textoprecio">USD {{product.precio}}</label>
                 </div>
 
                 <div class="row">
@@ -58,9 +60,8 @@
                           Color
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
+                          <a class="dropdown-item" href="#">hola</a>                        
+                          
                         </div>
                       </div>
 
@@ -69,16 +70,15 @@
                           Talla
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
+                          <a class="dropdown-item" href="#">talla</a>
+                         
                         </div>
                       </div>
                       
                 </div>
 
                 <div class="row mt-4">
-                    <div class="col-sm-2 mt-4">
+                    <div class="col-sm-3 mt-4">
                         <select class="form-control" id="exampleFormControlSelect1">
                             <option>1</option>
                             <option>2</option>
@@ -99,7 +99,7 @@
                 </div>
 
                 <div class="row mt-3">
-                    <span class="texto">{{producto.descripciongeneral}} </span>
+                    <span class="texto">{{product.descripciongeneral}} </span>
                 </div>
 
 

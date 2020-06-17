@@ -43,10 +43,10 @@ export class ProductoService {
   }
   //fin de crud
   
-  //recuperarpoducto cuando cumpla una condicion dentro de los documentos
-  readproduct(tipo:string){        
+  //recuperarpoducto cuando cumpla una condicion
+  readproduct(variabledb:string, tipo:string){        
     var refproduct = firebase.firestore();    
-    return refproduct.collection('productos').where("tipoventa", "==", tipo).limit(5).get()
+    return refproduct.collection('productos').where(variabledb, "==", tipo).get()
     
   }
 
