@@ -32,7 +32,7 @@
 
 <!--.............inicio de categorias.......................-->
 
-<div class="container-fluid pt-4  categorias">
+<div class="container-fluid pt-4 categorias">
   
     
      
@@ -55,6 +55,7 @@
   </owl-carousel-o>
 
 </div>
+<br><br>
 
 <!--.............inicio de categorias.......................-->
 
@@ -75,8 +76,8 @@
 
 
   <div class="form-row">
-    <div class="col  d-flex justify-content-center align-content-center" *ngFor="let product of collectionOfertainverso">
-      <div class="card card-productos" (click)="detallesProductos(product.iud)">
+    <div class="col  d-flex justify-content-center align-content-center" *ngFor="let product of collectionOferta">
+      <div class="card card-productos"  [routerLink]="['/detallesproducto',product.iud]">
         <img class="card-img-top img-fluid imagen" src="{{product.data.fotouno}}" alt="Card image cap" style="border-radius: 1rem;">
         <div class="card-body border-top">
           
@@ -90,7 +91,7 @@
                  </div>
                  <div class="col-2">
                     <div class="container">
-                      <i class="fas fa-clipboard-list  pt-3"></i>
+                      <i class="fas fa-clipboard-list  pt-3 list"></i>
                     </div>
                      
   
@@ -137,7 +138,7 @@
 
 
   <div class="form-row">
-    <div class="col  d-flex justify-content-center align-content-center" *ngFor="let product of collectionNormalinverso">
+    <div class="col  d-flex justify-content-center align-content-center" *ngFor="let product of collectionNormal">
       <div class="card card-productos">
         <img class="card-img-top img-fluid imagen" src="{{product.fotouno}}" alt="Card image cap" style="border-radius: 1rem;">
         <div class="card-body border-top">
@@ -244,7 +245,7 @@
 <br><br><br>
 
   <!--login modal-->
-    <app-login></app-login>
+   <!--  <app-login></app-login> -->
   <!--fin login modal-->
   <div class="container border">
         <div>
