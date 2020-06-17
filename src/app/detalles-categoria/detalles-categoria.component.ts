@@ -47,7 +47,7 @@ export class DetallesCategoriaComponent implements OnInit {
   }
 
   recuperarProductos(){
-    this.crudProduct.readproduct("categoria",this.idCategoria).then((doc)=>{
+    this.crudProduct.readproduct("categoria",this.idCategoria).get().then((doc)=>{
       doc.forEach((datos)=>{
         this.collectionNormal.push({
           iud: datos.id,

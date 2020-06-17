@@ -46,7 +46,7 @@ export class ProductoService {
   //recuperarpoducto cuando cumpla una condicion
   readproduct(variabledb:string, tipo:string){        
     var refproduct = firebase.firestore();    
-    return refproduct.collection('productos').where(variabledb, "==", tipo).get()
+    return refproduct.collection('productos').where(variabledb, "==", tipo)
     
   }
 
