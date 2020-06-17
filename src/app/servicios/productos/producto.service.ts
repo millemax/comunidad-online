@@ -35,7 +35,7 @@ export class ProductoService {
 
   }
 
-  //recuperar un solo producto
+  //recuperar un solo producto solo por su id
   recuperarproducto(id:string){
     var refproduct = firebase.firestore(); 
     return refproduct.collection('productos').doc(id).get();
