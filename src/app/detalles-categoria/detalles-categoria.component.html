@@ -1,0 +1,44 @@
+<ng-sidebar-container>
+    <!--sidebar-->
+    <ng-sidebar mode="slide" [(opened)]="_opened">
+        <!--el menu de navegacion-->
+        <div class="menu">
+            <div class="col">
+                <h5>Ordenar por: </h5>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1" >
+                        <label class="custom-control-label" for="customCheck1">Mayor precio</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck2" [checked]="checks">
+                        <label class="custom-control-label" for="customCheck2">Menor precio</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck3" [checked]="checks">
+                        <label class="custom-control-label" for="customCheck3">En liquidación</label>
+                    </div>
+                <h5>Ubicación: </h5>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck4" >
+                    <label class="custom-control-label" for="customCheck4">Todos</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck5">
+                    <label class="custom-control-label" for="customCheck5">Mi ciudad</label>
+                </div>
+                <h5>Categorias: </h5>
+
+               
+  
+            </div>
+
+        </div>
+        
+    </ng-sidebar>
+
+    <div  ng-sidebar-content>
+       
+     <!-- <button (click)="_toggleSidebar()">Toggle</button>  -->
+
+    </div>
+</ng-sidebar-container>

@@ -20,7 +20,8 @@ export class ProductoService {
 
   }
 
-  readcaproduct(){
+  readcaproducts(){
+      
 
   }
 
@@ -31,6 +32,29 @@ export class ProductoService {
   deleteproduct(){
 
   }
+
+  //recuperar un solo producto
+  recuperarproducto(id:string){
+    var refproduct = firebase.firestore(); 
+    return refproduct.collection('productos').doc(id).get();
+
+  }
+
+  //fin de crud
+  
+  //recuperarpoducto cuando cumpla una condicion
+  readproduct(tipo:string){        
+    var refproduct = firebase.firestore();    
+    return refproduct.collection('productos').where("tipoventa", "==", tipo).limit(5).get()
+    
+  }
+
+  //recuperar productos mas vendidos en el servico
+  readproductpopulate(){
+    var refproduct = firebase.firestore(); 
+    return refproduct.collection('productos').where("cantidadventas",">",0).orderBy("cantidadventas","desc").limit(5).get()
+  }
+
 
 
  

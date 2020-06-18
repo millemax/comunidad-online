@@ -1,0 +1,75 @@
+$color-principal:#00B4CC ;
+$amarillo:#FAD000;
+$gris: #7B90A3;
+$verde-azulado: #009CC7;
+
+
+//imagenes miniatura
+.image{
+    width: 9rem;
+    height: 9rem;
+    border-radius: 1rem;
+}
+
+.contenedor{
+    width: 90%;
+}
+
+.titulo{
+    color: $gris;
+    font-size:1.5rem;
+    font-weight: 900;
+    
+}
+
+.infoproduct{
+    text-align: center;
+}
+
+// estilo para los texto subtitulados
+.subtitulo{
+    color: $gris;
+    font-size:1rem;
+    font-weight: 700;
+}
+
+//estilo para los textos normales
+.texto{
+    color: $gris;
+    font-size:1rem;
+    font-weight: 500;
+}
+
+//tectoprecio
+.textoprecio{
+    color: red;
+    font-size:1.3rem;
+    font-weight: 600;
+}
+
+
+// es icono del button de añadir
+.iconocarrito{
+    color:white;
+    font-size:1.5rem;
+}
+
+// boton para anañir al carrito
+.buttoncart{
+    background-color:$color-principal;
+}
+.letracarrito{
+    color:white;
+    font-size:1.2rem;
+    font-weight:600;
+}
+
+
+@media screen and (max-width: 768px){
+    .image{
+        display: none;
+    }
+    .contenedor{
+        width: 90%;
+    }
+}

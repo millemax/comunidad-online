@@ -3,6 +3,17 @@ $amarillo:#FAD000;
 $gris: #7B90A3;
 $verde-azulado: #009CC7;
 
+.fa-lg{
+    color: $color-principal;
+}
+.list{
+    color: $color-principal;
+}
+
+.categorias{
+    width:80%
+}
+
 .boton-slide{
     height: 3rem;
     width: 3rem;
@@ -10,222 +21,170 @@ $verde-azulado: #009CC7;
     border-radius: 10px;
 }
 
-/*
-.carrosel {
-    height: 100px;
-}
-*/
-.boton-categoria{
-    background-color: black;
-}
-
 .carousel-nav-icon {
     height: 30px;
     width: 30px;
  }
- 
- .categoriass{
-     border: 1px solid $color-principal;
-     border-radius: 5px;
- }
- 
-
- .fas{
+ .imagenCategorias{
+     width: 7rem !important;
+     padding-left: 3rem;
+     padding-top: 1rem;
+     height: 5rem;
      color: $color-principal;
  }
+// este el css del ofertas de liquidacion
+.titulo{
+    color: $gris;
+    font-size:1.3rem;
+    font-weight: 900;
+    
+}
 
- .span3{
-     display: inline-block;
 
- }
+//estilo de titulos de los productos
+.titulosproductos{
+    color: $gris;
+    font-size:1.3rem;
+    font-weight: 700;
 
-@media screen and (max-width: 768px) { //cambios en tamaño ipad a celular
+}
+
+//tectoprecio
+.textoprecio{
+    color: red;
+    font-size:1.3rem;
+    font-weight: 600;
+}
 
 
-    h6{
-       font-size: 0.5rem;
+//tamaño de los icono
+
+.iconocarrito{
+    font-size:1.5rem;
+    
+}
+
+
+//estilos del card
+.card{
+    width:18rem;    
+    border-radius: 1rem;
+    cursor: pointer;
+
+
+}
+//tmaño del contenedor
+/* .contenedor{
+    width: 90%;
+}
+ */
+.imagen{
+    height: 12rem;
+}
+
+//contenedor categorias
+.categorias{
+    width: 90%;
+}
+
+
+
+@media screen and (max-width: 768px){
+    
+    .card-productos{
+        width: 11rem;
+        height:auto;
+        margin-top: 2rem;
+
+
     }
-    /* show 6 items */
-    .categoria .active,
-    .categoria .active + .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        display: block;
+    .contenedor{
+        width:100%;
+       
+
     }
 
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item + .carousel-item{
-        transition: none;
-        margin-right: initial;
+    .titulosproductos{
+        font-size:1rem;
     }
 
-    .categoria .item-next,
-    .categoria .item-prev {
-    position: relative;
-    transform: translate3d(0, 0, 0);
-    }
+    .textoprecio{
+        font-size:1rem;
 
-    .categoria .active.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        position: absolute;
-        top: 0;
-        right: -25%;
-        z-index: -1;
-        display: block;
-        visibility: visible;
     }
-
-    /* left or forward direction */
-    .active.carousel-item-left + .item-next.item-left,
-    .item-next.item-left + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        position: relative;
-        transform: translate3d(-100%, 0, 0);
-        visibility: visible;
+    .row-estrellitas{
+        display:none;
+    }
+    .imagen{
+        height: 8rem;
+    }
+    .categorias{
+        width:100%;
+    }
+    .fa-lg{
+        color: $color-principal;
+    }
+    .list{
+        color: $color-principal;
     }
     
-    
-    /* farthest right hidden item must be abso position for animations */
-    .categoria .item-prev.item-right {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        display: block;
-        visibility: visible;
+} 
+
+
+// para pantallas mas pequeños 
+@media screen and (min-width: 992px) and (max-width: 1400px) {
+    .card-productos{
+        width: 13rem;
+        height:auto;
+       
+        display: flex;
+        justify-content: center;
+        align-content: center;
+       
+
+
     }
-    
-    /* right or prev direction */
-    .active.carousel-item-right + .item-prev.item-right,
-    .item-prev.item-right + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        position: relative;
-        transform: translate3d(100%, 0, 0);
-        visibility: visible;
-        display: block;
-        visibility: visible;
+    .contenedor{
+        width:90%;
+       
+
     }
 
+    .titulosproductos{
+        font-size:1rem;
+    }
+
+    .textoprecio{
+        font-size:1rem;
+
+    }
     
-
-
-   
-
-
-
-
-
-
-
-
-
+    .imagen{
+        height: 8rem;
+    }
+    .card-body{
+        padding:12px;
+    }
+    .fa-stack{
+        font-size: 0.8rem;
+    }
+    .categorias{
+        width: 100%;
+    }
+    .fa-lg{
+        color: $color-principal;
+    }
+    .list{
+        color: $color-principal;
+    }
 
 
 }
 
 
-@media (min-width: 768px) {
 
 
-    /* show 6 items */
-    .categoria .active,
-    .categoria .active + .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item+ .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item+ .carousel-item+ .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item+ .carousel-item+ .carousel-item+ .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item+ .carousel-item+ .carousel-item+ .carousel-item+ .carousel-item,
-    .categoria .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item+ .carousel-item+ .carousel-item+ .carousel-item+ .carousel-item+ .carousel-item{
-        display: block;
-    }
 
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item + .carousel-item + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .categoria .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item+ .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        transition: none;
-        margin-right: initial;
-    }
 
-    .categoria .item-next,
-    .categoria .item-prev {
-      position: relative;
-      transform: translate3d(0, 0, 0);
-    }
-
-    .categoria .active.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item  + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        position: absolute;
-        top: 0;
-        right: -25%;
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-
-    /* left or forward direction */
-    .active.carousel-item-left + .item-next.item-left,
-    .item-next.item-left + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-next.item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        position: relative;
-        transform: translate3d(-100%, 0, 0);
-        visibility: visible;
-    }
-    
-    
-    /* farthest right hidden item must be abso position for animations */
-    .categoria .item-prev.item-right {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-    
-    /* right or prev direction */
-    .active.carousel-item-right + .item-prev.item-right,
-    .item-prev.item-right + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
-    .item-prev.item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item{
-        position: relative;
-        transform: translate3d(100%, 0, 0);
-        visibility: visible;
-        display: block;
-        visibility: visible;
-    }
-
-}
 
 

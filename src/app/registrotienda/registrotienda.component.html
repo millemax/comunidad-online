@@ -8,14 +8,15 @@
           <h3 class=" titulo text-left" style="border-bottom: 3px solid;">REGISTRO DE TIENDA</h3>
         </div>
         <div class="col-4 col-sm-4 col-md-4 d-flex justify-content-end align-items-center ">
-          <!-- Last name -->
+          <!-- Codigo -->
           <a href="" class="enlace"><small>Ya tengo un codigo</small></a>
         </div>
       </div>
 
       <div class="form-row mb-1">
         <div class="col">
-          <!-- First name-->
+          <!-- fin codigo-->
+          <!-- nombre legal-->
           <label class="aviso">Nombre legal:</label>
           <input type="text" id="defaultRegisterFormFirstName" [(ngModel)]="nombrelegal" class="form-control"
             placeholder="First name">
@@ -153,8 +154,66 @@
       </div>
 
       -------------------------------------------Fin subir documentos------------- -->
+    <!--   ----------------------------------------ssubir documentos drag--------------
+      <div class="row">
+        <div class="col-md">
+          <div appNguploadDocs
+          
+              [files]="files"
+              (mouseOver)="isOverDrop = $event" 
+              [ngClass]="{'file-over':isOverDrop}"
+              
 
+          class="dropzone">
+            
+            <img src="/assets/images/uploaddoc.png" width="63" height="64" viewBox="0 0 63 64" >
+            
+            <small class="">Arrastra tu archivo aqui</small>
+            <div class="file">
 
+              <label  class="file-label" for="fileDropRef" (click)="fileDropRef.click()"> 
+                <span> Buscar archivo</span>
+                <input class="file-input" #fileDropRef type="file"  >
+              </label> 
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row" *ngFor="let file of files">
+          -----------listar documentos--------
+         
+         <div class="col "><small>{{file.name}}</small></div>
+         
+         <div class="col "><small>{{file.file.size/24/24 | number:"2.2"}}MB</small> </div>
+         <div class="col">URL</div> -->
+          <!-------------listar documentos-------
+      </div>
+      <div class="row">
+       
+          <div class="progress" >
+            <div class="progress-bar"   role="progressbar"  >
+              {{uploadPercent | number: "1.0-0"}}%
+            </div>
+          </div>
+        
+      </div>
+      <div class="container-buttons d-flex justify-content-center align-items-center">
+        <button (click)="files=[]" class="btn btn-danger" style="border-radius: 25px; height: 40px; width: 135px;"><small>Clean all</small></button>
+      </div> -->
+<!------------------------------------------ssubir documentos drag-------------->
+      <!---------------------subir un documento legal---------------------------->
+      <label class="aviso" style="margin-top: 0.5rem;"> Subir documento:</label>
+      <div class="input-group ">
+      <div class="custom-file float-left" >
+        <input type="file" class="custom-file-input"  lang="es" #obtenerdocumento (change)="onObtenerocumento($event)" >
+      <label class="custom-file-label" for="customFileLang"></label>
+      </div>  
+      <div class="input-group-append" style="float: right; position: abolute; left: 5rem;">
+        <span class="input-group-text" id="basic-addon2"><i class="fas fa-cloud-upload-alt purple-text" style="width: 2.5rem;"></i></span>
+      </div>
+    </div>
+      <!---------------------fin subir un documento legal---------------------------->
       <!--subir enlace de web de tienda-->
       <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de Pagina web:</label>
       <div class="input-group">

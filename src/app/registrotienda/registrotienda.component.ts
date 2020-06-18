@@ -6,8 +6,6 @@ import { MapsAPILoader, MouseEvent } from '@agm/core';
 
 //incrustar video de youtube con angular
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Url } from 'url';
-import { R3TargetBinder } from '@angular/compiler';
 
 //importamos el servicio crud de Categoria
 import {CategoriaService} from '../servicios/categorias/categoria.service';
@@ -18,6 +16,8 @@ import {RegistrotiendaService} from '../servicios/registrotienda/registrotienda.
 
 import { storage } from 'firebase';
 import * as firebase from 'firebase/app';
+//archivos
+
 
 //autocompletado de eneto target
 interface HtmlInputEvent extends Event{
@@ -28,13 +28,13 @@ interface HtmlInputEvent extends Event{
 @Component({
   selector: 'app-registrotienda',
   templateUrl: './registrotienda.component.html',
-  styleUrls: ['./registrotienda.component.scss']
+  styleUrls: ['./registrotienda.component.scss'],
+  
 })
 export class RegistrotiendaComponent implements OnInit {
-  //subir multiples archivos 
-  
-
- 
+ //variables para los do
+  filedoc:File;
+  urlfiledoc:string;
   //variables guardar fotos cuando exista un archivo
   
   file:File;
@@ -94,7 +94,8 @@ export class RegistrotiendaComponent implements OnInit {
   
 
   constructor(private mapsAPILoader: MapsAPILoader,private ngZone: NgZone, private Dom:DomSanitizer,
-  private storageService:RegistrotiendaService,private fireService: CategoriaService, ) { }
+  private storeService:RegistrotiendaService,private fireService: CategoriaService,
+  private readonly regTiendaSvc:RegistrotiendaService ) { }
 
   ngOnInit() {
     //--video por defecto de la tienda
@@ -130,8 +131,10 @@ export class RegistrotiendaComponent implements OnInit {
         });
         
   }
-  //cargar multiples archivos pdf
+  //-----------------------------cargar multiples documentos----------------
 
+
+  //----------------------------fin cargar multiples documentos----------------
 
 
   cargarcategoria(valor:any){
@@ -341,7 +344,7 @@ export class RegistrotiendaComponent implements OnInit {
   }
 
 
-  //--------------------------obtener documento legales----
+  /*//--------------------------obtener documento legales----
   isHovering: boolean;
 
   files: File[] = [];
@@ -354,7 +357,7 @@ export class RegistrotiendaComponent implements OnInit {
     for (let i = 0; i < files.length; i++) {
       this.files.push(files.item(i));
       console.log("estes son las fotoss ",files)
-      /* this.cargarfotos(files[i]); */
+       //this.cargarfotos(files[i]); 
      
       
       
@@ -362,7 +365,7 @@ export class RegistrotiendaComponent implements OnInit {
     
   }
 
-/*   cargarfotos(file: File){
+   cargarfotos(file: File){
     const filename=Math.floor(Date.now()/1000);
     var nameImage='archivos'+filename;
     
@@ -383,6 +386,36 @@ export class RegistrotiendaComponent implements OnInit {
 
 
   }  */
+  //----------------------------------------subir un documento------------------------------
+  onObtenerocumento(event: HtmlInputEvent): void {
+    if (event.target.files && event.target.files[0]){
+      this.filedoc=<File>event.target.files[0];
+
+      //cuando selecciona carga la foto y recupera la url
+      const filename = `documentos/${Math.floor(Date.now() / 1000)}_${this.filedoc.name}`;
+      var nameDoc=filename;
+      const documento= storage().ref(nameDoc);
+      documento.put(this.filedoc).then((resp)=>{
+
+            var storage = firebase.storage();
+            var storageRef=storage.ref();
+            storageRef.child(nameDoc).getDownloadURL()
+              .then((resp:any)=>{
+                  console.log("la url documento", resp); 
+                  this.urlfiledoc=resp;                      
+                  
+              })
+              .catch((err)=>{
+                console.log("error al obtener","=>",err);
+              })
+          
+      })
+
+
+    }
+  }
+
+  //----------------------------------------fin subir documento------------------------------
   
 //---registro video de tienda---
   pasarurlvideo(urlvideos:HTMLInputElement){
@@ -427,11 +460,12 @@ export class RegistrotiendaComponent implements OnInit {
         urlfacebook:this.urlfacebook,
         urltwiter:this.urltwiter,
         
+        urlfiledoc:this.urlfiledoc,
       };
     
     
     // esta es la funcion para poder enviar  a la base de datos
-    this.storageService.createstorage(record).then((resp)=>{
+    this.storeService.createstorage(record).then((resp)=>{
 
       console.log("datos enviados correctamente a firebase");
   

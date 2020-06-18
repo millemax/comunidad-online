@@ -45,7 +45,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 //Formularioreactivo
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HomeModule } from './home/home.module';
-import { RegistrotiendaComponent } from './registrotienda/registrotienda.component';
+
 import { VerificarusuarioComponent } from './verificarusuario/verificarusuario.component';
 import { CodigoverificadoComponent } from './codigoverificado/codigoverificado.component';
 import { VerificartiendaComponent } from './verificartienda/verificartienda.component';
@@ -54,9 +54,9 @@ import { PaneldecontrolComponent } from './paneldecontrol/paneldecontrol.compone
 
 //importamos el sidebar de
 import {SidebarModule} from 'ng-sidebar';
-
-
-
+//tiendas
+import { RegistrotiendaComponent } from './registrotienda/registrotienda.component';
+import { ListatiendasComponent } from './listatiendas/listatiendas.component';
 
 //componentes dentro del panel de administracion
 import { MisordenesComponent } from './misordenes/misordenes.component';
@@ -79,13 +79,25 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 
+//estoy importando el tag las estrellitas
+import { RatingModule } from 'ng-starrating';
+
+
+
+
+
 import { FooterComponent } from './footer/footer.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { ConfirmarDatosComponent } from './confirmar-datos/confirmar-datos.component';
 import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.component';
+import { DetalleproductComponent } from './detalleproduct/detalleproduct.component';
 
-//directiva arrastrar y soltar
 
+
+//el carrousel
+
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { DetallesCategoriaComponent } from './detalles-categoria/detalles-categoria.component';
 
 
 
@@ -119,6 +131,10 @@ import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.compo
     CarritoComponent,
     ConfirmarDatosComponent,
     ImprimirReciboComponent,
+    DetalleproductComponent,
+    DetallesCategoriaComponent,
+    ListatiendasComponent,
+   
     
     
   ],
@@ -126,6 +142,7 @@ import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.compo
     NgxMaskModule.forRoot(),
 
     BrowserModule,
+    RatingModule,
     AppRoutingModule,        
     AngularFontAwesomeModule,
     BrowserAnimationsModule, 
@@ -134,6 +151,9 @@ import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.compo
     MatIconModule,
     MatFormFieldModule,        
     SidebarModule.forRoot(),
+
+    //para el carrousel
+    CarouselModule,
    
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBQ2wl-PEYo_y3vpjO6E0ZzQOrKB6leYJI',
@@ -155,7 +175,8 @@ import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.compo
     ReactiveFormsModule,
     FormsModule,
     DeviceDetectorModule.forRoot(),
-    HomeModule
+    HomeModule,
+    
   ],
   providers: [
     {provide: StorageBucket,useValue:'gs://comunidadbd-2053d.appspot.com'}
