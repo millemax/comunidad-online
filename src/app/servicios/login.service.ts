@@ -24,5 +24,21 @@ export class LoginService {
     
   }
 
+  //loguear un usuario anonimo
+  anonimuslogin(){
+    
+    return this.afAuth.auth.signInAnonymously()
+
+  }
+
+  //status de login podemos ver en que estado esta logueado
+  statuslogin(){   
+
+        return this.afAuth.auth.onAuthStateChanged(firebaseuser=>{     
+          
+          console.log("el usuario autenticado",firebaseuser.uid);
+        })
+  }
+
   
 }

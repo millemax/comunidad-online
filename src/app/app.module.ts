@@ -14,6 +14,11 @@ import { HomeComponent } from './home/home.component';
 import { NgxMaskModule} from 'ngx-mask';
 
 
+//esto para que reconosca mi modal ng-template
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+
 // Import pdfmake-wrapper and the fonts to use
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
 import pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
@@ -98,6 +103,11 @@ import { DetalleproductComponent } from './detalleproduct/detalleproduct.compone
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { DetallesCategoriaComponent } from './detalles-categoria/detalles-categoria.component';
 
+
+//esto para el select option
+import { MatSelectModule } from '@angular/material/select';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,6 +117,8 @@ import { DetallesCategoriaComponent } from './detalles-categoria/detalles-catego
     RegistrotiendaComponent,
     HomeComponent,  
     MapaComponent,
+    
+    
    
     
     LoginComponent,
@@ -143,11 +155,15 @@ import { DetallesCategoriaComponent } from './detalles-categoria/detalles-catego
     MatTooltipModule,
     MatChipsModule,
     MatIconModule,
-    MatFormFieldModule,        
+    MatFormFieldModule,  
+    MatSelectModule,      
     SidebarModule.forRoot(),
 
     //para el carrousel
     CarouselModule,
+
+    //para el modal ng-template
+    NgbModule,
    
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBQ2wl-PEYo_y3vpjO6E0ZzQOrKB6leYJI',

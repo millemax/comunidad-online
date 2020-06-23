@@ -73,3 +73,18 @@ $verde-azulado: #009CC7;
         width: 90%;
     }
 }
+
+//estilos dentro del modal como el boton y los textos
+.textomodal{
+    color:$verde-azulado;
+    font-weight: 500;
+    
+}
+
+.botonmodal{
+    background-color:$amarillo;
+    color:white;
+}
+.close{
+    outline:none;
+}

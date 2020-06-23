@@ -1,4 +1,4 @@
-<body style="height:100vh">
+
 
 <div class="container">
     <div class=" encabezado row">
@@ -13,23 +13,23 @@
             <div class="col-12 col-sm-8 " >
                 <div class="items">
                     <!--producto 1-->
-                    <div class="Producto" style="border-bottom: 1px solid #7890A3; margin-top: 1rem; margin-bottom: 1rem;"> 
-                        <div class="row">
+                    <div class="Producto" style="border-bottom: 1px solid #7890A3; margin-top: 1rem; margin-bottom: 1rem;"  *ngFor="let product of coleccioncarrito"> 
+                        <div class="row" >
                             <div class="col-lg-3 col-4">
                                 <div class="imagen border" style="border-radius: 10%;"> 
-                                    <img src="/assets/images/imgmodalg1.jpeg" class="img-fluid mx-auto d-block" style="height: 6.25rem;">
+                                    <img src="{{product.data.fotouno}}" class="img-fluid mx-auto d-block" style="height: 6.25rem;">
 
                                 </div>
                             </div>
                             <div class="col-lg-4 col-8">
         
-                                <div class="row">
-                                    <div class="col"><span class="font-weight-bold nombre-producto">  Camisa Jhon Holden</span> </div>
+                                <div class="row" >
+                                    <div class="col"><span class="font-weight-bold nombre-producto">{{product.data.titulo}}</span> </div>
                                     <div class="w-100"></div>
                                     <div class="col">
                                         <div class="row font-weight-bold" style="font-size: 1.2rem;" >
-                                            <div class="col"><span class="precio">UDS 18.00</span></div>
-                                            <div class="col"><span class="descuento">40% off</span></div>
+                                            <div class="col"><span class="precio">USD {{product.data.precio}}</span></div>
+                                            <div class="col"><span class="descuento">{{product.data.descuento}} % off</span></div>
                                         
                                          </div>
                                          
@@ -37,8 +37,8 @@
                                     <div class="w-100"></div>
                                     <div class="col">
                                         <div class="row" >
-                                            <div class="col"><label class="boton">Blanco</label></div>
-                                            <div class="col"><label class="boton">S</label></div>
+                                            <div class="col"><label class="boton">{{product.data.etiquetacolor}}</label></div>
+                                            <div class="col"><label class="boton">{{product.data.etiquetatalla}}</label></div>
                                         
                                          </div>
                                     </div>
@@ -54,25 +54,31 @@
                             </div>
                             <div class="col-lg-4 col-8">
                                 <div class=" form-group cantidad d-flex h-100 text-right justify-content-center align-items-center">
-                                        <label class="quantity-input" for="quantity" >Cantidad:</label>
-                                        <select class="form-control" id="quantity" style="width: 70px ;">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                        </select>                          
+                                    
+                                    <mat-form-field style="width:80px">
+                                        <mat-label class="titulocantidad">Cantidad :</mat-label>
+                                        <mat-select value="{{product.data.cantidadpedida}}" (selectionChange)="selectcantidad($event.value, product.iud)">                                          
+                                          <mat-option value="1">1</mat-option>
+                                          <mat-option value="2">2</mat-option>
+                                          <mat-option value="3">3</mat-option>
+                                          <mat-option value="4">4</mat-option>
+                                          <mat-option value="5">5</mat-option>
+                                          <mat-option value="6">6</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                        
+                                        <!-- <button type="button" class="btn botadicionar btn-sm"><i class="fas fa-plus"></i></button>
+                                        <input class="form-control" type="text" placeholder="{{product.data.cantidadpedida}}" readonly>
+                                        <button type="button" class="btn botadicionar btn-sm"><i class="fas fa-minus"></i></button> -->
+                                       <!--  <select class="form-control" id="quantity" style="width: 70px ;">
+                                            <option>{{product.data.cantidadpedida}}</option>                                                                                    
+                                        </select>  -->                         
                                 </div>
                             </div>
                             <div class="col-lg-1 col-4 " style="font-size: 25px;">
                                 <div class="row text-center h-100 justify-content-center align-items-center">
                                     <div class="col">
-                                        <a href="#" class="btn-remove btn-outline"><i class="fa fa-fw fa-trash" style="color: red;"></i></a>
+                                        <a  class="btn-remove btn-outline" (click)="borrarproducto(product.iud)"><i class="fa fa-fw fa-trash" style="color: red;"></i></a>
                                     </div>
                                 </div>
                             </div> 
@@ -80,212 +86,18 @@
                     </div>
                     <!--producto 1-->
 
-                    <div class="Producto" style="border-bottom: 1px solid #7890A3; margin-top: 1rem; margin-bottom: 1rem;"> 
-                        <div class="row">
-                            <div class="col-lg-3 col-4">
-                                <div class="imagen border" style="border-radius: 10%;"> 
-                                    <img src="/assets/images/zapatilla.png  " class="img-fluid mx-auto d-block" style="height: 6.25rem;">
-
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-8">
-        
-                                <div class="row">
-                                    <div class="col"><span class="font-weight-bold nombre-producto">  Camisa Jhon Holden</span> </div>
-                                    <div class="w-100"></div>
-                                    <div class="col">
-                                        <div class="row font-weight-bold" style="font-size: 1.2rem;" >
-                                            <div class="col"><span class="precio">UDS 18.00</span></div>
-                                            <div class="col"><span class="descuento">40% off</span></div>
-                                        
-                                         </div>
-                                         
-                                    </div>
-                                    <div class="w-100"></div>
-                                    <div class="col">
-                                        <div class="row" >
-                                            <div class="col"><label class="boton">Blanco</label></div>
-                                            <div class="col"><label class="boton">S</label></div>
-                                        
-                                         </div>
-                                    </div>
-            
-                                    <div class="w-100"></div>
-                                    <div class="col">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="materialChecked2">
-                                            <label class="form-check-label" for="materialChecked2"><small>Personalizar dirección de envio</small></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-8">
-                                <div class=" form-group cantidad d-flex h-100 text-right justify-content-center align-items-center">
-                                    <label class="quantity-input" for="quantity" >Cantidad:</label>
-                                    <select class="form-control" id="quantity" style="width: 70px ;">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-                                        <option>9</option>
-                                        <option>10</option>
-                                    </select>                          
-                                </div>
-                        
-                            </div>
-                            <div class="col-lg-1 col-4 " style="font-size: 25px;">
-                                <div class="row text-center h-100 justify-content-center align-items-center">
-                                    <div class="col">
-                                        <a href="#" class="btn-remove btn-outline"><i class="fa fa-fw fa-trash" style="color: red;"></i></a>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
 
 
 
 
-                    <div class="Producto" style="border-bottom: 1px solid #7890A3; margin-top: 1rem; margin-bottom: 1rem;"> 
-                        <div class="row">
-                            <div class="col-lg-3 col-4">
-                                <div class="imagen border" style="border-radius: 10%;"> 
-                                    <img src="/assets/images/zapatilla.png  " class="img-fluid mx-auto d-block" style="height: 6.25rem;">
-
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-8">
-        
-                                <div class="row">
-                                    <div class="col"><span class="font-weight-bold nombre-producto">  Camisa Jhon Holden</span> </div>
-                                    <div class="w-100"></div>
-                                    <div class="col">
-                                        <div class="row font-weight-bold" style="font-size: 1.2rem;" >
-                                            <div class="col"><span class="precio">UDS 18.00</span></div>
-                                            <div class="col"><span class="descuento">40% off</span></div>
-                                        
-                                         </div>
-                                         
-                                    </div>
-                                    <div class="w-100"></div>
-                                    <div class="col">
-                                        <div class="row" >
-                                            <div class="col"><label class="boton">Blanco</label></div>
-                                            <div class="col"><label class="boton">S</label></div>
-                                        
-                                         </div>
-                                    </div>
-            
-                                    <div class="w-100"></div>
-                                    <div class="col">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="materialChecked2">
-                                            <label class="form-check-label" for="materialChecked2"><small>Personalizar dirección de envio</small></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-8">
-                                <div class=" form-group cantidad d-flex h-100 text-right justify-content-center align-items-center">
-                                    <label class="quantity-input" for="quantity" >Cantidad:</label>
-                                    <select class="form-control" id="quantity" style="width: 70px ;">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-                                        <option>9</option>
-                                        <option>10</option>
-                                    </select>                          
-                                </div>
-                        
-                            </div>
-                            <div class="col-lg-1 col-4 " style="font-size: 25px;">
-                                <div class="row text-center h-100 justify-content-center align-items-center">
-                                    <div class="col">
-                                        <a href="#" class="btn-remove btn-outline"><i class="fa fa-fw fa-trash" style="color: red;"></i></a>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
+                    
 
 
 
 
-                    <div class="Producto" style="border-bottom: 1px solid #7890A3; margin-top: 1rem; margin-bottom: 1rem;"> 
-                        <div class="row">
-                            <div class="col-lg-3 col-4">
-                                <div class="imagen border" style="border-radius: 10%;"> 
-                                    <img src="/assets/images/zapatilla.png  " class="img-fluid mx-auto d-block" style="height: 6.25rem;">
 
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-8">
-        
-                                <div class="row">
-                                    <div class="col"><span class="font-weight-bold nombre-producto">  Camisa Jhon Holden</span> </div>
-                                    <div class="w-100"></div>
-                                    <div class="col">
-                                        <div class="row font-weight-bold" style="font-size: 1.2rem;" >
-                                            <div class="col"><span class="precio">UDS 18.00</span></div>
-                                            <div class="col"><span class="descuento">40% off</span></div>
-                                        
-                                         </div>
-                                         
-                                    </div>
-                                    <div class="w-100"></div>
-                                    <div class="col">
-                                        <div class="row" >
-                                            <div class="col"><label class="boton">Blanco</label></div>
-                                            <div class="col"><label class="boton">S</label></div>
-                                        
-                                         </div>
-                                    </div>
-            
-                                    <div class="w-100"></div>
-                                    <div class="col">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="materialChecked2">
-                                            <label class="form-check-label" for="materialChecked2"><small>Personalizar dirección de envio</small></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-8">
-                                <div class=" form-group cantidad d-flex h-100 text-right justify-content-center align-items-center">
-                                    <label class="quantity-input" for="quantity" >Cantidad:</label>
-                                    <select class="form-control" id="quantity" style="width: 70px ;">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-                                        <option>9</option>
-                                        <option>10</option>
-                                    </select>                          
-                                </div>
-                        
-                            </div>
-                            <div class="col-lg-1 col-4 " style="font-size: 25px;">
-                                <div class="row text-center h-100 justify-content-center align-items-center">
-                                    <div class="col">
-                                        <a href="#" class="btn-remove btn-outline"><i class="fa fa-fw fa-trash" style="color: red;"></i></a>
-                                    </div>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
+
+
     
 
                 </div>
@@ -329,4 +141,6 @@
     </div>
 </div>
 
-</body>
+
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
