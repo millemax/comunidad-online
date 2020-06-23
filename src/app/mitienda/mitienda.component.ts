@@ -115,6 +115,9 @@ export class MitiendaComponent implements OnInit {
    //valor de subcategoria se activa en caso exista
    
 
+   //variable donde estara la ciudad donde estara disponible la venta de productos
+   ciudadventa:string;
+
 
   
 
@@ -574,7 +577,8 @@ export class MitiendaComponent implements OnInit {
       etiquetatalla: this.etiquetatalla,
       descuento: this.porcentaje,
       preciodescuento: this.descuento,
-      tiempo:idtime
+      tiempo:idtime,
+      ciudadventa:this.ciudadventa,
     
     
     };

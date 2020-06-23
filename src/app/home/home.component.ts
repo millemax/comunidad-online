@@ -6,6 +6,12 @@ import {ProductoService} from '../servicios/productos/producto.service';
 //el carrousel
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
+//importamos el servicio de autenticacion 
+import {LoginService} from '../servicios/login.service'
+import * as firebase from 'firebase';
+
+
+
 
 
 
@@ -54,7 +60,7 @@ export class HomeComponent implements OnInit {
   //collection productos Populares
   collectionPopulate=[];
 
-  constructor (private crudCategoria: CategoriaService, private crudProductos: ProductoService){
+  constructor (private crudCategoria: CategoriaService, private crudProductos: ProductoService, private loginservice: LoginService){
 
   }
  
@@ -64,7 +70,26 @@ export class HomeComponent implements OnInit {
     this.recuperarProductosoferta();
     this.recuperarProductos();
     this.productospopulares();
+    
+    //realizar una autenticacion anonima
+    this.autenticacionanonima();
+
   } 
+
+
+  async autenticacionanonima(){
+    await this.loginservice.anonimuslogin();
+   
+   this.estadoautenticacion();
+  
+  }
+
+  estadoautenticacion(){
+     this.loginservice.statuslogin();
+     
+
+      
+  }
 
   recuperarProductosoferta(){
     var variabledb="tipoventa";

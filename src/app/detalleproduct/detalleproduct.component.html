@@ -4,16 +4,16 @@
     <div class="row" *ngFor="let product of producto">
         <div class="col-sm-2 imagenespequeñas">
             <div>
-                <img src="{{product.fotouno}}" alt="..." class="img-fluid img-thumbnail mt-3 image" (click)="cambiarimagen(product.fotouno)" style="cursor: pointer;">
+                <img src="{{product.data.fotouno}}" alt="..." class="img-fluid img-thumbnail mt-3 image" (click)="cambiarimagen(product.data.fotouno)" style="cursor: pointer;">
             </div>
             <div>
-                <img src="{{product.fotosdos}}" alt="..." class="img-fluid img-thumbnail mt-3 image" (click)="cambiarimagen(product.fotosdos)" style="cursor: pointer;">
+                <img src="{{product.data.fotosdos}}" alt="..." class="img-fluid img-thumbnail mt-3 image" (click)="cambiarimagen(product.data.fotosdos)" style="cursor: pointer;">
             </div>
             <div>
-                <img src="{{product.fototres}}" alt="..." class="img-fluid img-thumbnail mt-3 image" (click)="cambiarimagen(product.fototres)" style="cursor: pointer;">
+                <img src="{{product.data.fototres}}" alt="..." class="img-fluid img-thumbnail mt-3 image" (click)="cambiarimagen(product.data.fototres)" style="cursor: pointer;">
             </div>
             <div>
-                <img src="{{product.fotocuatro}}" alt="..." class="img-fluid img-thumbnail mt-3 image" (click)="cambiarimagen(product.fotocuatro)" style="cursor: pointer;">
+                <img src="{{product.data.fotocuatro}}" alt="..." class="img-fluid img-thumbnail mt-3 image" (click)="cambiarimagen(product.data.fotocuatro)" style="cursor: pointer;">
             </div>
             
             
@@ -36,8 +36,8 @@
 
             
                 <div class="row ">                  
-                    <span class="titulo">{{product.titulo}}</span>
-                    <star-rating  class="estrellitas ml-3" value="{{product.puntaje}}" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
+                    <span class="titulo">{{product.data.titulo}}</span>
+                    <star-rating  class="estrellitas ml-3" value="{{product.data.puntaje}}" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
                                 
                 </div>
 
@@ -51,31 +51,28 @@
                 </div>  
 
                 <div class="row">
-                    <label class="textoprecio">USD {{product.precio}}</label>
+                    <label class="textoprecio">USD {{product.data.precio}}</label>
                 </div>
 
-                <div class="row">
+                <div class="row" *ngIf="estadocolor">
                     <span class="subtitulo">colores disponibles:</span>
                     <div class="form-group">                        
                         <select class="form-control ml-2" id="exampleFormControlSelect1" (change)=capturarcolor($event.target.value)>
                           <option>Selecciona:</option>
                           <option *ngFor="let color of valorcolor">{{color}}</option>                          
                         </select>
-                      </div>
-
-
-                         
+                      </div>       
 
                       
                 </div>
 
-                <div class="row">
+                <div class="row" *ngIf="estadotalla">
                     
                         <span class="subtitulo">tallas disponibles:</span>           
                     
                         <div class="form-group ml-4">                        
-                            <select class="form-control" id="exampleFormControlSelect1" (change)=capturarcolor($event.target.value)>
-                              <option>Selecciona: </option>
+                            <select class="form-control" id="exampleFormControlSelect1" (change)=capturartalla($event.target.value)>
+                              <option>Selecciona:</option>
                               <option *ngFor="let talla of valortalla">{{talla}}</option>                          
                             </select>
                           </div> 
@@ -86,7 +83,7 @@
 
                 <div class="row mt-4">
                     <div class="col-sm-3 mt-4">
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <select class="form-control" id="exampleFormControlSelect1" (change)=capturarcantidad($event.target.value)>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -96,7 +93,7 @@
                           </select>
                     </div>
                     <div class="col mt-2 d-flex">
-                        <button type="button" class="btn btn-block buttoncart"><i class="fas fa-cart-arrow-down mr-3 iconocarrito"></i> <span class="letracarrito ml-4">Añadir al carrito</span></button>
+                        <button type="button" class="btn btn-block buttoncart" (click)="anadir(content)"><i class="fas fa-cart-arrow-down mr-3 iconocarrito"></i> <span class="letracarrito ml-4">Añadir al carrito</span></button>
                     </div>
                 </div>
 
@@ -106,7 +103,7 @@
                 </div>
 
                 <div class="row mt-3">
-                    <span class="texto">{{product.descripciongeneral}} </span>
+                    <span class="texto">{{product.data.descripciongeneral}} </span>
                 </div>
 
 
@@ -117,10 +114,30 @@
 
 
         </div>
+        <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+              <h4 class="modal-title textomodal" id="modal-basic-title">¡EXITO!</h4>
+              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p class="textomodal">Tu producto se agrego correctamente al carrito de compras</p>
+            </div>
+            <div class="modal-footer justify-content-center" style="text-align: center;">
+              <button type="button" class="btn btn-success btn-block botonmodal" (click)="c('Save click')" routerLink="/carrito"><b>Ir al carrito</b></button>
+              <a class="textomodal mt-4" routerLink="/" (click)="c('Save click')"><u>Seguir comprando</u></a>
+            </div>
+          </ng-template>
+       
     </div>
+   
+
+    
+      
 </div>
-
-
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
