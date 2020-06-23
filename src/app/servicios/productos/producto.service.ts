@@ -41,6 +41,7 @@ export class ProductoService {
     return refproduct.collection('productos').doc(id).get();
 
   }
+
   //fin de crud
   
   //recuperarpoducto cuando cumpla una condicion
@@ -56,11 +57,37 @@ export class ProductoService {
     return refproduct.collection('productos').where("cantidadventas",">",0).orderBy("cantidadventas","desc").limit(5).get()
   }
 
+  //recuperar productos de mayor a menor
+  readproductmayorMenor(variabledb:string, tipo:string){
+    var refproduct = firebase.firestore(); 
+    return refproduct.collection('productos').where(variabledb, "==", tipo).where("precio",">",0).orderBy("precio","desc")
+  }
 
+  //recuperar productos de menor a mayor
+  readproductmenorMayor(variabledb:string, tipo:string){
+    var refproduct = firebase.firestore(); 
+    return refproduct.collection('productos').where(variabledb, "==", tipo).where("precio",">",0).orderBy("precio")
+  }
 
- 
+  //recuperar productos en liquidación
+  readproductliquidacion(variabledb:string, tipo:string){
+    var refproduct = firebase.firestore(); 
+    return refproduct.collection('productos').where(variabledb, "==", tipo).where("tipoventa","==","oferta")
+  }
 
+  //recuperar productos en ciudad geolocalizado del usuario
+  readproductMiciudad(variabledb:string, tipo:string, ciudad:string){
+    var refproduct = firebase.firestore(); 
+    return refproduct.collection('productos').where(variabledb, "==", tipo).where('ciudadventa',"==",ciudad)
+  }
 
+  //recuperar productos de mayor todos los productos
+  readproductMayorTodos(variabledb:string, tipo:string){
+    var refproduct = firebase.firestore(); 
+    return refproduct.collection('productos').where(variabledb, "==", tipo).where("precio",">",0).orderBy("precio")
+  }
+
+  
 
 
 }

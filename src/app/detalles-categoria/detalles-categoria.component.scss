@@ -55,3 +55,12 @@ ng-sidebar-container{
     color: $color-principal;
 }
 
+//-------responsive--
+@media screen and (max-width: 768px){
+    .contenido{
+        padding-right: 0.9rem !important;
+    }
+    .row-estrellitas{
+        display: none;
+    }
+}
