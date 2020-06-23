@@ -196,6 +196,8 @@ export class RegistrotiendaComponent implements OnInit {
 
   
 
+  
+
 
 
 
