@@ -123,8 +123,11 @@ export class HomeComponent implements OnInit {
     var tipoproducto="normal";
     this.crudProductos.readproduct(variabledb,tipoproducto).limit(5).get().then((res)=>{
       res.forEach((datos)=>{
-        this.collectionNormal.push(
-          datos.data()
+        this.collectionNormal.push({
+          iud: datos.id,
+          data:datos.data()
+        }
+          
         );
 
       });
@@ -148,8 +151,11 @@ export class HomeComponent implements OnInit {
     this.crudProductos.readproductpopulate().then((doc)=>{
       doc.forEach((datos)=>{
         
-        this.collectionPopulate.push(
-          datos.data()
+        this.collectionPopulate.push({
+          iud: datos.id,
+          data:datos.data()          
+        }
+          
         );
 
       })

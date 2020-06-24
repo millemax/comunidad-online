@@ -19,6 +19,8 @@ export class CarritoComponent implements OnInit {
   coleccioncarrito=[];
   iduser:string;
   id:string;
+
+  total:number;
  
 
 
@@ -30,6 +32,7 @@ export class CarritoComponent implements OnInit {
   ngOnInit(){   
    
     this.asincrono();
+
     
     
     
@@ -41,6 +44,8 @@ export class CarritoComponent implements OnInit {
    // this.recuperarcarrito(id);  
     this.recuperarcarritoprueba(id);
     this.recuperarcarrito(id);
+    
+    
   }
 
 
@@ -79,6 +84,14 @@ export class CarritoComponent implements OnInit {
           })
 
         })
+
+          //Calculamos el TOTAL 
+          this.total = this.coleccioncarrito.reduce((
+            acc,
+            obj,
+          ) => acc + (obj.data.precio * obj.data.cantidadpedida),
+          0);
+          console.log("Total: ", this.total)
     },(error)=>{
       console.log("no se pudo obtener el doc", error);
     }
