@@ -2,6 +2,7 @@
 .footer-style {
     background-color:white;
     border: 1px solid #7890A3;
+   
 }
 footer a, h6{
     color:#7890A3;
@@ -13,6 +14,8 @@ footer button{
 #custom-border{
     border-right: 2px solid #7890A3;
 }
+
+
 @media screen and (max-width: 768px) {
     #custom-border{
         border-right: none;

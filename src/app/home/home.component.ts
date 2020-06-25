@@ -71,25 +71,12 @@ export class HomeComponent implements OnInit {
     this.recuperarProductos();
     this.productospopulares();
     
-    //realizar una autenticacion anonima
-    this.autenticacionanonima();
+   
 
   } 
 
 
-  async autenticacionanonima(){
-    await this.loginservice.anonimuslogin();
-   
-   this.estadoautenticacion();
-  
-  }
-
-  estadoautenticacion(){
-     this.loginservice.statuslogin();
-     
-
-      
-  }
+ 
 
   recuperarProductosoferta(){
     var variabledb="tipoventa";

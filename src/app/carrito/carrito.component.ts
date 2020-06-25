@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import {CarritoService} from '../servicios/carrito/carrito.service';
 
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+
 
 
 
@@ -24,7 +26,8 @@ export class CarritoComponent implements OnInit {
  
 
 
-  constructor( private carritoservice: CarritoService, private afAuth:AngularFireAuth) {
+  constructor( private carritoservice: CarritoService, private afAuth:AngularFireAuth,private router: Router) {
+    
 
    
    }
@@ -35,6 +38,43 @@ export class CarritoComponent implements OnInit {
 
     
     
+    
+  }
+ //verifico el estado del usuario
+  verificarestadouser(){
+    return new Promise((resolved, reject)=>{
+
+      this.afAuth.auth.onAuthStateChanged( firebaseuser=>{  
+        var estadouser= firebaseuser.isAnonymous;     
+           
+        resolved(estadouser);                      
+            
+          });
+        
+
+      })    
+
+  }
+  
+  // la funcion que llama el boton precesar pago para evaluar
+ async verificarcorreo(){
+    var estadouser=await this.verificarestadouser();
+    console.log("usuario anonimo?", estadouser);
+    //significa que el usuario es anonimo
+    if (estadouser==true) {
+         console.log("soy usuario anonimo");
+         this.router.navigate(['/registros'])
+
+      
+    } else {
+        //siginifica que el usuario ya no es anonimo
+        if(estadouser==false) {
+          console.log("soy usuario logueado");
+          this.router.navigate(['/confirmar-datos'])
+
+        }
+      
+    }
     
   }
 
@@ -54,23 +94,23 @@ export class CarritoComponent implements OnInit {
 
     return new Promise((resolved, reject)=>{
 
-          this.afAuth.auth.onAuthStateChanged( firebaseuser=>{          
+          this.afAuth.auth.onAuthStateChanged( firebaseuser=>{  
+            /* var isanonimos= firebaseuser.isAnonymous;
+            console.log("es anonimo ?", isanonimos); */
+
             
-            var id= firebaseuser.uid;  
+            var id= firebaseuser.uid;   
             resolved(id);                      
           
         });
       
 
-    })  
-
-    
-  
-    
-
-    
+    })    
 
   }
+
+
+
   
   recuperarcarritoprueba(iduser){
     
