@@ -17,6 +17,9 @@ import { NgxMaskModule} from 'ngx-mask';
 //esto para que reconosca mi modal ng-template
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+//modulo para los mensajes de avisos
+import {ToastrModule} from 'ngx-toastr';
+
 
 
 // Import pdfmake-wrapper and the fonts to use
@@ -116,10 +119,7 @@ import { MatSelectModule } from '@angular/material/select';
     HomeComponent,
     RegistrotiendaComponent,
     HomeComponent,  
-    MapaComponent,
-    
-    
-   
+    MapaComponent,   
     
     LoginComponent,
     RegistrotiendaComponent,
@@ -152,6 +152,7 @@ import { MatSelectModule } from '@angular/material/select';
     AppRoutingModule,        
     AngularFontAwesomeModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     MatTooltipModule,
     MatChipsModule,
     MatIconModule,

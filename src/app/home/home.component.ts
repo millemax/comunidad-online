@@ -10,6 +10,9 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import {LoginService} from '../servicios/login.service'
 import * as firebase from 'firebase';
 
+//modulo  para las alertas
+import { ToastrService } from 'ngx-toastr';
+
 
 
 
@@ -60,7 +63,8 @@ export class HomeComponent implements OnInit {
   //collection productos Populares
   collectionPopulate=[];
 
-  constructor (private crudCategoria: CategoriaService, private crudProductos: ProductoService, private loginservice: LoginService){
+  constructor (private crudCategoria: CategoriaService, private crudProductos: ProductoService, 
+    private loginservice: LoginService, private toastr: ToastrService){
 
   }
  
@@ -192,6 +196,16 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
 
     console.log("hola soy el producto mi id", valor);
     
+
+  }
+
+
+  //probar la funcion para las notificaciones
+  toastrshow(){
+    this.toastr.info('hola mundo','Exito!',{
+      timeOut:1000,
+      progressBar:false,
+    });
 
   }
   
