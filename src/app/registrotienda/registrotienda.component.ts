@@ -14,6 +14,7 @@ import {CategoriaService} from '../servicios/categorias/categoria.service';
 import {RegistrotiendaService} from '../servicios/registrotienda/registrotienda.service'; 
 
 
+
 import { storage } from 'firebase';
 import * as firebase from 'firebase/app';
 //archivos
@@ -32,7 +33,8 @@ interface HtmlInputEvent extends Event{
   
 })
 export class RegistrotiendaComponent implements OnInit {
- //variables para los do
+  
+  //variables para los do
   filedoc:File;
   urlfiledoc:string;
   //variables guardar fotos cuando exista un archivo
@@ -94,7 +96,7 @@ export class RegistrotiendaComponent implements OnInit {
   
 
   constructor(private mapsAPILoader: MapsAPILoader,private ngZone: NgZone, private Dom:DomSanitizer,
-  private storeService:RegistrotiendaService,private fireService: CategoriaService,
+  private crudTiendas:RegistrotiendaService,private fireService: CategoriaService,
   private readonly regTiendaSvc:RegistrotiendaService ) { }
 
   ngOnInit() {
@@ -465,7 +467,7 @@ export class RegistrotiendaComponent implements OnInit {
     
     
     // esta es la funcion para poder enviar  a la base de datos
-    this.storeService.createstorage(record).then((resp)=>{
+    this.crudTiendas.createstore(record).then((resp)=>{
 
       console.log("datos enviados correctamente a firebase");
   

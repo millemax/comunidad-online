@@ -16,7 +16,9 @@ export class ProductoService {
     
     //var record={nombre:"romel",apellido:"huaraca", apellido1:"pocco"}
     var idtime=Date.now();
-    return this.afs.collection("productos").doc(""+idtime).set(record)
+    var tiempofuturo=2537654400999
+    var tiempo=tiempofuturo-idtime;    
+    return this.afs.collection("productos").doc(""+tiempo).set(record)
 
   }
 
@@ -33,22 +35,23 @@ export class ProductoService {
 
   }
 
-  //recuperar un solo producto
+  //recuperar un solo producto solo por su id
   recuperarproducto(id:string){
     var refproduct = firebase.firestore(); 
     return refproduct.collection('productos').doc(id).get();
 
+   
   }
 
   //fin de crud
   
   //recuperarpoducto cuando cumpla una condicion
-  readproduct(tipo:string){        
+  readproduct(variabledb:string, tipo:string){        
     var refproduct = firebase.firestore();    
-    return refproduct.collection('productos').where("tipoventa", "==", tipo).limit(5).get()
+    return refproduct.collection('productos').where(variabledb, "==", tipo)
     
   }
-
+           
   //recuperar productos mas vendidos en el servico
   readproductpopulate(){
     var refproduct = firebase.firestore(); 

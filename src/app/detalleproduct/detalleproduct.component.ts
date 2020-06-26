@@ -18,7 +18,17 @@ import {ProductoService} from '../servicios/productos/producto.service';
 export class DetalleproductComponent implements OnInit {
 
   idProducto:string;
-  product=[];
+  producto:any;
+
+  //variable para cambiar cuando le da click
+  fotoproduct: string;
+
+  //variable para recpeionar los colores y tallas
+  valortalla:any;
+  valorcolor:any;
+
+  //en el dropdown para poder cambiar el valor
+  titulocolor="color"
 
 
 
@@ -46,11 +56,14 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
 }
 
 obtenerproducto(){ 
-  
+  var imagen:string;
   var product=[]; 
-  this.crudProduct.recuperarproducto(this.idProducto).then((doc)=>{
+  this.crudProduct.recuperarproducto(this.idProducto).then(doc=>{
         if (doc.exists) {
           product.push(doc.data());
+          this.fotoproduct=doc.data().fotouno;
+          this.valorcolor=doc.data().etiquetacolor;
+          this.valortalla=doc.data().etiquetatalla; 
           
 
       } else {
@@ -58,19 +71,36 @@ obtenerproducto(){
           console.log("no se encuentra el documento!");
       } 
     
-
+    
   })
+   
   .catch((err)=>{
     console.log("no se pudo obtener el documento");
 
   })
 
-  this.product=product;
-  console.log("el producto papa:", this.product);
+  this.producto=product;
+  console.log("la lista de los productos", this.producto)
+  
+  
 
   
 }
 
+
+//funcion para cambiar las fotos
+cambiarimagen(image:any){
+  console.log("imagen", image);
+  this.fotoproduct=image;
+
+}
+
+// esto es para capturar los valores de los colores
+capturarcolor(color:any){
+  console.log("captura de color", color);
+
+
+}
 
 
 
