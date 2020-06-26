@@ -32,7 +32,7 @@
                         <div class="list-item mt-1" *ngFor="let categoria of collectionCategorias" >
                             <img class="mr-3 ml-3" style="width: 2rem; height: 2rem;" src="{{categoria.data.icono}}" >
 
-                            <a class="menulink">
+                            <a class="menulink" (click)="buscarProductosCat(categoria.id)" >
                                 <b style="text-transform: capitalize;">{{categoria.id}}</b> 
                             </a>
                         </div>
@@ -54,7 +54,7 @@
 
             <div class="form-row">
             <div class="col-6 col-xs-3 col-sm-3 col-md-3  d-flex justify-content-center align-content-center" *ngFor="let product of collectionNormal">
-                <div class="card" style="border-radius: 1rem; margin-bottom: 1rem;">
+                <div class="card" style="border-radius: 1rem; margin-bottom: 1rem;" [routerLink]="['/detallescategoria',product.iud]" >
                 <img class="card-img-top img-fluid imagen" src="{{product.data.fotouno}}" style="border-radius: 1rem; height: 10rem;">
 
                 <div class="card-body" >
