@@ -39,7 +39,6 @@ export class ProductoService {
   recuperarproducto(id:string){
     var refproduct = firebase.firestore(); 
     return refproduct.collection('productos').doc(id).get();
-
   }
 
   //fin de crud
@@ -81,13 +80,22 @@ export class ProductoService {
     return refproduct.collection('productos').where(variabledb, "==", tipo).where('ciudadventa',"==",ciudad)
   }
 
-  //recuperar productos de mayor todos los productos
-  readproductMayorTodos(variabledb:string, tipo:string){
+  //recuperar productos de ciudad de mayor a menor geolocalizado del usuario
+  readproductMayorMiciudad(variabledb:string, tipo:string, ciudad:string){
     var refproduct = firebase.firestore(); 
-    return refproduct.collection('productos').where(variabledb, "==", tipo).where("precio",">",0).orderBy("precio")
+    return refproduct.collection('productos').where(variabledb, "==", tipo).where('ciudadventa',"==",ciudad).where("precio",">",0).orderBy("precio","desc")
   }
 
-  
+  //recuperar productos de ciudad de mayor a menor geolocalizado del usuario
+  readproductMenorMiciudad(variabledb:string, tipo:string, ciudad:string){
+    var refproduct = firebase.firestore(); 
+    return refproduct.collection('productos').where(variabledb, "==", tipo).where('ciudadventa',"==",ciudad).where("precio",">",0).orderBy("precio")
+  }
 
+  //recuperar productos de ciudad en oferta geolocalizado del usuario
+  readproductLiquidacionMiciudad(variabledb:string, tipo:string, ciudad:string){
+    var refproduct = firebase.firestore(); 
+    return refproduct.collection('productos').where(variabledb, "==", tipo).where('ciudadventa',"==",ciudad).where("tipoventa","==","oferta")
+  }
 
 }

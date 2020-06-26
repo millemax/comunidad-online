@@ -7,6 +7,8 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 
 // modulos importados para crear la mapa
 import { MapsAPILoader, MouseEvent } from '@agm/core';
+import { isArray } from 'util';
+import { DetalleproductComponent } from '../detalleproduct/detalleproduct.component';
 
 
 enum CheckBoxOrdenar { mayor, menor, liquidacion, NONE };
@@ -19,16 +21,13 @@ enum CheckBoxUbicacion{todos, miciudad, NONE};
 })
 
 export class DetallesCategoriaComponent implements OnInit {
-  // varibles para almacenar datos de la mapa
-  title: string = 'AGM project';
-  latitude: number;
-  longitude: number;
-  address: string;
-  private geoCoder;
-  // varibles para almacenar datos de la mapa
+  // varibles para almacenar la ubicacion del usuario
+  ciudad:string;
 
+  //variable para el sidebar
   private _opened: boolean = true;
 
+  //variable para que angular dectecte el tipo de pantalla
   deviceInfo = null;
 
   //collection productos categoria
@@ -47,38 +46,18 @@ export class DetallesCategoriaComponent implements OnInit {
 
   // para recuperar los IDs ce categoria
   idCategoria:string;
-  product=[];
 
-  // para recuperar de mayor a menor
-  collectionMayorMenor=[];
-
-  // para recuperar de mayor a menor
-  collectiondemiCiudad=[];
-
-
-
-
-  constructor(private _route: ActivatedRoute, private crudCategoria: CategoriaService,  private crudProduct: ProductoService, private deviceService: DeviceDetectorService,private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
+  constructor(private _route: ActivatedRoute, private crudCategoria: CategoriaService,  private crudProduct: ProductoService, private deviceService: DeviceDetectorService, private ngZone: NgZone) { }
   
   ngOnInit() {
 
-    //load Places Autocomplete
-     this.mapsAPILoader.load().then(() => {
-      this.setCurrentLocation();
-      this.geoCoder = new google.maps.Geocoder;
-      
-    }); 
-    
     this.recuperarCategoria()
     this.obtenerid();
     this.devicetypes();
     this.epicFunction();
 
-    
-/*    navigator.geolocation.getCurrentPosition(this.onSucccess, this.onError, this.config ); */
+    this.watchPosition() 
   }
-
-
 
   //esta funcion recupera le ID
   obtenerid(){
@@ -90,6 +69,7 @@ export class DetallesCategoriaComponent implements OnInit {
 
   recuperarProductos(){
     this.crudProduct.readproduct("categoria",this.idCategoria).get().then((doc)=>{
+      this.collectionNormal=[];
       doc.forEach((datos)=>{
         this.collectionNormal.push({
           iud: datos.id,
@@ -144,6 +124,7 @@ export class DetallesCategoriaComponent implements OnInit {
   //recupera la lista de categorias del sidebar
   recuperarCategoria(){
     this.crudCategoria.readcategorys().subscribe((resultados)=>{
+      this.collectionNormal=[];
       resultados.forEach((datostarea)=>{
         this.collectionCategorias.push({
           id:datostarea.payload.doc.id,
@@ -255,7 +236,7 @@ export class DetallesCategoriaComponent implements OnInit {
 
 
 // obtener el valor de las casillas amayor
-  checkboxesMayor(valor:any){
+   checkboxesMayor(valor:any){
 
     this.collectionNormal=[];
     console.log("el valor es ",valor);
@@ -269,14 +250,16 @@ export class DetallesCategoriaComponent implements OnInit {
       
     }
 
-  }
+  } 
 
 // obtener el valor de las casillas menor
-  checkboxesMenor(valor:any){
+   checkboxesMenor(valor:any){
     this.collectionNormal=[];
     console.log("el valor es",valor);
     if (valor==true) {
       this.productosMenorMayor()
+     
+      
 
       
     } else {
@@ -284,12 +267,13 @@ export class DetallesCategoriaComponent implements OnInit {
       console.log("se borro la vaina")
       
     }
+    
 
-  }
+  } 
 
 
 // obtener el valor de las casillas menor
-  checkboxesLiquidacion(valor:any){
+   checkboxesLiquidacion(valor:any){
     this.collectionNormal=[];
     console.log("el valor es",valor);
     if (valor==true) {
@@ -302,27 +286,25 @@ export class DetallesCategoriaComponent implements OnInit {
       
     }
 
-  }
+  } 
 
   // obtener todos los pŕoductos
-  checkboxesTodos(valor:any){
+   checkboxesTodos(valor:any){
     this.collectionNormal=[];
     console.log("el valor es",valor);
     if (valor==true) {
       this.recuperarProductos()
 
-      
     } else {
       this.collectionNormal=[];
       console.log("se borro la vaina")
       
     }
 
-  }
-
+  } 
 
     // obtener todos los pŕoductos
-    checkboxesMiciudad(valor:any){
+     checkboxesMiciudad(valor:any){
       this.collectionNormal=[];
       console.log("el valor es",valor);
       if (valor==true) {
@@ -334,51 +316,14 @@ export class DetallesCategoriaComponent implements OnInit {
         
       }
   
-    }
-
-//.......................aqui comienza la geolocalizacion del usuario
-
-  // Get Current Location Coordinates
-     private setCurrentLocation() {
-      if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition((position) => {
-     
-          this.latitude = position.coords.latitude;
-          this.longitude = position.coords.longitude;
-          this.getAddress(this.latitude, this.longitude);
-          
-        });
-
-        
-      }
-
     } 
-
-    //obtenemos las direcciones 
-    getAddress(latitude, longitude) {
-      this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-        console.log(results);
-        console.log(status);
-        if (status === 'OK') {
-          if (results[0]) {
-            
-            this.address = results[8].formatted_address;
-            this.obtenerciudad()
-          } else {
-            window.alert('No results found');
-          }
-        } else {
-          window.alert('Geocoder failed due to: ' + status);
-        }
-      });
-    }
 
     obtenerciudad(){
       
-      console.log("direcion",this.address);
-      var str = this.address;
-      var res = str.split(',');
-        this.crudProduct.readproductMiciudad("categoria",this.idCategoria,res[0].toLowerCase()).get().then((doc)=>{
+      console.log("direcion: ",this.ciudad);
+      var str = this.ciudad;
+        this.crudProduct.readproductMiciudad("categoria",this.idCategoria,str.toLowerCase()).get().then((doc)=>{
+          this.collectionNormal=[];
           doc.forEach((datos)=>{
             this.collectionNormal.push({
               iud: datos.id,
@@ -396,9 +341,8 @@ export class DetallesCategoriaComponent implements OnInit {
 
       } 
 
+// .............................Inicio de validacion de 2 checkboks 
       validar(){ 
-       
-       
         var get_id_mayor= document.getElementById('customCheck1')as HTMLInputElement;
         var get_id_menor= document.getElementById('customCheck2')as HTMLInputElement;
         var get_id_liquidacion= document.getElementById('customCheck3')as HTMLInputElement;
@@ -406,50 +350,154 @@ export class DetallesCategoriaComponent implements OnInit {
         var get_id_miciudad= document.getElementById('customCheck5')as HTMLInputElement;
 
         if (get_id_mayor.checked == true &&  get_id_todosciudad.checked == true) {
+          console.log("estos son los productos de mayor a menor de todas las ciudades")
           this.productosMayorMenor()
           
         }
-
         else if (get_id_mayor.checked == true &&  get_id_miciudad.checked == true){
-          console.log("haloooo222222");
+          console.log("estos son los productos de mayor a menor de mi ciudad")
+          this.ProductosMayorCiudad()
         }
         else if (get_id_menor.checked == true &&  get_id_todosciudad.checked == true){
+          console.log("estos son los productos de menor a mayor de todas las ciudades")
           this.productosMenorMayor()
          
         }
         else if (get_id_menor.checked == true &&  get_id_miciudad.checked == true){
-          console.log("haloooo4444");
-        }
-        else if (get_id_liquidacion.checked == true &&  get_id_todosciudad.checked == true){
-          this.productosLiquidacion()
-        }
-        else if (get_id_liquidacion.checked == true &&  get_id_miciudad.checked == true){
-          console.log("halooo666666666");
-        }
-      
-  
+          console.log("estos son los productos de menor a mayor de mi ciudad")
+          this.ProductosMenorCiudad()
         }
 
-        //obtenemos productos mayor de todas las ciudades
-        productosMayorTodos(){
-          this.crudProduct.readproductmenorMayor("categoria",this.idCategoria).get().then((doc)=>{
-            doc.forEach((datos)=>{
-              this.collectionNormal.push({
-                iud: datos.id,
-                data:datos.data()
-              }
-              );
-        
-            })
-          })
-          .catch((err)=>{
-            console.log("no se puede obtener el documento",err);
-          });
-      
-          console.log("categorias productos menor: ",this.collectionNormal);
+        else if (get_id_liquidacion.checked == true &&  get_id_todosciudad.checked == true){
+          console.log("estos son los productos en oferta de todas las ciudades")
+          this.productosLiquidacion()
+        }
+
+        else if (get_id_liquidacion.checked == true &&  get_id_miciudad.checked == true){
+          console.log("estos son los productos en oferta solo de mi ciudad")
+          this.ProductosLiquidacionCiudad() 
+        }
+        else if (get_id_liquidacion.checked == true ){
+          console.log("estos son los  todos productos en oferta")
+          this.productosLiquidacion() 
+        }
+        else if (get_id_miciudad.checked == true){
+          console.log("estos son los productos de mi ciudad")
+          this.obtenerciudad()
+        }
+        else if (get_id_todosciudad.checked == true){
+          console.log("estos son los todos los productos de todas las ciudades")
+          this.recuperarProductos()
+        }
+        else if (get_id_menor.checked == true){
+          console.log("estos son los todos los productos de menor a mayor")
+          this.productosMenorMayor()
+        }
+        else if (get_id_mayor.checked){
+          console.log("estos son los todos los productos de mayor a menor jhon")
+          this.productosMayorMenor()
         }
 
       }
+
+
+//............obtenemos productos mayor a menor de mi ciudad
+        ProductosMayorCiudad(){
+          var str = this.ciudad;
+            this.crudProduct.readproductMayorMiciudad("categoria",this.idCategoria,str.toLowerCase()).get().then((doc)=>{
+              this.collectionNormal=[];
+              doc.forEach((datos)=>{
+                this.collectionNormal.push({
+                  iud: datos.id,
+                  data:datos.data()
+                }
+                );
+        
+              })
+            })
+            .catch((err)=>{
+              console.log("no se puede obtener el documento",err);
+            });
+        
+            console.log("categorias de mi ciudad de mayor a menor: ",this.collectionNormal);
+        }
+//................obtenemos productos de orden menor a mayor de mi ciudad
+        ProductosMenorCiudad(){
+          var str = this.ciudad;
+            this.crudProduct.readproductMenorMiciudad("categoria",this.idCategoria,str.toLowerCase()).get().then((doc)=>{
+              this.collectionNormal=[];
+              doc.forEach((datos)=>{
+                this.collectionNormal.push({
+                  iud: datos.id,
+                  data:datos.data()
+                }
+                );
+        
+              })
+            })
+            .catch((err)=>{
+              console.log("no se puede obtener el documento",err);
+            });
+        
+            console.log("categorias de mi ciudad de mayor a menor: ",this.collectionNormal);
+        }
+//..................obtenemos productos liquidados de mi ciudad
+        ProductosLiquidacionCiudad(){
+          var str = this.ciudad;
+            this.crudProduct.readproductLiquidacionMiciudad("categoria",this.idCategoria,str.toLowerCase()).get().then((doc)=>{
+              this.collectionNormal=[];
+              doc.forEach((datos)=>{
+                this.collectionNormal.push({
+                  iud: datos.id,
+                  data:datos.data()
+                }
+                );
+        
+              })
+            })
+            .catch((err)=>{
+              console.log("no se puede obtener el documento",err);
+            });
+            console.log("categorias de mi ciudad en liquidacion: ",this.collectionNormal);
+        }
+
+//............las IDs categorias de los productos del menu izquierdo
+        buscarProductosCat(cat:string){
+          this.idCategoria=cat;
+          this.recuperarProductos()
+          
+        }
+
+//.......................aqui comienza la geolocalizacion del usuario
+      watchPosition() {
+        const that = this;
+        var options = {
+            maximumAge: 3600000,
+            timeout: 3000,
+            enableHighAccuracy: true,
+        }
+        var watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+
+        async function onSuccess(position){
+          const geocode = await fetch(`https://geocode.xyz/${position.coords.latitude},${position.coords.longitude}?json=1`);
+          const geoResponse = await geocode.json();
+          that.ciudad=geoResponse.city;
+          that.obtenerciudad();
+    
+          
+        }
+
+        function onError(error) {
+          console.log("Failed to locate. Error");
+        } 
+        
+      }
+
+
+    }
+
+
+      
 
 
 

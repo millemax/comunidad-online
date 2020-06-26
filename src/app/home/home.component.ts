@@ -14,16 +14,15 @@ import * as firebase from 'firebase';
 import { ToastrService } from 'ngx-toastr';
 
 
-
-
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  //prueba
+  categoriii:string;
   //para el carrousel
   customOptions: OwlOptions = {
     loop: true,

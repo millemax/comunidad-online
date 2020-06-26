@@ -1,0 +1,96 @@
+$color-principal:#00B4CC ;
+$amarillo:#FAD000;
+$gris: #7B90A3;
+$verde-azulado: #009CC7;
+
+
+.titulo{
+    color: $gris;
+    font-size:1.5rem;
+    font-weight: 800;
+    //margin-right: 50rem;
+}
+
+//el contendor general tamaño esta al 85%
+.contenedor{
+    padding-left: 1rem;
+    padding-right: 2rem;
+    width: 85%;
+    
+    
+}
+
+//icono del dolar
+.input-group-text{
+    background-color:$amarillo ;
+    color: white;
+}
+
+//margen del icono camera
+.margencamera{
+    border-radius: 1rem;
+
+}
+
+
+
+//cuando se para moviles
+@media screen and (max-width: 768px){
+    .contenedor{
+        width: 100%;
+        padding-right:1rem;
+    }
+   
+}
+
+//los iconos
+.iconocamara{
+    font-size:4rem;
+    opacity: 0.5;
+  
+}
+
+@media screen and (max-width: 768px){
+    .iconocamara{
+        font-size:2rem;
+    }
+}
+
+//opacidad de la letra
+.letraicono{
+    opacity: 0.5;
+}
+
+
+
+//agregar producto
+.agregar{
+    background-color:$amarillo ;
+    color:white;
+    border-radius: 1rem;
+
+}
+
+.example-chip-list{
+    width: 100%;
+}
+
+
+
+//color de tamaño
+.btn-sm{
+    background: $color-principal;
+    color: white;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1400px){
+    //el contendor general tamaño esta al 85%
+.contenedor{
+    padding-left: 1rem;
+    padding-right: 2rem;
+    width: 80%;
+    
+    
+}
+
+}
