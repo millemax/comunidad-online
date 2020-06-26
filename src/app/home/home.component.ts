@@ -11,10 +11,6 @@ import {LoginService} from '../servicios/login.service'
 import * as firebase from 'firebase';
 
 
-
-
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -76,11 +72,6 @@ export class HomeComponent implements OnInit {
     
     //realizar una autenticacion anonima
     this.autenticacionanonima();
-
-    //prueba
-    this.recuperarCat()
-
-
   } 
 
 
@@ -208,34 +199,6 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
     
 
   }
-
-
-
-  //prueba
-  recuperarCat(){
-    this.crudCategoria.readcategorys().subscribe((resultados)=>{
-      this.collectionCategorias=[];
-      resultados.forEach((datostarea)=>{
-        this.collectionCategorias.push({
-          iud:datostarea.payload.doc.id,
-        }
-          
-        );
-      })
-      for (let i = 0; i<this.collectionCategorias.length; i++){
-        this.categoriii=this.collectionCategorias[i]
-        console.log("unajmaaa", this.categoriii)
-        this.tiendas()
-    }
-    });
-  } 
-
-  tiendas(){
-    var str=this.categoriii
-    console.log("hola jhon", str)
-    
-  }
-
 
 
   } 
