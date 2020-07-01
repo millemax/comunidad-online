@@ -1,3 +1,8 @@
+$color-principal:#00B4CC ;
+$amarillo:#FAD000;
+$gris: #7B90A3;
+$verde-azulado: #009CC7;
+
 .container{
     color:#7B90A3;
 }
@@ -38,6 +43,18 @@
     font-size: 1rem;
     text-transform: capitalize;
 
+}
+
+//este es el boton de adicionar
+.botadicionar{
+    background-color:$gris;
+    color:white;
+}
+
+// estilo del texto titulo
+.titulocantidad{
+    color:#00607B;
+    font-size:1.2rem;
 }
 @media screen and (max-width: 768px) {
     .procesos, .carrito-compras{

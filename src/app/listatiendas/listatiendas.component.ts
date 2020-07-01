@@ -8,12 +8,6 @@ import {CategoriaService} from '../servicios/categorias/categoria.service'
 
 
 
-
-
-
-
-
-
 @Component({
   selector: 'app-listatiendas',
   templateUrl: './listatiendas.component.html',
@@ -21,138 +15,97 @@ import {CategoriaService} from '../servicios/categorias/categoria.service'
 })
 export class ListatiendasComponent implements OnInit {
  
+  //------------contiene un objeto con una categoria y tienda respectiva--------
+  colleccionGeneral=[];
   
-  //coleccion tiendas
-  /* coleccionTiendas = [] */
-  ListaTiendas=[];
-  /* ListaTipoTiendas1=[]; */
-  /* categorias:any[]=[];   */
   collectionCategorias:any[] = [];  
 
   tipotienda:string;
-  categoria:string;
-
+ 
   constructor(private readonly crudTiendas:RegistrotiendaService,private crudCategoria: CategoriaService) { }
 
   ngOnInit() {
     
     this.recuperarCategoria();
     
-    /* this.iterarsobrecollection(); */
 
   }
 
 
 
-//--------------------lista de categorias --------------
-  recuperarCategoria(){
-     
-  
-    /* let collectionCategorias:any[]=[]; */
 
-    this.crudCategoria.readcategorys().subscribe((resultados)=>{
-      resultados.forEach((datostarea)=>{
+recuperarCategoria(){
+
+this.crudCategoria.obtenercategoria().then((resp)=>{
+      resp.forEach((datos)=>{
         this.collectionCategorias.push(
-          datostarea.payload.doc.id,
-          
-          
-        );
+
+            datos.id
+        )
+
       })
 
-      
-      this.recuperarTiendas();
+})
+.then((resp)=>{
+  this.recuperarTiendas();
 
-      /* for( let i=0; i < this.collectionCategorias.length; i++ ){
-         console.log("categorias nuevas",this.collectionCategorias[i]);  
-        
-        this.categoria=this.collectionCategorias[i];
+})
+.catch((err)=>{
+    console.log("No se pudo obtener las categorias ");
 
-       // console.log("categoria",this.categoria)  
+})
+console.log("coleccitoncategorias",this.collectionCategorias)
 
-      }
- */
-     /*  for(let cat in this.collectionCategorias){
-        categoria=this.collectionCategorias[cat]
-      
-        console.log("coomom no",cat);
-      } */
+}
 
 
-});    
-/*      */ 
+// ------------fni recuperarcategrias ---------
+
+//------------------recuperar tiendas de acuero a la categoria----------
+
+recuperarTiendas(){
+  
+
+  var tamano=this.collectionCategorias.length;
+  console.log("tamaño de array",tamano);
+
+  for( let  i=0; i<tamano;i++){
+    var tipo=this.collectionCategorias[i];
+    
+    this.buscartienda(tipo)
+    
+  }
 
 
 }
 
-  
-
-  
-
-// ------------recuperar lista de tiendas de una sola categoria ---------
-  
-
-
-recuperarTiendas(){
-
-  /*  this.recuperarCategoria();
-   
-*/ 
-
-  let tipotienda:string;
-
-   console.log("prueba de categorias ",this.collectionCategorias)
-
-   for( let i=0; i < this.collectionCategorias.length; i++ ){
-    /* console.log("categorias nuevas",this.collectionCategorias[i]);   */
-  
-    this.categoria=this.collectionCategorias[i];
-    console.log("asignado valor ",this.categoria);
-
-
-  
-    tipotienda = this.collectionCategorias[i];
-  
-   const variabledb="categoria";
-   
-   console.log("reneeeeeeeeee",tipotienda);
-
-   this.crudTiendas.readstore(variabledb,tipotienda.toLocaleLowerCase()).limit(6).get().then((res)=>{
-     res.forEach((datos)=>{
-       /* this.ListaTiendas.push(
-
-         datos.data()
-       
-         ); */ 
-
-     });
+buscartienda(tipo){
+  var tienda=[];
+  var categoria="categoria"
+  this.crudTiendas.readstore(categoria,tipo).get().then((resp)=>{
+    resp.forEach((datos)=>{
+      tienda.push({
+        uid:datos.id,
+        data:datos.data()
+      }
+      )
+      
+    })
+   this.colleccionGeneral.push({
+     categoria:tipo,
+     tiendas:tienda
+   })
+    //this["tienda"+i]=tienda; 
+      
+     console.log("las tiendas ",this.colleccionGeneral) ;
      
-
-   })
-     .catch((err)=>{
-     console.log("no se puede recuperar lista de tiendas");
-   })
-  }
-
- /*   //----------------
-   this.coleccionTiendas.push(this.ListaTipoTiendas);
-   console.log("la collecion todaslistaTiendas",this.coleccionTiendas);
-   //---------  */
-
-   console.log("la collecion listaTiendas",this.ListaTiendas);
-
- }
-
-//-------------fin recuperar lista de tiendas de unsa sola categria-----------  
+    
+  })                                                                                                                                                                                                                                                                                                                                                        
+  
+}
 
 
-
-
-
-
-
-
-
-
+                                                                                                                                                                                                                                                                                                                                                
 
 
 

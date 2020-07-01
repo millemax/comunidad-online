@@ -25,6 +25,14 @@ export class CategoriaService {
 
   }
 
+  //-----------para obtener categorias y poder usa then catch ---------
+
+  obtenercategoria(){
+    var db = firebase.firestore();    
+    return db.collection('categorias').get()
+
+  }
+
   updatecategory(){
 
   }
@@ -39,10 +47,6 @@ export class CategoriaService {
   readcategory(documento:string){
     var db = firebase.firestore();    
     return db.collection('categorias').doc(documento).get();
-
   }
-
-
-
 
 }

@@ -44,13 +44,13 @@ export class RegistrotiendaService {
     
   } 
 
-/* //recuperar tienda
-  readstore(){        
+  //recuperar tiendas
+  readtienda(){        
     var refstore = firebase.firestore();    
-    return refstore.collection('tiendas').orderBy('categoria');
+    return refstore.collection('tiendas');
 
   }
- */
+ 
 
 
 }

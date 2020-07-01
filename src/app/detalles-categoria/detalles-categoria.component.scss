@@ -3,6 +3,10 @@ $amarillo:#FAD000;
 $gris: #7B90A3;
 $verde-azulado: #009CC7;
 
+body{
+    color: $gris;
+}
+
 ng-sidebar-container{
     height: 100vh;
     background-color:rgb(231, 230, 230) ;
@@ -15,12 +19,12 @@ ng-sidebar-container{
 
 }
 
-// la lista 
+
+
+// la lista  categorias
 
 .list-item{
-    font-size: 1.2rem;
-    //margin-left: 1rem;
-    color:$color-principal;
+    font-size: 1rem;
 }
 
 .list-item:hover{
@@ -32,20 +36,31 @@ ng-sidebar-container{
     color:white;
 
 }
-
 .menulink{
-    color: $color-principal;
+    color: $gris;
 }
 .menulink:hover{
     color:white;
     
 }
 
-.iconuser{
-    font-size:8rem;
-    color: $color-principal;
-    margin-top: 4rem;
+.textoprecio{
+    color: red;
+    font-size: 1.3rem;
+
 }
 
+//icono carrito en los cards
+.fas{
+    color: $color-principal;
+}
 
-
+//-------responsive--
+@media screen and (max-width: 768px){
+    .contenido{
+        padding-right: 0.9rem !important;
+    }
+    .row-estrellitas{
+        display: none;
+    }
+}

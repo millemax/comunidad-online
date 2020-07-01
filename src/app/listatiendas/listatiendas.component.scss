@@ -31,6 +31,7 @@ $celeste:rgba(135, 207, 235, 0.527);
 //-------------------------
 .titulo-tienda{
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 .titulotienda{
@@ -44,6 +45,7 @@ $celeste:rgba(135, 207, 235, 0.527);
 
 .texto-registro{
     display: flex;
+    justify-content: center;
     align-items: center;
     border-left: 2px solid;
     color: $blanco;
@@ -78,15 +80,24 @@ $celeste:rgba(135, 207, 235, 0.527);
     .col-delet{
         display: none;
     }
-    .cologo{
-        align-items: center;
-        justify-content: center;
+    .logo-circular{
+       display: none;
+
     }
+    
    
     //--------
     .smalldescrition{
         display: flex;
         align-items: center;
+        justify-content: center;
+    }
+    .nombrelegal{
+        display: flex;
+        justify-content: center;
+    }
+    .estrellitas{
+        display: flex;
         justify-content: center;
     }
 }

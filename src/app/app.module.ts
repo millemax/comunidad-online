@@ -6,12 +6,19 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { RegistrosComponent } from './registros/registros.component';
 import { HomeComponent } from './home/home.component';
 //import mask
 import { NgxMaskModule} from 'ngx-mask';
+
+
+//esto para que reconosca mi modal ng-template
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+//modulo para los mensajes de avisos
+import {ToastrModule} from 'ngx-toastr';
+
 
 
 // Import pdfmake-wrapper and the fonts to use
@@ -95,10 +102,14 @@ import { DetalleproductComponent } from './detalleproduct/detalleproduct.compone
 
 
 //el carrousel
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+
 import { DetallesCategoriaComponent } from './detalles-categoria/detalles-categoria.component';
 
+
+//esto para el select option
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -109,8 +120,7 @@ import { DetallesCategoriaComponent } from './detalles-categoria/detalles-catego
     HomeComponent,
     RegistrotiendaComponent,
     HomeComponent,  
-    MapaComponent,
-   
+    MapaComponent,   
     
     LoginComponent,
     RegistrotiendaComponent,
@@ -145,15 +155,21 @@ import { DetallesCategoriaComponent } from './detalles-categoria/detalles-catego
     RatingModule,
     AppRoutingModule,        
     AngularFontAwesomeModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     MatTooltipModule,
     MatChipsModule,
     MatIconModule,
-    MatFormFieldModule,        
+    MatFormFieldModule,  
+    MatSelectModule,      
     SidebarModule.forRoot(),
 
     //para el carrousel
+    BrowserAnimationsModule,
     CarouselModule,
+
+    //para el modal ng-template
+    NgbModule,
    
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBQ2wl-PEYo_y3vpjO6E0ZzQOrKB6leYJI',

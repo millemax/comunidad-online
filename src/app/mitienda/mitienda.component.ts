@@ -17,6 +17,9 @@ import {ProductoService} from '../servicios/productos/producto.service';
 import { storage } from 'firebase';
 import * as firebase from 'firebase/app';
 
+//modulo  para las alertas
+import { ToastrService } from 'ngx-toastr';
+
 
 
 
@@ -115,10 +118,13 @@ export class MitiendaComponent implements OnInit {
    //valor de subcategoria se activa en caso exista
    
 
+   //variable donde estara la ciudad donde estara disponible la venta de productos
+   ciudadventa:string;
+
 
   
 
-  constructor(private fireService: CategoriaService, private productService:ProductoService ) { }
+  constructor(private fireService: CategoriaService, private productService:ProductoService , private toastr: ToastrService) { }
 
 
   ngOnInit() {
@@ -574,7 +580,8 @@ export class MitiendaComponent implements OnInit {
       etiquetatalla: this.etiquetatalla,
       descuento: this.porcentaje,
       preciodescuento: this.descuento,
-      tiempo:idtime
+      tiempo:idtime,
+      ciudadventa:this.ciudadventa,
     
     
     };
@@ -584,11 +591,13 @@ export class MitiendaComponent implements OnInit {
 
     this.productService.createproduct(record).then((resp)=>{
 
-        console.log("datos enviados correctamente a firebase");
+        this.toastr.success('producto cargado','exito!');
+        this.titulo=""
     
     })
     .catch((err)=>{
       console.log(err);
+      this.toastr.error('no puedo cargar asegurate de llenar todos los campos','error :( ');
     })
 
   }

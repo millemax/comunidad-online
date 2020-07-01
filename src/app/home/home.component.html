@@ -41,10 +41,10 @@
         <ng-template carouselSlide *ngFor="let categoria of collectionCategorias" >
           <div class="container ">
             
-              <div class="card " style="width: 10rem;" routerLink="/detallescategoria" >
-                <img class=" img-fluid imagenCategorias" src="{{categoria.data.icono}}" >
+              <div class="card " style="width: 10rem;" [routerLink]="['/detallescategoria',categoria.iud]">
+                <img class="card-img-top img-fluid imagenCategorias" src="{{categoria.data.icono}}" >
                 <div class="card-body" style="text-align: center !important; text-transform: uppercase;">
-                  <h5 class="card-title" style="color: #00B4CC;"><small>{{categoria.id}}</small></h5>
+                  <h5 class="card-title" style="color: #00B4CC;"><small>{{categoria.iud}}</small></h5>
                 </div>
 
             </div>
@@ -82,34 +82,42 @@
         <div class="card-body border-top">
           
           <span class="card-title  titulosproductos">{{product.data.titulo}}</span><br>
-          <label class="textoprecio">${{product.data.precio}}</label>     
-              <div class="form-row row-estrellitas">
-                 <div class="col-7" style="text-align:left;">
-                  
-                  <star-rating  class="estrellitas" value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
-  
-                 </div>
-                 <div class="col-2">
-                    <div class="container">
-                      <i class="fas fa-clipboard-list  pt-3 list"></i>
-                    </div>
-                     
-  
-                 </div>
-                 <div class="col-3    my-auto d-flex justify-content-end col" style="text-align: right;">                   
-  
-                      <span class="fa-stack fa-lg">                      
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fas fa-shopping-cart fa-stack-1x" style="color:white;"></i>
-                      </span>
-                       
-                      
-                     
-                 </div>
-              </div>               
+          <label class="textoprecio">${{product.data.preciodescuento}}</label>     
+                         
   
         
         </div>
+        <!--footer del card-->
+        <div class="card-footer text-muted">
+              <div class="form-row row-estrellitas">
+                <div class="col-7" style="text-align:left;">
+                
+                <star-rating  class="estrellitas" value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
+
+                </div>
+                <div class="col-2">
+                  <div class="container">
+                    <i class="fas fa-clipboard-list  pt-3 list"></i>
+                  </div>
+                    
+
+                </div>
+                <div class="col-3    my-auto d-flex justify-content-end col" style="text-align: right;">                   
+
+                    <span class="fa-stack fa-lg">                      
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fas fa-shopping-cart fa-stack-1x" style="color:white;"></i>
+                    </span>
+                      
+                    
+                    
+                </div>
+            </div>   
+        </div>
+        <!--fin del footer-->
+
+
+
       </div>
 
     </div>
@@ -127,16 +135,6 @@
 
 <!----------------------------find de lo productos de liquidacion-------------->
 
-
-<!----------------------------Tiendas cercanas------------------------->
-<div class="container-fluid contenedor   border"  style="background-color: #7b90a33b; height: 60vh;" >
-  <div class="row">
-    <div class="col-sm-3"> <span class="titulo">Tiendas cercanas</span> </div>
-  </div>
-</div>
-<!----------------------------find de las tiendas cercanas-------------->
-
-
 <!--------------Productos Recientemente agregados-------------------------------->
 
 <div class="container-fluid contenedor">
@@ -148,39 +146,45 @@
 
   <div class="form-row">
     <div class="col  d-flex justify-content-center align-content-center" *ngFor="let product of collectionNormal">
-      <div class="card card-productos">
-        <img class="card-img-top img-fluid imagen" src="{{product.fotouno}}" alt="Card image cap" style="border-radius: 1rem;">
+      <div class="card card-productos" [routerLink]="['/detallesproducto',product.iud]">
+        <img class="card-img-top img-fluid imagen" src="{{product.data.fotouno}}" alt="Card image cap" style="border-radius: 1rem;">
         <div class="card-body border-top">
           
-          <span class="card-title  titulosproductos">{{product.titulo}}</span><br>
-          <label class="textoprecio">${{product.precio}}</label>     
-              <div class="form-row row-estrellitas">
-                 <div class="col-7 " style="text-align:left;">
-                  
-                  <star-rating  value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
-  
-                 </div>
-                 <div class="col-2">
-                    <div class="container">
-                      <i class="fas fa-clipboard-list  pt-3"></i>
-                    </div>
+          <span class="card-title  titulosproductos">{{product.data.titulo}}</span><br>
+          <label class="textoprecio">${{product.data.precio}}</label>     
                      
   
-                 </div>
-                 <div class="col-3   my-auto d-flex justify-content-end col" style="text-align: right;">                   
-  
+        
+        </div>
+
+        <!--footer del card-->
+              <div class="card-footer text-muted">
+                <div class="form-row row-estrellitas">
+                  <div class="col-7" style="text-align:left;">
+                  
+                  <star-rating  class="estrellitas" value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
+
+                  </div>
+                  <div class="col-2">
+                    <div class="container">
+                      <i class="fas fa-clipboard-list  pt-3 list"></i>
+                    </div>
+                      
+
+                  </div>
+                  <div class="col-3    my-auto d-flex justify-content-end col" style="text-align: right;">                   
+
                       <span class="fa-stack fa-lg">                      
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fas fa-shopping-cart fa-stack-1x" style="color:white;"></i>
                       </span>
-                       
+                        
                       
-                     
-                 </div>
-              </div>               
-  
-        
-        </div>
+                      
+                  </div>
+              </div>   
+          </div>
+          <!--fin del footer-->
       </div>
 
     </div>   
@@ -189,11 +193,53 @@
 </div>
 
 
-<!-----------------------fin de recintemente agregados----------->
+<!-----------------------fin de recintemente agregados--------------->
 <br><br><br>
+<!----------------------------Tiendas cercanas------------------------->
+<div class="container-fluid contenedor  mb-5 border"  style="height: 30vh;" >
+  <div class="row">
+    <div class="col-sm-3"> <span class="titulo">Tiendas cercanas</span> </div>
+  </div>
+  <br>
+
+    <owl-carousel-o [options]="customOptions" class="">
+      <ng-template carouselSlide *ngFor="let tienda of collectionTiendascercanas" >
+          <div class="container border ">
+            <div class="col-4 col-sm-4 d-flex justify-content-center align-content-center">
+              <div class="mb-3 tiendas-cercanas" style="max-width: 400px;">
+                <div class="row no-gutters">
+                  <!--------------------------------contenido en 2 columnas--------------------------------->
+                  <!--col1-->
+                  <div class="col-md-2 d-flex cologo">
+                    <img src="{{tienda.data.foto1}}" class="card-img logo-circular" alt="...">
+                  </div>
+                  <!--col2-->
+                  <div class="col-md-10 d-flex justify-content-center align-content-center">
+                    <div class="card">
+                      <!-- Card image -->
+                      <img class="card-img-top rounded-0" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/full page/2.jpg" alt="Card image cap">
+                      <!--cardbody-->
+                      <div class="card-body">
+                        <div class="form-row d-flex justify-content-center align-content-center">
+                          
+                        </div>
+                      <!--cardbody-->
+                      </div>
+                    </div>
+                  </div>
+                  <!--------------------------------fin contenido en 2 columnas--------------------------------->
+                </div>
+              </div>
+            </div>
+          </div>
+      </ng-template>  
+    </owl-carousel-o>
+
+</div> 
+<!----------------------------find de las tiendas cercanas------------------------->
 
 
-<!--productos mas populares-->
+<!-----------------------------productos mas populares----------------------------->
 <div class="container-fluid contenedor">
   <div class="row">
     <div class="col-sm-3"> <span class="titulo">Mas Populares</span> </div>
@@ -202,39 +248,45 @@
 
   <div class="form-row">
     <div class="col  d-flex justify-content-center align-content-center" *ngFor="let product of collectionPopulate">
-      <div class="card card-productos">
-        <img class="card-img-top img-fluid imagen" src="{{product.fotouno}}" alt="Card image cap" style="border-radius: 1rem;">
+      <div class="card card-productos" [routerLink]="['/detallesproducto',product.iud]">
+        <img class="card-img-top img-fluid imagen" src="{{product.data.fotouno}}" alt="Card image cap" style="border-radius: 1rem;">
         <div class="card-body border-top">
           
-          <span class="card-title  titulosproductos">{{product.titulo}}</span><br>
-          <label class="textoprecio">${{product.precio}}</label>     
-              <div class="form-row row-estrellitas">
-                 <div class="col-7 " style="text-align:left;">
+          <span class="card-title  titulosproductos">{{product.data.titulo}}</span><br>
+          <label class="textoprecio">${{product.data.precio}}</label>     
+                      
+  
+        
+        </div>
+          <!--footer del card-->
+              <div class="card-footer text-muted">
+                <div class="form-row row-estrellitas">
+                  <div class="col-7" style="text-align:left;">
                   
-                  <star-rating  value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
-  
-                 </div>
-                 <div class="col-2">
+                  <star-rating  class="estrellitas" value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
+
+                  </div>
+                  <div class="col-2">
                     <div class="container">
-                      <i class="fas fa-clipboard-list  pt-3"></i>
+                      <i class="fas fa-clipboard-list  pt-3 list"></i>
                     </div>
-                     
-  
-                 </div>
-                 <div class="col-3   my-auto d-flex justify-content-end col" style="text-align: right;">                   
-  
+                      
+
+                  </div>
+                  <div class="col-3    my-auto d-flex justify-content-end col" style="text-align: right;">                   
+
                       <span class="fa-stack fa-lg">                      
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fas fa-shopping-cart fa-stack-1x" style="color:white;"></i>
                       </span>
-                       
+                        
                       
-                     
-                 </div>
-              </div>               
-  
-        
-        </div>
+                      
+                  </div>
+              </div>   
+          </div>
+          <!--fin del footer-->
+
       </div>
 
     </div>   
@@ -270,6 +322,9 @@
       <br>
 
       <button type="button" class="btn btn-success" routerLink="/paneladministracion">panel de administracion</button>
+      <br>
+      <button type="button" class="btn btn-success" (click)="toastrshow()">probar las notificaciones</button>
+
 
 
       <button type="button" class="btn btn-success " routerLink="/listatiendas">lista tiendas</button><br>

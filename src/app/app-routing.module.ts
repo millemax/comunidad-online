@@ -38,8 +38,9 @@ const routes: Routes = [
   {path:'confirmar-datos', component:ConfirmarDatosComponent},
   {path:'imprimir-recibo', component:ImprimirReciboComponent},
   {path:'detallesproducto/:id', component:DetalleproductComponent},
-  {path:'detallescategoria', component:DetallesCategoriaComponent},
   {path:'listatiendas', component:ListatiendasComponent},
+  {path:'detallescategoria/:id', component:DetallesCategoriaComponent},
+  
 
 
 

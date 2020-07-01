@@ -1,35 +1,44 @@
+<body>
 <ng-sidebar-container>
     <!--sidebar-->
     <ng-sidebar mode="slide" [(opened)]="_opened">
         <!--el menu de navegacion-->
         <div class="menu">
             <div class="col">
-                <h5>Ordenar por: </h5>
+                <h5 class="font-weight-bold ">ORDENAR POR: </h5>
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck1" >
+                        <input type="checkbox" class="custom-control-input" id="customCheck1" value="mayor"[checked]="currentlyChecked === check_box_type.mayor" (click)="selectCheckBoxOrdenar(check_box_type.mayor)" (change)="checkboxesMayor($event.target.checked); validar($event.target.id)" >
                         <label class="custom-control-label" for="customCheck1">Mayor precio</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck2" [checked]="checks">
+                        <input type="checkbox" class="custom-control-input" id="customCheck2" value="menor"[checked]="currentlyChecked === check_box_type.menor" (click)="selectCheckBoxOrdenar(check_box_type.menor)" (change)="checkboxesMenor($event.target.checked); validar($event.target.id)">
                         <label class="custom-control-label" for="customCheck2">Menor precio</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck3" [checked]="checks">
+                        <input type="checkbox" class="custom-control-input" id="customCheck3" value="liquidacion" [checked]="currentlyChecked === check_box_type.liquidacion" (click)="selectCheckBoxOrdenar(check_box_type.liquidacion)" (change)="checkboxesLiquidacion($event.target.checked); validar($event.target.id)" >
                         <label class="custom-control-label" for="customCheck3">En liquidación</label>
                     </div>
-                <h5>Ubicación: </h5>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4" >
-                    <label class="custom-control-label" for="customCheck4">Todos</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5">
-                    <label class="custom-control-label" for="customCheck5">Mi ciudad</label>
-                </div>
-                <h5>Categorias: </h5>
+                <h5 class="font-weight-bold ">UBICACION: </h5>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck4" value="todosciudad" [checked]="currentChecked === check_box.todos" (click)="selectCheckBoxUbicacion(check_box.todos)" (change)="checkboxesTodos($event.target.checked); validar($event.target.value)" >
+                        <label class="custom-control-label" for="customCheck4">Todos</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck5" value="miciudad" [checked]="currentChecked === check_box.miciudad" (click)="selectCheckBoxUbicacion(check_box.miciudad)" (change)="checkboxesMiciudad($event.target.checked); validar($event.target.value)" >
+                        <label class="custom-control-label" for="customCheck5">Mi ciudad</label>
+                    </div>
+                <h5 class="font-weight-bold " >CATEGORIAS: </h5>
+                    <div class="menu">
+                        <div class="list-item mt-1" *ngFor="let categoria of collectionCategorias" >
+                            <img class="mr-3 ml-3" style="width: 2rem; height: 2rem;" src="{{categoria.data.icono}}" >
 
-               
-  
+                            <a class="menulink">
+                                <b style="text-transform: capitalize;">{{categoria.id}}</b> 
+                            </a>
+                        </div>
+                        
+                    </div>
+
             </div>
 
         </div>
@@ -37,8 +46,44 @@
     </ng-sidebar>
 
     <div  ng-sidebar-content>
-       
      <!-- <button (click)="_toggleSidebar()">Toggle</button>  -->
 
+
+     <!------------- esta es la parte donde muestra los productos liquidacion------------------------>
+        <div class="container-fluid contenido" style="padding-right: 19rem ; padding-top: 1rem;">
+
+            <div class="form-row">
+            <div class="col-6 col-xs-3 col-sm-3 col-md-3  d-flex justify-content-center align-content-center" *ngFor="let product of collectionNormal">
+                <div class="card" style="border-radius: 1rem; margin-bottom: 1rem;">
+                <img class="card-img-top img-fluid imagen" src="{{product.data.fotouno}}" style="border-radius: 1rem; height: 10rem;">
+
+                <div class="card-body" >
+                    
+                    <span class="card-title  titulosproductos">{{product.data.titulo}} </span><br>
+                    <label class="textoprecio"> <small class="font-weight-bold" >$ {{product.data.precio}}</small></label>     
+                        <div class="form-row row-estrellitas">
+                        <div class="col-7" style="text-align:left;">
+                            <star-rating  class="estrellitas" value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
+                        </div>
+                        <div class="col-2">
+                            <div class="container">
+                                <i class="fas fa-clipboard-list  pt-3 list"></i>
+                            </div>
+                        </div>
+                        <div class="col-3    my-auto d-flex justify-content-end col" style="text-align: right;">                   
+                                <span class="fa-stack fa-lg">                      
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-shopping-cart fa-stack-1x" style="color:white;"></i>
+                                </span>
+                        </div>
+                        </div>               
+                </div>
+                </div>
+        
+            </div>
+            </div>
+        </div>
     </div>
 </ng-sidebar-container>
+</body>
+
