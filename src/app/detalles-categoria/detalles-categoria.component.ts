@@ -21,6 +21,10 @@ enum CheckBoxUbicacion{todos, miciudad, NONE};
 })
 
 export class DetallesCategoriaComponent implements OnInit {
+
+  currentLat: any;
+  currentLng: any;
+ 
   // varibles para almacenar la ubicacion del usuario
   ciudad:string;
 
@@ -56,7 +60,7 @@ export class DetallesCategoriaComponent implements OnInit {
     this.devicetypes();
     this.epicFunction();
 
-    this.watchPosition() 
+    this.watchPosition();
   }
 
   //esta funcion recupera le ID
@@ -69,7 +73,7 @@ export class DetallesCategoriaComponent implements OnInit {
 
   recuperarProductos(){
     this.crudProduct.readproduct("categoria",this.idCategoria).get().then((doc)=>{
-      this.collectionNormal=[];
+    this.collectionNormal=[];
       doc.forEach((datos)=>{
         this.collectionNormal.push({
           iud: datos.id,
@@ -464,8 +468,8 @@ export class DetallesCategoriaComponent implements OnInit {
 //............las IDs categorias de los productos del menu izquierdo
         buscarProductosCat(cat:string){
           this.idCategoria=cat;
-          this.recuperarProductos()
-          
+          this.recuperarProductos();
+
         }
 
 //.......................aqui comienza la geolocalizacion del usuario
@@ -482,19 +486,27 @@ export class DetallesCategoriaComponent implements OnInit {
           const geocode = await fetch(`https://geocode.xyz/${position.coords.latitude},${position.coords.longitude}?json=1`);
           const geoResponse = await geocode.json();
           that.ciudad=geoResponse.city;
-          that.obtenerciudad();
-    
-          
+          that.obtenerciudad(); 
+         
         }
-
         function onError(error) {
           console.log("Failed to locate. Error");
         } 
+
         
       }
+//...........fin de la geolocalizacion del usuario
 
+//.....para desclickear todos los checkboxes al momento de cambiar  de categoria
 
-    }
+uncheckAll() 
+  {
+    var clist = document.getElementsByTagName("input");
+    for (var i = 0; i < clist.length; ++i) { clist[i].checked = false; }
+
+  }
+
+}
 
 
       

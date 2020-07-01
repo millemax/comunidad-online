@@ -1,0 +1,25 @@
+$color-principal:#00B4CC ;
+$amarillo:#FAD000;
+$gris: #7B90A3;
+$verde-azulado: #009CC7;
+body{
+    height: 100vh;
+    color: $gris;
+}
+.foto-tienda{
+    height: 5rem;
+}
+
+@media screen and (max-width: 768px){
+    .contenedor-tienda{
+        position: absolute;
+        top: 35rem;
+    }
+    .checkOrdenar{
+        font-size: small;
+    }
+    .contenedorCheckbox{
+        margin-left: 0rem!important;
+    }
+
+}

@@ -10,6 +10,9 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import {LoginService} from '../servicios/login.service'
 import * as firebase from 'firebase';
 
+//modulo  para las alertas
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-home',
@@ -59,7 +62,8 @@ export class HomeComponent implements OnInit {
   //collection productos Populares
   collectionPopulate=[];
 
-  constructor (private crudCategoria: CategoriaService, private crudProductos: ProductoService, private loginservice: LoginService){
+  constructor (private crudCategoria: CategoriaService, private crudProductos: ProductoService, 
+    private loginservice: LoginService, private toastr: ToastrService){
 
   }
  
@@ -70,24 +74,12 @@ export class HomeComponent implements OnInit {
     this.recuperarProductos();
     this.productospopulares();
     
-    //realizar una autenticacion anonima
-    this.autenticacionanonima();
+   
+
   } 
 
 
-  async autenticacionanonima(){
-    await this.loginservice.anonimuslogin();
-   
-   this.estadoautenticacion();
-  
-  }
-
-  estadoautenticacion(){
-     this.loginservice.statuslogin();
-     
-
-      
-  }
+ 
 
   recuperarProductosoferta(){
     var variabledb="tipoventa";
@@ -121,8 +113,11 @@ export class HomeComponent implements OnInit {
     var tipoproducto="normal";
     this.crudProductos.readproduct(variabledb,tipoproducto).limit(5).get().then((res)=>{
       res.forEach((datos)=>{
-        this.collectionNormal.push(
-          datos.data()
+        this.collectionNormal.push({
+          iud: datos.id,
+          data:datos.data()
+        }
+          
         );
 
       });
@@ -146,8 +141,11 @@ export class HomeComponent implements OnInit {
     this.crudProductos.readproductpopulate().then((doc)=>{
       doc.forEach((datos)=>{
         
-        this.collectionPopulate.push(
-          datos.data()
+        this.collectionPopulate.push({
+          iud: datos.id,
+          data:datos.data()          
+        }
+          
         );
 
       })
@@ -201,11 +199,17 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
   }
 
 
-  } 
+  //probar la funcion para las notificaciones
+  toastrshow(){
+    this.toastr.info('hola mundo','Exito!',{
+      timeOut:1000,
+      progressBar:false,
+    });
 
+  }
   
   
-  
+}
 
 
 

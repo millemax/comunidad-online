@@ -48,6 +48,9 @@ export class DetalleproductComponent implements OnInit {
 
   estadocolor=true;
   estadotalla=true;
+  tipodeventa:string;
+  precio:number;
+  preciodescuento:number;
   
 
 
@@ -109,6 +112,10 @@ obtenerproducto(){
           this.fotoproduct=doc.data().fotouno;
           this.valorcolor=doc.data().etiquetacolor;
           this.valortalla=doc.data().etiquetatalla; 
+          this.tipodeventa=doc.data().tipoventa;
+         // this.precio=doc.data().precio;
+          this.preciodescuento=doc.data().preciodescuento;
+
           
 
       } else {
@@ -190,33 +197,75 @@ capturarcantidad(cantidad:string){
 //esta es la funcion para añadir al carrito de compras
 
 async anadir(content){
+
   var record=this.producto[0].data;
   var id:string; 
 
-  //obtengo el id de usuario
-  this.afAuth.auth.onAuthStateChanged(firebaseuser=>{     
-          
-    console.log("el usuario autenticado",firebaseuser.uid);
-    id=firebaseuser.uid;
-    record["usuario"]=id;
+  if (this.tipodeventa=="oferta"){
+    record["precio"]=this.preciodescuento;
+              //obtengo el id de usuario
+            this.afAuth.auth.onAuthStateChanged(firebaseuser=>{     
+                    
+              console.log("el usuario autenticado",firebaseuser.uid);
+              id=firebaseuser.uid;
+              record["usuario"]=id;
 
-            this.carritoservice.createproductocarrito(record).then((result)=>{
+                      this.carritoservice.createproductocarrito(record).then((result)=>{
 
-              //para abrir el modal de aviso
-              this.modalService.open(content);
+                        //para abrir el modal de aviso
+                        this.modalService.open(content);
 
-              console.log("producto agregado a carrito correctamente");
-              
+                        console.log("producto agregado a carrito correctamente");
+                        
+                      })
+                    .catch((err)=>{
+                        console.log("no se puedo agregar al carrito");
+                      
+                    })
+
+
             })
-          .catch((err)=>{
-              console.log("no se puedo agregar al carrito");
-            
-          })
+
+
+
+
+    
+  } else{
+
+          //obtengo el id de usuario
+        this.afAuth.auth.onAuthStateChanged(firebaseuser=>{     
+                
+          console.log("el usuario autenticado",firebaseuser.uid);
+          id=firebaseuser.uid;
+          record["usuario"]=id;
+
+                  this.carritoservice.createproductocarrito(record).then((result)=>{
+
+                    //para abrir el modal de aviso
+                    this.modalService.open(content);
+
+                    console.log("producto agregado a carrito correctamente");
+                    
+                  })
+                .catch((err)=>{
+                    console.log("no se puedo agregar al carrito");
+                  
+                })
 
 
   })
 
 
+
+
+
+
+  }
+
+
+  
+
+ 
   
 
   

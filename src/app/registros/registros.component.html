@@ -1,11 +1,5 @@
-<br><br><br><br>
 
-
-
-
-
-
-  <div class="container">
+  <div class="container mt-5">
       <div class="row justify-content-center">
           <div class="col-sm col-xl-5 col-md-5 justify-content-center" >
               <!-- Bootstrap CSS -->
@@ -35,22 +29,22 @@
                                 ya que estos seran usados para el envio de productos.
                             </label>
                             <div class="form-group">
-                                <label for="formGroupExampleInput" class="aviso">Nombres:</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                                <label for="formGroupExampleInput" class="aviso" >Nombres:</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" [(ngModel)]="nombres">
 
                                 <label for="formGroupExampleInput" class="aviso">Apellidos:</label>
-                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" [(ngModel)]="apellidos">
                                  
                                  <div class="row">
                                      <div class="col">
                                         <label for="formGroupExampleInput" class="aviso">Fecha de nacimiento:</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="dd/mm/aa">
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="dd/mm/aaaa" mask="00/00/0000" [(ngModel)]="fechadenacimiento">
 
                                      </div>
 
                                      <div class="col">
                                         <label for="formGroupExampleInput" class="aviso">Numero de telefono:</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput">
+                                        <input type="number" class="form-control" id="formGroupExampleInput" [(ngModel)]="numerodetelefono">
                                      </div>
 
                                  </div>
@@ -74,14 +68,14 @@
                                  <br>
                                  
                                  <label for="formGroupExampleInput" class="aviso" >Direccion:</label>
-                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="{{address}}">
+                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="{{address}}" [(ngModel)]="direccion">
                                  
                                  <label for="exampleFormControlInput1" class="aviso">correo electronico: </label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ejemplo@gmail.com">
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ejemplo@gmail.com" [(ngModel)]="correo2">
 
                                 
-                                <label for="exampleInputPassword1" class="aviso">Contraseña:</label>
-                                <input type="password" class="form-control">
+                                <label for="exampleInputPassword1" class="aviso" >Contraseña:</label>
+                                <input type="password" class="form-control" [(ngModel)]="contrasena2">
                                 <label for="exampleInputPassword1" class="aviso">Confirmar contraseña:</label>
                                 <input type="password" class="form-control">
                                 <br>
@@ -90,8 +84,11 @@
                                   <label class="form-check-label" for="exampleCheck1" class="aviso">Acepto los <a href="" >terminos y condiciones</a> de privacidad </label>
                                 </div>
 
+                                <!-- routerLink="/verificarusuario" -->
                                 <div class="d-flex justify-content-center">
-                                  <button type="submit" class="btn botoninicio" routerLink="/verificarusuario">REGISTRARME</button>
+                                  <button type="submit" class="btn botoninicio" (click)="registro()">REGISTRARME</button>               
+                                  
+                                  
 
                                 </div>
                                 
@@ -115,17 +112,17 @@
                     <div role="tabpanel" class="tab-pane in active" id="sesion">
                         
                             <div class="form-group">
-                              <label for="exampleInputEmail1" style="color:#7B90A3">correo electronico</label>
-                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ejemplo@gmail.com">
+                              <label for="exampleInputEmail1" style="color:#7B90A3" >correo electronico</label>
+                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ejemplo@gmail.com" [(ngModel)]="correo">
                               
                             </div>
                             <div class="form-group">
-                              <label for="exampleInputPassword1" style="color:#7B90A3">Contraseña</label>
-                              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="contraseña">
+                              <label for="exampleInputPassword1" style="color:#7B90A3" >Contraseña</label>
+                              <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="contrasena">
                             </div>
                             <br>
                             <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn botoninicio">Iniciar Sesion</button>            
+                                <button type="submit" class="btn botoninicio" (click)="iniciarsesion()">Iniciar Sesion</button>            
                                 
                                 
                             </div>
@@ -133,7 +130,7 @@
                                 <a href="www.ayniscript.com" style="color:#009CC7">olvide mi contraseña</a>
                             </div>
                             
-                            
+                         
                           
 
                     </div>

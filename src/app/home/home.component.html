@@ -82,34 +82,42 @@
         <div class="card-body border-top">
           
           <span class="card-title  titulosproductos">{{product.data.titulo}}</span><br>
-          <label class="textoprecio">${{product.data.precio}}</label>     
-              <div class="form-row row-estrellitas">
-                 <div class="col-7" style="text-align:left;">
-                  
-                  <star-rating  class="estrellitas" value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
-  
-                 </div>
-                 <div class="col-2">
-                    <div class="container">
-                      <i class="fas fa-clipboard-list  pt-3 list"></i>
-                    </div>
-                     
-  
-                 </div>
-                 <div class="col-3    my-auto d-flex justify-content-end col" style="text-align: right;">                   
-  
-                      <span class="fa-stack fa-lg">                      
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fas fa-shopping-cart fa-stack-1x" style="color:white;"></i>
-                      </span>
-                       
-                      
-                     
-                 </div>
-              </div>               
+          <label class="textoprecio">${{product.data.preciodescuento}}</label>     
+                         
   
         
         </div>
+        <!--footer del card-->
+        <div class="card-footer text-muted">
+              <div class="form-row row-estrellitas">
+                <div class="col-7" style="text-align:left;">
+                
+                <star-rating  class="estrellitas" value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
+
+                </div>
+                <div class="col-2">
+                  <div class="container">
+                    <i class="fas fa-clipboard-list  pt-3 list"></i>
+                  </div>
+                    
+
+                </div>
+                <div class="col-3    my-auto d-flex justify-content-end col" style="text-align: right;">                   
+
+                    <span class="fa-stack fa-lg">                      
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fas fa-shopping-cart fa-stack-1x" style="color:white;"></i>
+                    </span>
+                      
+                    
+                    
+                </div>
+            </div>   
+        </div>
+        <!--fin del footer-->
+
+
+
       </div>
 
     </div>
@@ -139,39 +147,45 @@
 
   <div class="form-row">
     <div class="col  d-flex justify-content-center align-content-center" *ngFor="let product of collectionNormal">
-      <div class="card card-productos">
-        <img class="card-img-top img-fluid imagen" src="{{product.fotouno}}" alt="Card image cap" style="border-radius: 1rem;">
+      <div class="card card-productos" [routerLink]="['/detallesproducto',product.iud]">
+        <img class="card-img-top img-fluid imagen" src="{{product.data.fotouno}}" alt="Card image cap" style="border-radius: 1rem;">
         <div class="card-body border-top">
           
-          <span class="card-title  titulosproductos">{{product.titulo}}</span><br>
-          <label class="textoprecio">${{product.precio}}</label>     
-              <div class="form-row row-estrellitas">
-                 <div class="col-7 " style="text-align:left;">
-                  
-                  <star-rating  value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
-  
-                 </div>
-                 <div class="col-2">
-                    <div class="container">
-                      <i class="fas fa-clipboard-list  pt-3"></i>
-                    </div>
+          <span class="card-title  titulosproductos">{{product.data.titulo}}</span><br>
+          <label class="textoprecio">${{product.data.precio}}</label>     
                      
   
-                 </div>
-                 <div class="col-3   my-auto d-flex justify-content-end col" style="text-align: right;">                   
-  
+        
+        </div>
+
+        <!--footer del card-->
+              <div class="card-footer text-muted">
+                <div class="form-row row-estrellitas">
+                  <div class="col-7" style="text-align:left;">
+                  
+                  <star-rating  class="estrellitas" value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
+
+                  </div>
+                  <div class="col-2">
+                    <div class="container">
+                      <i class="fas fa-clipboard-list  pt-3 list"></i>
+                    </div>
+                      
+
+                  </div>
+                  <div class="col-3    my-auto d-flex justify-content-end col" style="text-align: right;">                   
+
                       <span class="fa-stack fa-lg">                      
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fas fa-shopping-cart fa-stack-1x" style="color:white;"></i>
                       </span>
-                       
+                        
                       
-                     
-                 </div>
-              </div>               
-  
-        
-        </div>
+                      
+                  </div>
+              </div>   
+          </div>
+          <!--fin del footer-->
       </div>
 
     </div>   
@@ -193,39 +207,45 @@
 
   <div class="form-row">
     <div class="col  d-flex justify-content-center align-content-center" *ngFor="let product of collectionPopulate">
-      <div class="card card-productos">
-        <img class="card-img-top img-fluid imagen" src="{{product.fotouno}}" alt="Card image cap" style="border-radius: 1rem;">
+      <div class="card card-productos" [routerLink]="['/detallesproducto',product.iud]">
+        <img class="card-img-top img-fluid imagen" src="{{product.data.fotouno}}" alt="Card image cap" style="border-radius: 1rem;">
         <div class="card-body border-top">
           
-          <span class="card-title  titulosproductos">{{product.titulo}}</span><br>
-          <label class="textoprecio">${{product.precio}}</label>     
-              <div class="form-row row-estrellitas">
-                 <div class="col-7 " style="text-align:left;">
+          <span class="card-title  titulosproductos">{{product.data.titulo}}</span><br>
+          <label class="textoprecio">${{product.data.precio}}</label>     
+                      
+  
+        
+        </div>
+          <!--footer del card-->
+              <div class="card-footer text-muted">
+                <div class="form-row row-estrellitas">
+                  <div class="col-7" style="text-align:left;">
                   
-                  <star-rating  value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
-  
-                 </div>
-                 <div class="col-2">
+                  <star-rating  class="estrellitas" value="3" totalstars="5" checkedcolor="gold" uncheckedcolor="grey" size="20px" readonly="false" (rate)="onRate($event)"></star-rating>
+
+                  </div>
+                  <div class="col-2">
                     <div class="container">
-                      <i class="fas fa-clipboard-list  pt-3"></i>
+                      <i class="fas fa-clipboard-list  pt-3 list"></i>
                     </div>
-                     
-  
-                 </div>
-                 <div class="col-3   my-auto d-flex justify-content-end col" style="text-align: right;">                   
-  
+                      
+
+                  </div>
+                  <div class="col-3    my-auto d-flex justify-content-end col" style="text-align: right;">                   
+
                       <span class="fa-stack fa-lg">                      
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fas fa-shopping-cart fa-stack-1x" style="color:white;"></i>
                       </span>
-                       
+                        
                       
-                     
-                 </div>
-              </div>               
-  
-        
-        </div>
+                      
+                  </div>
+              </div>   
+          </div>
+          <!--fin del footer-->
+
       </div>
 
     </div>   
@@ -261,6 +281,10 @@
       <br>
 
       <button type="button" class="btn btn-success" routerLink="/paneladministracion">panel de administracion</button>
+      <br>
+      <button type="button" class="btn btn-success" (click)="toastrshow()">probar las notificaciones</button>
+      <br>
+      <button type="button" class="btn btn-success" routerLink="/perfiltienda">perfil tienda</button>
 
   </div>
 

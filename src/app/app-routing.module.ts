@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -9,9 +10,10 @@ import {VerificarusuarioComponent} from './verificarusuario/verificarusuario.com
 import { CodigoverificadoComponent} from './codigoverificado/codigoverificado.component';
 import {VerificartiendaComponent} from './verificartienda/verificartienda.component';
 import {TiendaverificadoComponent} from './tiendaverificado/tiendaverificado.component';
-import {PaneladministracionComponent} from './paneladministracion/paneladministracion.component'
-import {DetalleproductComponent} from './detalleproduct/detalleproduct.component'
-import {DetallesCategoriaComponent} from './detalles-categoria/detalles-categoria.component'
+import {PaneladministracionComponent} from './paneladministracion/paneladministracion.component';
+import {DetalleproductComponent} from './detalleproduct/detalleproduct.component';
+import {DetallesCategoriaComponent} from './detalles-categoria/detalles-categoria.component';
+import {PerfiltiendaComponent} from './perfiltienda/perfiltienda.component';
 
 //componentes hijos de panel de administracion
 import {MislistasComponent} from './mislistas/mislistas.component';
@@ -39,6 +41,7 @@ const routes: Routes = [
   {path:'imprimir-recibo', component:ImprimirReciboComponent},
   {path:'detallesproducto/:id', component:DetalleproductComponent},
   {path:'detallescategoria/:id', component:DetallesCategoriaComponent},
+  {path:'perfiltienda', component:PerfiltiendaComponent},
   
 
 

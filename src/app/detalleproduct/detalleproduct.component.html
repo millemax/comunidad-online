@@ -51,7 +51,8 @@
                 </div>  
 
                 <div class="row">
-                    <label class="textoprecio">USD {{product.data.precio}}</label>
+                    <label class="textoprecio" *ngIf="product.data.preciodescuento == 0">USD {{product.data.precio}}</label>
+                    <label class="textoprecio" *ngIf="product.data.preciodescuento > 0">USD {{product.data.preciodescuento}}</label>
                 </div>
 
                 <div class="row" *ngIf="estadocolor">
@@ -130,14 +131,10 @@
             </div>
           </ng-template>
        
-    </div>
-   
-
-    
+    </div>    
       
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
 

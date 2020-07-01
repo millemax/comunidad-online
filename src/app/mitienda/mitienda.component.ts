@@ -17,6 +17,9 @@ import {ProductoService} from '../servicios/productos/producto.service';
 import { storage } from 'firebase';
 import * as firebase from 'firebase/app';
 
+//modulo  para las alertas
+import { ToastrService } from 'ngx-toastr';
+
 
 
 
@@ -121,7 +124,7 @@ export class MitiendaComponent implements OnInit {
 
   
 
-  constructor(private fireService: CategoriaService, private productService:ProductoService ) { }
+  constructor(private fireService: CategoriaService, private productService:ProductoService , private toastr: ToastrService) { }
 
 
   ngOnInit() {
@@ -588,11 +591,13 @@ export class MitiendaComponent implements OnInit {
 
     this.productService.createproduct(record).then((resp)=>{
 
-        console.log("datos enviados correctamente a firebase");
+        this.toastr.success('producto cargado','exito!');
+        this.titulo=""
     
     })
     .catch((err)=>{
       console.log(err);
+      this.toastr.error('no puedo cargar asegurate de llenar todos los campos','error :( ');
     })
 
   }

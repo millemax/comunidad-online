@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 //importar models user
-import {UserI} from '../models/user.interface'
+
 import { AngularFireAuth } from '@angular/fire/auth';
-import { observable, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import * as firebase from 'firebase/app';
 
 
 @Injectable({
@@ -10,16 +11,16 @@ import { observable, Observable } from 'rxjs';
 })
 export class LoginService {
   //para obtenerdatos deususario
-  public userData:Observable<firebase.User>;
+
   
   constructor(private afAuth:AngularFireAuth) { 
     //
-    this.userData = afAuth.authState;
+    
   }
 
   //metodo para logear
-  loginByEmail(user:UserI){
-    const {email,password} = user;
+  loginByEmail(email:any,password:any){
+    
     return this.afAuth.auth.signInWithEmailAndPassword(email,password)
     
   }
@@ -31,13 +32,43 @@ export class LoginService {
 
   }
 
-  //status de login podemos ver en que estado esta logueado
-  statuslogin(){   
+  //transferiri un usuario anonimo a una cuenta de gmail se crea esa cuenta con ese usuario
+  trasferiruser(email,password){
+    var credential = firebase.auth.EmailAuthProvider.credential(email, password);
+     return firebase.auth().currentUser.linkWithCredential(credential)
+  }
 
-        return this.afAuth.auth.onAuthStateChanged(firebaseuser=>{     
-          
-          console.log("el usuario autenticado",firebaseuser.uid);
-        })
+
+  
+
+  //verificar estado de usuario devolvera true si el usuario es anonimo y false si el usuario esta autenticado
+  verificarestadousuario(){
+    return new Promise((resolved, reject)=>{
+
+      this.afAuth.auth.onAuthStateChanged( firebaseuser=>{  
+        var estadouser= firebaseuser.isAnonymous;     
+           
+        resolved(estadouser);                      
+            
+          });
+        
+
+      })    
+
+  }
+
+  userexists(){
+    return new Promise((resolved, reject)=>{
+
+      this.afAuth.auth.onAuthStateChanged( firebaseuser=>{              
+           
+        resolved(firebaseuser);                      
+            
+          });
+        
+
+      })    
+
   }
 
   

@@ -1,0 +1,88 @@
+<body>
+  <img src="/assets/images/banner1.png" class="img-fluid" alt="Responsive image" style="height: 10rem; width: 90rem;">
+  <div>
+      <img src="/assets/images/logo.png" alt="..." class="rounded-circle" style="height: 140px; width: 140px;background-color: white; position:absolute; top: 10.5rem; left: 2rem;" >
+  </div>
+
+  <div class="container-fluid" >
+      <div class="row">
+        <div class="col-md-2 col-12 " style="position: relative; top: 90px;">
+          <div class="row ml-1">
+              <div class=" col-md-12 col-6 ">
+                <h5>Artemi rose</h5>
+                <div>
+                  <i class="fas fa-file-alt mr-2" ></i>
+                  <span><small>2345678909876</small> </span>
+                </div>
+                <div>
+                  <i class="fas fa-map-marker-alt mr-2"></i>
+                  <span><small>AV Perú 345</small> </span>
+                </div>
+                <div>
+                  <i class="fas fa-phone-volume mr-2"></i>
+                  <span><small>987654321</small></span>
+                </div>
+                <div>
+                  <i class="fas fa-user mr-2"></i>
+                  <span><small>jhonatan Quinde</small> </span>
+                </div>
+                <div>
+                  
+                  <i class="fab fa-internet-explorer mr-1"></i>
+                  <span><small> www.ayniscript.com</small> </span>
+                </div>
+
+              </div>
+              <div class=" col-md-12 col-6">
+                <br>
+                <p>
+                  tienda de ropas exclusiva para mujeres, prendas importadas
+                </p>
+              </div>
+              <div class=" col-md-12 col-12 ">
+                <br>
+                <h5 class="font-weight-bold ">Ordenar por: </h5>
+                <div class="row ml-2 contenedorCheckbox">
+                  <div class=" col-4 col-md-12 custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1" value="mayor"[checked]="currentlyChecked === check_box_type.mayor" (click)="selectCheckBoxOrdenar(check_box_type.mayor)" (change)="checkboxesMayor($event.target.checked); validar($event.target.id)" >
+                    <label class="custom-control-label checkOrdenar" for="customCheck1"> Mayor precio</label>
+                  </div>
+                  <div class=" col-4 col-md-12 custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="customCheck2" value="menor"[checked]="currentlyChecked === check_box_type.menor" (click)="selectCheckBoxOrdenar(check_box_type.menor)" (change)="checkboxesMenor($event.target.checked); validar($event.target.id)">
+                      <label class="custom-control-label checkOrdenar" for="customCheck2"> Menor precio</label>
+                  </div>
+                  <div class=" col-4 col-md-12  custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="customCheck3" value="liquidacion" [checked]="currentlyChecked === check_box_type.liquidacion" (click)="selectCheckBoxOrdenar(check_box_type.liquidacion)" (change)="checkboxesLiquidacion($event.target.checked); validar($event.target.id)" >
+                      <label class="custom-control-label checkOrdenar" for="customCheck3"> Liquidación</label>
+                  </div>
+                </div>
+
+              </div>
+
+          </div>
+
+        </div>
+        <div class="col-md-10 col-12 border contenedor-tienda ">
+          <h5 class="font-weight-bold ">Nuestra Tienda </h5>
+            <div class="row">
+              <div class="col">
+                <img src="/assets/images/banner1.png" class="img-fluid foto-tienda" alt="Responsive image" >
+              </div>
+              <div class="col">
+                <img src="/assets/images/banner1.png" class="img-fluid foto-tienda" alt="Responsive image" >
+              </div>
+              <div class="col">
+                <img src="/assets/images/banner1.png" class="img-fluid foto-tienda" alt="Responsive image" >
+              </div>
+              <div class="col">
+                <img src="/assets/images/banner1.png" class="img-fluid foto-tienda" alt="Responsive image" >
+              </div>
+            </div>
+            <br>
+
+            <h5 class="font-weight-bold ">Nuestros Productos</h5>
+
+        </div>
+      </div>
+  </div>
+</body>
