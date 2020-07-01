@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { RegistrosComponent } from './registros/registros.component';
 import { HomeComponent } from './home/home.component';
@@ -35,7 +34,7 @@ PdfMakeWrapper.setFonts(pdfFonts);
 /*firebase*/
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 //gestionarsubida de imagenes 
-import {AngularFireStorageModule,StorageBucket} from '@angular/fire/storage';
+import {AngularFireStorageModule,StorageBucket,BUCKET} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 
 import { environment } from 'src/environments/environment';
@@ -53,7 +52,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 //Formularioreactivo
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HomeModule } from './home/home.module';
-import { RegistrotiendaComponent } from './registrotienda/registrotienda.component';
+
 import { VerificarusuarioComponent } from './verificarusuario/verificarusuario.component';
 import { CodigoverificadoComponent } from './codigoverificado/codigoverificado.component';
 import { VerificartiendaComponent } from './verificartienda/verificartienda.component';
@@ -62,9 +61,9 @@ import { PaneldecontrolComponent } from './paneldecontrol/paneldecontrol.compone
 
 //importamos el sidebar de
 import {SidebarModule} from 'ng-sidebar';
-
-
-
+//tiendas
+import { RegistrotiendaComponent } from './registrotienda/registrotienda.component';
+import { ListatiendasComponent } from './listatiendas/listatiendas.component';
 
 //componentes dentro del panel de administracion
 import { MisordenesComponent } from './misordenes/misordenes.component';
@@ -101,9 +100,11 @@ import { ImprimirReciboComponent } from './imprimir-recibo/imprimir-recibo.compo
 import { DetalleproductComponent } from './detalleproduct/detalleproduct.component';
 
 
-//el carrousel
 
+//el carrousel
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+
 import { DetallesCategoriaComponent } from './detalles-categoria/detalles-categoria.component';
 
 
@@ -144,6 +145,9 @@ import { PerfiltiendaComponent } from './perfiltienda/perfiltienda.component';
     DetalleproductComponent,
     DetallesCategoriaComponent,
     PerfiltiendaComponent,
+    ListatiendasComponent,
+   
+    
     
   ],
   imports: [
@@ -163,6 +167,7 @@ import { PerfiltiendaComponent } from './perfiltienda/perfiltienda.component';
     SidebarModule.forRoot(),
 
     //para el carrousel
+    BrowserAnimationsModule,
     CarouselModule,
 
     //para el modal ng-template
@@ -188,7 +193,8 @@ import { PerfiltiendaComponent } from './perfiltienda/perfiltienda.component';
     ReactiveFormsModule,
     FormsModule,
     DeviceDetectorModule.forRoot(),
-    HomeModule
+    HomeModule,
+    
   ],
   providers: [
     {provide: StorageBucket,useValue:'gs://comunidadbd-2053d.appspot.com'}

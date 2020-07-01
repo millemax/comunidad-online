@@ -566,7 +566,7 @@ export class MitiendaComponent implements OnInit {
       espesor: this.espesor,
       peso:this.peso,
       precio: this.precio,
-      categoria: this.valorcategoria,
+      categoria: this.valorcategoria, 
       subcategoria: this.valorsubcategoria,
       tiempoentrega: this.tiempoEntrega,
       tipoventa:this.valortipoventa,

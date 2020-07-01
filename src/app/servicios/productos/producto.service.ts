@@ -49,7 +49,7 @@ export class ProductoService {
     return refproduct.collection('productos').where(variabledb, "==", tipo)
     
   }
-
+           
   //recuperar productos mas vendidos en el servico
   readproductpopulate(){
     var refproduct = firebase.firestore(); 
