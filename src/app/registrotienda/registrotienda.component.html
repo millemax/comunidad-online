@@ -7,47 +7,44 @@
         <div class="col-8 col-sm-8 col-md-8">
           <h3 class=" titulo text-left" style="border-bottom: 3px solid;">REGISTRO DE TIENDA</h3>
         </div>
-        <div class="col-4 col-sm-4 col-md-4 d-flex justify-content-end align-items-center " >
-          <!-- Last name -->
-         <a href="" class="enlace"><small >Ya tengo un codigo</small></a> 
+        <div class="col-4 col-sm-4 col-md-4 d-flex justify-content-end align-items-center ">
+          <!-- Codigo -->
+          <a href="" class="enlace"><small>Ya tengo un codigo</small></a>
         </div>
       </div>
 
       <div class="form-row mb-1">
         <div class="col">
-          <!-- First name-->
+          <!-- fin codigo-->
+          <!-- nombre legal-->
           <label class="aviso">Nombre legal:</label>
-          <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
+          <input type="text" id="defaultRegisterFormFirstName" [(ngModel)]="nombrelegal" class="form-control"
+            placeholder="First name">
         </div>
       </div>
       <div class="form-row mb-1">
         <!-- Ruc-->
         <div class="col">
           <label class="aviso">RUC:</label>
-          <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Ruc">
+          <input type="text" id="defaultRegisterFormLastName" [(ngModel)]="ruc" class="form-control" placeholder="Ruc">
         </div>
         <!-- E-mail -->
         <div class="col form-row">
           <label class="aviso"> Categoría:</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option selected>Elige...</option>
-            <option value="1">Uno</option>
-            <option value="2">Dos</option>
-            <option value="3">Tres</option>
-            <option value="4">Cuatro</option>
-
+          <select class="form-control" id="exampleFormControlSelect1" (change)="cargarcategoria($event.target.value)">
+            <option *ngFor="let categoria of collectionCategorias">{{categoria}}</option>
           </select>
         </div>
       </div>
-      <!-- Phone number -->
+      <!-- contact person-->
       <label class="aviso ">Persona de contacto:</label>
-      <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Contact Person "
-        aria-describedby="defaultRegisterFormPhoneHelpBlock">
+      <input type="text" id="defaultRegisterPhonePassword" [(ngModel)]="personacontacto" class="form-control"
+        placeholder="Contact Person " aria-describedby="defaultRegisterFormPhoneHelpBlock">
 
       <!-- Phone number -->
       <label class="aviso">Teléfono:</label>
-      <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number"
-        aria-describedby="defaultRegisterFormPhoneHelpBlock">
+      <input type="text" id="defaultRegisterPhonePassword" [(ngModel)]="telefono" class="form-control"
+        placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
 
       <!-- Direcction -->
       <label class="aviso">Dirección:</label>
@@ -75,23 +72,12 @@
         <!-- Grid column1 -->
         <div class="col col-xl col-md logo-tienda text-center border" style="border-radius: 5px;">
 
-          <input type="file" class="d-none" (change)="onLogoSelected($event)" #logoInput>
-          <img [src]="logoSelected || '/assets/images/tiendalogo.png'" class="img-fluid " style="border-radius: 3px;"
-            alt="" (click)="logoInput.click()">
+          <input type="file" class="d-none" (change)="onFotoceroSelected($event)" #fotoceroInput>
+          <img [src]="fotoceroSelected || '/assets/images/tiendafoto.png'" class="img-fluid "
+            style="border-radius: 3px;" alt="" (click)="fotoceroInput.click()">
 
         </div>
         <!-- Grid column -->
-
-        <!-- Grid column2 -->
-        <div class="col col-xl col-md img1-tienda text-center border mr-2 ml-2" style="border-radius: 5px;">
-          <input type="file" class="d-none" (change)="onFotoSelected($event)" #fotoInput>
-          <img [src]="fotoSelected || '/assets/images/tiendafoto.png'" class="img-fluid" alt=""
-            (click)="fotoInput.click()">
-
-        </div>
-        <!-- Grid column -->
-
-
         <!-- Grid column -->
         <div class="col col-xl col-md img1-tienda text-center border mr-2 ml-2" style="border-radius: 5px;">
           <input type="file" class="d-none" (change)="onFotoSelected($event)" #fotoInput>
@@ -100,17 +86,6 @@
 
         </div>
         <!-- Grid column -->
-
-
-        <!-- Grid column -->
-        <div class="col col-xl col-md img1-tienda text-center border mr-2 ml-2" style="border-radius: 5px;">
-          <input type="file" class="d-none" (change)="onFotoSelected($event)" #fotoInput>
-          <img [src]="fotoSelected || '/assets/images/tiendafoto.png'" class="img-fluid" alt=""
-            (click)="fotoInput.click()">
-
-        </div>
-        <!-- Grid column -->
-
         <!-- Grid column -->
         <div class="col col-xl col-md img2-tienda text-center border mr-2" style="border-radius: 5px;">
           <input type="file" class="d-none" (change)="onFotounoSelected($event)" #fotounoInput>
@@ -119,7 +94,6 @@
 
         </div>
         <!-- Grid column -->
-
         <!-- Grid column 4-->
         <div class="col col-xl col-md img3-tienda text-center border " style="border-radius: 5px;">
           <input type="file" class="d-none" (change)="onFotodosSelected($event)" #fotodosInput>
@@ -128,14 +102,13 @@
 
         </div>
         <!-- Grid column -->
-
-        <!-- Grid column 5-->
-        <!-- Grid column video de la tienda --> 
+        <!-- Grid column video de la tienda -->
         <div class="col col-xl col-md img3-tienda text-center ml-2 border embed-responsive embed-responsive-16by9 "
           style="border-radius: 5px;">
-        
-          <iframe class=" video-fluid border img-thumbnail embed-responsive-item autoplay loop controls muted" [src]='video' type="video/mp4"></iframe>
-        
+
+          <iframe class=" video-fluid border img-thumbnail embed-responsive-item autoplay loop controls muted"
+            [src]='video' type="video/mp4"></iframe>
+
         </div>
 
         <!-- Grid column -->
@@ -146,45 +119,131 @@
       <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de video (opcional):</label>
       <div class="input-group">
         <input type="text" (ngModel)="video" #urlvideo (change)="pasarurlvideo(urlvideo)" class="form-control"
-          placeholder="Ejemplo: https://www.youtube..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append justify-content-center" >
-          <span class="input-group-text "  id="basic-addon2"><i class="fas fa-film purple-text" style="width: 2.5rem;"></i></span>
-        </div>
-      </div>
-      <!--Subir documentos-->
-
-      <label class="aviso" style="margin-top: 0.5rem;"> Subir documentos legales (opcional):</label>
-      <div class="input-group  border " style="border-radius: 5px;"  >
-        <!--
-        <input type="file" class="form-control  " style="opacity: 0;" placeholder="Elegir archivo" aria-label="Recipient's username"
-          aria-describedby="basic-addon2">-->
-        <div class="custom-file float-left" >
-          <input type="file" class="custom-file-input"  lang="es" >
-        <label class="custom-file-label" for="customFileLang"></label>
-        </div>
-        <div class="input-group-append" style="float: right; position: abolute; left: 5rem;">
-          <span class="input-group-text" id="basic-addon2"><i class="fas fa-cloud-upload-alt purple-text" style="width: 2.5rem;"></i></span>
+          placeholder="https://www.youtube..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append justify-content-center">
+          <span class="input-group-text " id="basic-addon2"><i class="fas fa-film purple-text"
+              style="width: 2.5rem;"></i></span>
         </div>
       </div>
 
-      <!--Fin subir documentos-->
+<!--       ------------------------------Subir documentos
+      <div class="dropzone" appDropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)"
+        [class.hovering]="isHovering">
+
+        <img src="/assets/images/uploaddoc.png" width="63" height="64" viewBox="0 0 63 64" >
+        
+        <small class="">Arrastra tu archivo aqui</small>
+        <div class="file">
+         <label  class="file-label" for="fileDropRef" (click)="fileDropRef.click()"> 
+
+          <span> Buscar archivo</span>
+
+          <input class="file-input" #fileDropRef type="file" (change)="onDrop($event.target.files)" >
+                
+        
+        </label> 
+        </div>
+      </div>
+
+      <p><small>Subidos</small></p>
+
+      <div *ngFor="let file of files">
+        
+        llamando a componente donde sube documentos
+        <app-upload-task [file]="file"></app-upload-task>
+      </div>
+
+      -------------------------------------------Fin subir documentos------------- -->
+    <!--   ----------------------------------------ssubir documentos drag--------------
+      <div class="row">
+        <div class="col-md">
+          <div appNguploadDocs
+          
+              [files]="files"
+              (mouseOver)="isOverDrop = $event" 
+              [ngClass]="{'file-over':isOverDrop}"
+              
+
+          class="dropzone">
+            
+            <img src="/assets/images/uploaddoc.png" width="63" height="64" viewBox="0 0 63 64" >
+            
+            <small class="">Arrastra tu archivo aqui</small>
+            <div class="file">
+
+              <label  class="file-label" for="fileDropRef" (click)="fileDropRef.click()"> 
+                <span> Buscar archivo</span>
+                <input class="file-input" #fileDropRef type="file"  >
+              </label> 
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row" *ngFor="let file of files">
+          -----------listar documentos--------
+         
+         <div class="col "><small>{{file.name}}</small></div>
+         
+         <div class="col "><small>{{file.file.size/24/24 | number:"2.2"}}MB</small> </div>
+         <div class="col">URL</div> -->
+          <!-------------listar documentos-------
+      </div>
+      <div class="row">
+       
+          <div class="progress" >
+            <div class="progress-bar"   role="progressbar"  >
+              {{uploadPercent | number: "1.0-0"}}%
+            </div>
+          </div>
+        
+      </div>
+      <div class="container-buttons d-flex justify-content-center align-items-center">
+        <button (click)="files=[]" class="btn btn-danger" style="border-radius: 25px; height: 40px; width: 135px;"><small>Clean all</small></button>
+      </div> -->
+<!------------------------------------------ssubir documentos drag-------------->
+      <!---------------------subir un documento legal---------------------------->
+      <label class="aviso" style="margin-top: 0.5rem;"> Subir documento:</label>
+      <div class="input-group ">
+      <div class="custom-file float-left" >
+        <input type="file" class="custom-file-input"  lang="es" #obtenerdocumento (change)="onObtenerocumento($event)" >
+      <label class="custom-file-label" for="customFileLang"></label>
+      </div>  
+      <div class="input-group-append" style="float: right; position: abolute; left: 5rem;">
+        <span class="input-group-text" id="basic-addon2"><i class="fas fa-cloud-upload-alt purple-text" style="width: 2.5rem;"></i></span>
+      </div>
+    </div>
+      <!---------------------fin subir un documento legal---------------------------->
+      <!--subir enlace de web de tienda-->
+      <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de Pagina web:</label>
+      <div class="input-group">
+        <input type="text" [(ngModel)]="urlweb" class="form-control" placeholder="https://www...."
+          aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append justify-content-center">
+          <span class="input-group-text " id="basic-addon2"><i class="fas fa-globe purple-text"
+              style="width: 2.5rem;"></i></span>
+        </div>
+      </div>
+      <!--Subir fin enlace de web de tienda-->
       <!--subir enlace de facebook de tienda-->
       <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de facebook:</label>
       <div class="input-group ">
-        <input type="text"  #urlvideo (change)="pasarurlfacebook(urlvideo)" class="form-control"
-          placeholder="Ejemplo: https://www.facebook..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append justify-content-center" >
-          <span class="input-group-text "  id="basic-addon2"><i class="fab fa-facebook-f purple-text" style="width: 2.5rem;"></i></span>
+        <input type="text" [(ngModel)]="urlfacebook" class="form-control" placeholder="https://www.facebook..."
+          aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append justify-content-center">
+          <span class="input-group-text " id="basic-addon2"><i class="fab fa-facebook-f purple-text"
+              style="width: 2.5rem;"></i></span>
         </div>
       </div>
       <!--Subir fin enlace de facebook de tienda-->
       <!--subir enlace de twiter de tienda-->
       <label class="aviso" style="margin-top: 0.5rem;"> Subir enlace de twiter:</label>
       <div class="input-group mb-3">
-        <input type="text"  #urlvideo (change)="pasarurltwiter(urlvideo)" class="form-control"
-          placeholder="Ejemplo: https://www.twiter..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append justify-content-center" >
-          <span class="input-group-text "  id="basic-addon2"><i class="fab fa-twitter purple-text" style="width: 2.5rem;"></i></span>
+        <input type="text" [(ngModel)]="urltwiter" class="form-control" placeholder=" https://www.twiter..."
+          aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append justify-content-center">
+          <span class="input-group-text " id="basic-addon2"><i class="fab fa-twitter purple-text"
+              style="width: 2.5rem;"></i></span>
         </div>
       </div>
       <!--Subir fin enlace de twiter de tienda-->
@@ -198,8 +257,8 @@
 
       <!-- Sign up button -->
       <div class="d-flex justify-content-center">
-        <button type="submit" class="btn botonregistrarme ">REGISTRARME</button>
+        <button type="submit" class="btn botonregistrarme " (click)="agregarTienda()">REGISTRARME</button>
       </div>
-      
+
     </div>
   </div>

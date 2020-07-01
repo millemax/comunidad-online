@@ -8,16 +8,22 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 
 //importamos el servicio de autenticacion 
 import {LoginService} from '../servicios/login.service'
-import * as firebase from 'firebase';
+
 
 //modulo  para las alertas
 import { ToastrService } from 'ngx-toastr';
+
+//importamo el crud para cargar tiendas
+import {RegistrotiendaService} from '../servicios/registrotienda/registrotienda.service';
+
+
 
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  
 })
 export class HomeComponent implements OnInit {
 
@@ -62,8 +68,11 @@ export class HomeComponent implements OnInit {
   //collection productos Populares
   collectionPopulate=[];
 
+  //collection tiendas cercanas
+  collectionTiendascercanas=[];
+
   constructor (private crudCategoria: CategoriaService, private crudProductos: ProductoService, 
-    private loginservice: LoginService, private toastr: ToastrService){
+    private loginservice: LoginService, private toastr: ToastrService, private CrudTiendas: RegistrotiendaService){
 
   }
  
@@ -73,7 +82,7 @@ export class HomeComponent implements OnInit {
     this.recuperarProductosoferta();
     this.recuperarProductos();
     this.productospopulares();
-    
+    this.recuperarTiendas();
    
 
   } 
@@ -171,7 +180,7 @@ export class HomeComponent implements OnInit {
         );
       })
     });
-    console.log("categorias : ",this.collectionCategorias);
+    console.log("categorias hola : ",this.collectionCategorias);
 
   } 
 
@@ -208,6 +217,32 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
 
   }
   
+  //recuperar tiendas
+  recuperarTiendas(){
+    this.CrudTiendas.readtienda().get().then((resp)=>{
+      resp.forEach((datos)=>{
+        this.collectionTiendascercanas.push({
+          iud: datos.id,
+          data:datos.data()
+        });
+
+      });
+
+      
+    })
+    .catch((err)=>{
+      console.log("no se puede recuperar las tiendas");
+    })
+    console.log("la tienda",this.collectionTiendascercanas)
+
+  }
+  
+
+
+
+
+
+
   
   
 

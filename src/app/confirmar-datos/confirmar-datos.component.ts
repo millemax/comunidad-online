@@ -12,7 +12,7 @@ import { CarritoService } from '../servicios/carrito/carrito.service';
 //importamos para enviar a la base de datos a la seccion donde  se vendieron
 import {ComprasService} from '../servicios/compras/compras.service';
 
-////modulo  para las alertas
+//modulo  para las alertas
 import { ToastrService } from 'ngx-toastr';
 
 

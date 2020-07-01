@@ -135,7 +135,6 @@
 
 <!----------------------------find de lo productos de liquidacion-------------->
 
-
 <!--------------Productos Recientemente agregados-------------------------------->
 
 <div class="container-fluid contenedor">
@@ -194,11 +193,53 @@
 </div>
 
 
-<!-----------------------fin de recintemente agregados----------->
+<!-----------------------fin de recintemente agregados--------------->
 <br><br><br>
+<!----------------------------Tiendas cercanas------------------------->
+<div class="container-fluid contenedor  mb-5 border"  style="height: 30vh;" >
+  <div class="row">
+    <div class="col-sm-3"> <span class="titulo">Tiendas cercanas</span> </div>
+  </div>
+  <br>
+
+    <owl-carousel-o [options]="customOptions" class="">
+      <ng-template carouselSlide *ngFor="let tienda of collectionTiendascercanas" >
+          <div class="container border ">
+            <div class="col-4 col-sm-4 d-flex justify-content-center align-content-center">
+              <div class="mb-3 tiendas-cercanas" style="max-width: 400px;">
+                <div class="row no-gutters">
+                  <!--------------------------------contenido en 2 columnas--------------------------------->
+                  <!--col1-->
+                  <div class="col-md-2 d-flex cologo">
+                    <img src="{{tienda.data.foto1}}" class="card-img logo-circular" alt="...">
+                  </div>
+                  <!--col2-->
+                  <div class="col-md-10 d-flex justify-content-center align-content-center">
+                    <div class="card">
+                      <!-- Card image -->
+                      <img class="card-img-top rounded-0" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/full page/2.jpg" alt="Card image cap">
+                      <!--cardbody-->
+                      <div class="card-body">
+                        <div class="form-row d-flex justify-content-center align-content-center">
+                          
+                        </div>
+                      <!--cardbody-->
+                      </div>
+                    </div>
+                  </div>
+                  <!--------------------------------fin contenido en 2 columnas--------------------------------->
+                </div>
+              </div>
+            </div>
+          </div>
+      </ng-template>  
+    </owl-carousel-o>
+
+</div> 
+<!----------------------------find de las tiendas cercanas------------------------->
 
 
-<!--productos mas populares-->
+<!-----------------------------productos mas populares----------------------------->
 <div class="container-fluid contenedor">
   <div class="row">
     <div class="col-sm-3"> <span class="titulo">Mas Populares</span> </div>
@@ -285,6 +326,8 @@
       <button type="button" class="btn btn-success" (click)="toastrshow()">probar las notificaciones</button>
 
 
+
+      <button type="button" class="btn btn-success " routerLink="/listatiendas">lista tiendas</button><br>
   </div>
 
     

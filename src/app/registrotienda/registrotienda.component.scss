@@ -1,17 +1,18 @@
 
     
 // tamaño de las letras
-$coloryelow:#FAD000;
-
+$yelow:#FAD000;
+$purple:#640dd6a9;
+$gris:#7B90A3;
 //----titulo----------
 .titulo{
-    color: $coloryelow;
+    color: $yelow;
     font-size: 168%;
     font-weight: 800;
 }
 
 .border-bottom{
-    color: $coloryelow;
+    color: $yelow;
 }
 
 // titulo en responsive
@@ -36,7 +37,7 @@ es: "Elegir"
 
 //colores del boton de iniciar Sesion
 .botonregistrarme{
-    background-color:$coloryelow;
+    background-color:$yelow;
     border-radius: 15px;
     //letra
     color:white;
@@ -45,12 +46,12 @@ es: "Elegir"
 
 // la columna que esta conteniendo todo
 .columna{
-    border-color: #7B90A3;
+    border-color:$gris;
 }
 
 // el parrafo de aviso en el registro
 .aviso{
-    color: #7B90A3;
+    color:$gris;
 
 }
 
@@ -60,3 +61,59 @@ agm-map {
     height: 300px;
 }
 
+/* //-----------------------------------dragz zone--------------------------------
+ .dropzone { 
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    min-width: auto;
+    font-weight: 200;
+    height: 200px;
+    border: 1px dashed $colorpurple;
+    border-radius: 5px;
+    background: white;
+    margin: 10px 0;
+  
+    input {
+        opacity: 0;
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+      }
+    
+
+    .file-label{
+        
+        color: white;
+        width: 120px;
+        height: 40px;
+        border-radius: 21.5px;
+        background-color: $colorpurple;
+        padding: 7px;
+                  
+    }
+    
+
+    
+  
+    
+  }
+  
+  progress::-webkit-progress-value {
+    transition: width 0.1s ease;
+    
+  }
+//--- --------------------------fin drag zone ---------------------------------- 
+.texto{
+    color: $colorpurple;
+}
+
+.file-over{
+    border: 2px solid $colorpurple;
+    color: #dadada !important;
+} */
