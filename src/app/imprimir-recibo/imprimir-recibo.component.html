@@ -22,16 +22,16 @@
 
     <div class="row" style=" justify-content: center;">
         <div class="card border-info shadow" style="width: 30rem;">
-            <div class="card-body  text-info recibo">
+            <div class="card-body  text-info recibo" *ngFor="let compra of coleccioncompras">
                 <div class="row">
                     <div class="col-4 border">Nombre</div>
-                    <div class="col-8 border">Romel Miller Huaraca Pocco</div>
+                    <div class="col-8 border">{{compra.data.nombre}} {{compra.data.apellido}}</div>
                     <div class="w-100"></div>
                     <div class="col-4 border">Telefono</div>
-                    <div class="col-8 border">987654321</div>
+                    <div class="col-8 border">{{compra.data.telefono}}</div>
                     <div class="w-100"></div>
                     <div class="col-4 border">Dirección</div>
-                    <div class="col-8 border">AV. los pinos 567</div>
+                    <div class="col-8 border">{{compra.data.direccion}}</div>
                 </div>
 
             </div>
@@ -48,51 +48,38 @@
                     <div class="col-3 "><small class="font-weight-bold">P.Total</small></div>
             
                 </div>
-                <div class="row">
-                    <div class="col-4"><small>Camisa jhon holden</small></div>
-                    <div class="col-2"><small>01</small></div>
-                    <div class="col-3"><small>$18.00</small></div>
-                    <div class="col-3"><small>$18.00</small></div>
+
+                <div *ngFor="let product of coleccioncompras">
+                    <div class="row" *ngFor="let item of product.data.productos">
+                        <div class="col-4"><small>{{item.data.titulo}}</small></div>
+                        <div class="col-2"><small>{{item.data.cantidadpedida}}</small></div>
+                        <div class="col-3"><small>{{item.data.precio}}</small></div>
+                        <div class="col-3"><small>{{item.data.cantidadpedida * item.data.precio | currency}}</small></div>
+                    </div>
+
                 </div>
-                <div class="row">
-                    <div class="col-4"><small>Camisa jhon holden</small></div>
-                    <div class="col-2"><small>01</small></div>
-                    <div class="col-3"><small>$18.00</small></div>
-                    <div class="col-3"><small>$18.00</small></div>
-                </div>
-                <div class="row">
-                    <div class="col-4"><small>Camisa jhon holden</small></div>
-                    <div class="col-2"><small>01</small></div>
-                    <div class="col-3"><small>$18.00</small></div>
-                    <div class="col-3"><small>$18.00</small></div>
-                </div>
-                <div class="row">
-                    <div class="col-4"><small>Camisa jhon holden</small></div>
-                    <div class="col-2"><small>01</small></div>
-                    <div class="col-3"><small>$18.00</small></div>
-                    <div class="col-3"><small>$18.00</small></div>
-                </div>
+                
+                
 
                 <div class="font-weight-bold row " style="border-top: 1px solid #7890A3;" >
                     <div class="col-8">TOTAL</div>
-                    <div class="col-4" style="text-align: center">$100.00</div>
+                    <div class="col-4" style="text-align: center">{{ total | currency:'':symbol: '1.0-2' }}</div>
                 </div>
                
                 <br>
                 <div class="row ">
                     <div class="col-8 col-md-9 text-right"><strong>
                     Sub Total:<br>
-                    Impuestos (IVA 12%):<br>
-                    Total:<br>
+                    Impuestos (IVA 12%):<br>                    
                     Servicio de entrega:<br>
-                    Final a pagar:
+                    total:
                     </strong></div>
                     <div class="col-4 col-md-3 text-left "><strong>
-                    $1,200.00 <br>
-                    $252.00 <br>
-                    $41,452.00 <br>
-                    $41,452.00 <br>
-                    $141,45.00 <br>
+                    {{ subtotal | currency:'':symbol: '1.0-2' }}<br>
+                    ${{impuestos}}<br>
+                    ${{serviciodeentrega}}<br>
+                    ${{total}}<br>
+                    
 
                     </strong></div>
                 </div>

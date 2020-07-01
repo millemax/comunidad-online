@@ -26,9 +26,16 @@ export class CarritoService {
   }
 
   
-  updateproductcarrito(variable:any, id:string, cantidad:number){
+  updateproductcarrito(variable:any, id:string, cantidad){
     var refproduct = firebase.firestore();
     return refproduct.collection('carrito').doc(id).update(variable,cantidad)
+
+  }
+
+ // lo use para actualizar para transferecia de un usuario anonimo a un usuario exitente
+  updateproductocarrito(id:string,clave:string,valor:any){
+    var refproduct = firebase.firestore();
+    return refproduct.collection('carrito').doc(id).update(clave,valor)
 
   }
 
@@ -37,6 +44,9 @@ export class CarritoService {
     return refproduct.collection('carrito').doc(id).delete()
 
   }
+
+
+
 
 
 }

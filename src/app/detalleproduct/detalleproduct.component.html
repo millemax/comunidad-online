@@ -94,7 +94,7 @@
                           </select>
                     </div>
                     <div class="col mt-2 d-flex">
-                        <button type="button" class="btn btn-block buttoncart" (click)="anadir(content)"><i class="fas fa-cart-arrow-down mr-3 iconocarrito"></i> <span class="letracarrito ml-4">Añadir al carrito</span></button>
+                        <button type="button" class="btn btn-block buttoncart" (click)="anadir1(content)"><i class="fas fa-cart-arrow-down mr-3 iconocarrito"></i> <span class="letracarrito ml-4">Añadir al carrito</span></button>
                     </div>
                 </div>
 
@@ -126,8 +126,8 @@
               <p class="textomodal">Tu producto se agrego correctamente al carrito de compras</p>
             </div>
             <div class="modal-footer justify-content-center" style="text-align: center;">
-              <button type="button" class="btn btn-success btn-block botonmodal" (click)="c('Save click')" routerLink="/carrito"><b>Ir al carrito</b></button>
-              <a class="textomodal mt-4" routerLink="/" (click)="c('Save click')"><u>Seguir comprando</u></a>
+              <button type="button" class="btn btn-success btn-block botonmodal"   routerLink="/carrito" (click)="d('Cross click')" ><b>Ir al carrito</b></button>
+              <a class="textomodal mt-4" routerLink="/" (click)="d('Cross click')"><u>Seguir comprando</u></a>
             </div>
           </ng-template>
        

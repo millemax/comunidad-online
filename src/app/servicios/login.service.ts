@@ -46,7 +46,8 @@ export class LoginService {
     return new Promise((resolved, reject)=>{
 
       this.afAuth.auth.onAuthStateChanged( firebaseuser=>{  
-        var estadouser= firebaseuser.isAnonymous;     
+        var estadouser= firebaseuser.isAnonymous;   
+        
            
         resolved(estadouser);                      
             
@@ -68,6 +69,27 @@ export class LoginService {
         
 
       })    
+
+  }
+
+
+  //recuperar id independientemente is es anonimo o un usuario logueado
+
+  readiduser(){
+    return new Promise((resolved, reject)=>{
+
+      this.afAuth.auth.onAuthStateChanged( firebaseuser=>{  
+        var id:string;
+        id= firebaseuser.uid;   
+        
+           
+        resolved(id);                      
+            
+          });
+        
+
+      })    
+    
 
   }
 

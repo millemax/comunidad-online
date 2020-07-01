@@ -196,14 +196,14 @@ capturarcantidad(cantidad:string){
 
 //esta es la funcion para añadir al carrito de compras
 
-async anadir(content){
+async anadir1(content){
 
   var record=this.producto[0].data;
   var id:string; 
 
   if (this.tipodeventa=="oferta"){
     record["precio"]=this.preciodescuento;
-              //obtengo el id de usuario
+           /*    //obtengo el id de usuario
             this.afAuth.auth.onAuthStateChanged(firebaseuser=>{     
                     
               console.log("el usuario autenticado",firebaseuser.uid);
@@ -224,15 +224,52 @@ async anadir(content){
                     })
 
 
-            })
+            }) */
 
+      
+       //correccion de cargar productos   por que se esta activando el suthstate y esta ejecutando el modal
+      
+     var iud = await this.loginservice.readiduser();
+     console.log("el usuario autenticado",iud);
+     record["usuario"]=iud;
+     this.carritoservice.createproductocarrito(record).then((result)=>{
+
+          //para abrir el modal de aviso
+          this.modalService.open(content);
+
+          console.log("producto agregado a carrito correctamente");
+          
+        })
+      .catch((err)=>{
+          console.log("no se puedo agregar al carrito");
+    
+  })
+     
+
+       
 
 
 
     
   } else{
+      var iud = await this.loginservice.readiduser();
+      console.log("el usuario autenticado",iud);
+      record["usuario"]=iud;
+      this.carritoservice.createproductocarrito(record).then((result)=>{
 
-          //obtengo el id de usuario
+        //para abrir el modal de aviso
+        this.modalService.open(content);
+
+        console.log("producto agregado a carrito correctamente");
+        
+      })
+    .catch((err)=>{
+        console.log("no se puedo agregar al carrito");
+      
+    })
+
+
+      /*     //obtengo el id de usuario
         this.afAuth.auth.onAuthStateChanged(firebaseuser=>{     
                 
           console.log("el usuario autenticado",firebaseuser.uid);
@@ -253,7 +290,7 @@ async anadir(content){
                 })
 
 
-  })
+  }) */
 
 
 

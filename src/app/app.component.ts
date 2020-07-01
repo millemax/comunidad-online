@@ -46,7 +46,7 @@ export class AppComponent implements OnInit{
     console.log("usuario existe en la principal", user);
     
   } else {
-    console.log("no existe ningun usuario en la principal");
+    console.log("no existe ningun usuario en la principal, se asignara un usuario anonimo");
     this.autenticacionanonima();
     
   }

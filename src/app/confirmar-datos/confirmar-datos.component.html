@@ -21,21 +21,21 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="nombres">Nombres</label>
-                      <input type="text" class="form-control" id="nombres" >
+                      <input type="text" class="form-control" id="nombres" [(ngModel)]="nombres">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="apellidos">Apellidos</label>
-                      <input type="text" class="form-control" id="apellidos">
+                      <input type="text" class="form-control" id="apellidos" [(ngModel)]="apellidos">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-3">
                       <label for="telefono">N° Telefono</label>
-                      <input type="text" class="form-control" id="telefono" >
+                      <input type="text" class="form-control" id="telefono" [(ngModel)]="telefono">
                     </div>
                     <div class="form-group col-md-9">
                       <label for="correo">Correo Electronico</label>
-                      <input type="text" class="form-control" id="correo">
+                      <input type="text" class="form-control" id="correo" [(ngModel)]="correo">
                     </div>
                 </div>
                 <div class="form-row">
@@ -44,7 +44,7 @@
                         <!--la mapa de google-->
                         <label for="direccion">Dirección <span class="aviso">(Arrastra el puntero hasta la ubicación exacta)</span></label>
                         
-                        <input type="text" class="form-control mb-2" placeholder=" Ingrese su Dirección" id="direccion" value="{{address}}">
+                        <input type="text" class="form-control mb-2" placeholder=" Ingrese su Dirección" id="direccion" value="{{address}}" readonly="true">
                         
                         <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
                             <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
@@ -55,7 +55,7 @@
                     </div>
                     <div class="form-group col-md-6">
                       <label for="referencia">Referencia</label>
-                      <input type="text" class="form-control" id="referencia">
+                      <input type="text" class="form-control" id="referencia" [(ngModel)]="referencia">
                     </div>
                 </div>
                 <div class="form-row">
@@ -162,23 +162,20 @@
                   <div class="col-3 "><small class="font-weight-bold">P.Total</small></div>
 
               </div>
-              <div class="row">
-                  <div class="col-4"><small>Camisa jhon holden</small></div>
-                  <div class="col-2"><small>01</small></div>
-                  <div class="col-3"><small>$18.00</small></div>
-                  <div class="col-3"><small>$18.00</small></div>
+              <div class="row" *ngFor="let product of collectioncarrito">
+                  <div class="col-4"><small>{{product.data.titulo}}</small></div>
+                  <div class="col-2"><small>{{product.data.cantidadpedida}}</small></div>
+                  <div class="col-3"><small>{{product.data.precio}}</small></div>
+                  <div class="col-3"><small>{{product.data.cantidadpedida * product.data.precio | currency}}</small></div>
               </div>
-              <div class="row">
-                  <div class="col-4"><small>Camisa jhon holden</small></div>
-                  <div class="col-2"><small>01</small></div>
-                  <div class="col-3"><small>$18.00</small></div>
-                  <div class="col-3"><small>$18.00</small></div>
-              </div>
+              
               <div class="font-weight-bold row " style="border-top: 1px solid #7890A3;" >
                   <div class="col-8">TOTAL</div>
-                  <div class="col-4" style="text-align: center">$100.00</div>
+                  <div class="col-4" style="text-align: center">{{ total | currency:'':symbol: '1.0-2' }}</div>
               </div>
-              <button type="button" class="btn boton-procesar btn-warning btn-sm btn-block"routerLink="/imprimir-recibo">Procesar Pago</button>
+               
+               <!--esto direccionaba a imprimir reciob   routerLink="/imprimir-recibo"      -->
+              <button type="button" class="btn boton-procesar btn-warning btn-sm btn-block"  (click)="comprar()">Procesar Pago</button>
 
             </div>
 

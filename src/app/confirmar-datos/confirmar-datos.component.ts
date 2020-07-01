@@ -1,6 +1,30 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone} from '@angular/core';
 import {MapsAPILoader, MouseEvent} from '@agm/core';
 
+
+
+//modulo para recuperar el id del usuario
+import {LoginService} from '../servicios/login.service';
+
+//importamos para recuperar los productos del usuario
+import { CarritoService } from '../servicios/carrito/carrito.service';
+
+//importamos para enviar a la base de datos a la seccion donde  se vendieron
+import {ComprasService} from '../servicios/compras/compras.service';
+
+////modulo  para las alertas
+import { ToastrService } from 'ngx-toastr';
+
+
+import { Router } from '@angular/router';
+
+
+
+
+
+
+
+
 @Component({
   selector: 'app-confirmar-datos',
   templateUrl: './confirmar-datos.component.html',
@@ -13,16 +37,34 @@ export class ConfirmarDatosComponent implements OnInit {
   longitude: number;
   zoom:number;
 
+  //colecccion del carrito que va ha mostrar
+  collectioncarrito=[];
+
+  //el total de productos en la tabla
+  total:number;
+
+  //varibles para capturar los datos de confirmacion
+  nombres:string;
+  apellidos:string;
+  telefono:string;
+  correo:string;
+  direccion:string;
+  referencia:string;
+
   address: string;
   private geoCoder;
 
   @ViewChild('search', {static: false})
   public searchElementRef: ElementRef;
 
-  constructor(private mapsAPILoader: MapsAPILoader,private ngZone: NgZone) { }
+  constructor(private mapsAPILoader: MapsAPILoader,private ngZone: NgZone, private loginservice: LoginService,
+     private carritoservice: CarritoService, private comprasservice: ComprasService, private toastr: ToastrService, private router:Router) { }
 
 
   ngOnInit() {
+
+    //funciones que ejecutan el producto
+    this.recuperarid();
 
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
@@ -47,6 +89,8 @@ export class ConfirmarDatosComponent implements OnInit {
         });
       });
     });
+
+    
   }
      // Get Current Location Coordinates
      private setCurrentLocation() {
@@ -85,5 +129,101 @@ export class ConfirmarDatosComponent implements OnInit {
 
     });
   }
+
+  //funcion para recuperar el id del usuario
+ async recuperarid(){    
+    var id= await this.loginservice.readiduser();
+    console.log("el usuario es ", id);
+    this.recuperarproductos(id);
+
+  
+
+  }
+
+
+  //recuperar todos los productos en carrito del usuario 
+  recuperarproductos(id){
+    this.carritoservice.readcarrito("usuario",id).get().then((doc)=>{
+      doc.forEach((datos)=>{
+        this.collectioncarrito.push({
+          iud: datos.id,
+          data:datos.data()
+
+        });
+      })
+      //Calculamos el TOTAL 
+      this.total = this.collectioncarrito.reduce((
+        acc,
+        obj,
+      ) => acc + (obj.data.precio * obj.data.cantidadpedida),
+      0);
+      console.log("Total: ", this.total)
+
+
+    })
+    .catch((err)=>{
+      console.log("no pudimos recuperar el carrito de productos");
+    })
+
+    console.log("coleccion carrito", this.collectioncarrito);
+
+
+  }
+
+
+
+  // la funcion para hacer el proceso de compra
+ async comprar(){
+   try {
+
+        var iduser=await this.loginservice.readiduser();
+        var record={
+          nombre: this.nombres,
+          apellido: this.apellidos,
+          telefono: this.telefono,
+          correo: this.correo,
+          direccion: this.address,
+          referencia: this.referencia,
+          productos: this.collectioncarrito,
+          iduser: iduser    
+    
+          }
+      
+    
+        this.comprasservice.createcompra(record).then((result) => {         
+          this.borrardecarrito();              
+          
+        })
+        .then((result) => {           
+           this.toastr.success('gracias por comprar','En hora en buena!');
+           this.router.navigate(['/imprimir-recibo']);
+        })
+        .catch((err)=>{
+          this.toastr.error("ha ocurrido un error asegurese de agregar datos validos","Error!")
+        })
+        
+   } catch (error) {
+        this.toastr.error("ha ocurrido un error asegurese de agregar datos validos","Error!")
+
+
+     
+   }    
+  }
+
+  borrardecarrito(){
+    for(var i=0;i<this.collectioncarrito.length;i++){
+      var iddoc= this.collectioncarrito[i].iud;      
+      this.carritoservice.deleteproductcarrito(iddoc);
+
+
+    }
+
+
+  }
+
+
+
+
+
 
 }

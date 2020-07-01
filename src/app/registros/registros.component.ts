@@ -5,13 +5,26 @@ import { MapsAPILoader, MouseEvent } from '@agm/core';
 
 //importamos el modulo de logeo
 
-import {LoginService} from '../servicios/login.service'
+import {LoginService} from '../servicios/login.service';
 
 //importamos el modulo para crear un registro en la base de datos
 import {UsuarioService} from '../servicios/usuario/usuario.service';
 
 
 import { Router } from '@angular/router';
+
+////modulo  para las alertas
+import { ToastrService } from 'ngx-toastr';
+
+//importamos el carrito para poder transferir a un usuario que ya existen el base de datos
+import {CarritoService} from '../servicios/carrito/carrito.service'
+
+
+
+
+
+
+
 
 
 
@@ -37,6 +50,12 @@ export class RegistrosComponent implements OnInit {
   correo2:string;
   contrasena2:string;
 
+  //variable para almacenar el id de los productos
+  idproduct=[];
+  idold:any;
+  idnew:string;
+
+
    // varibles para almacenar datos de la mapa
    title: string = 'AGM project';
    latitude: number;
@@ -50,9 +69,11 @@ export class RegistrosComponent implements OnInit {
    public searchElementRef: ElementRef;
 
   constructor(private mapsAPILoader: MapsAPILoader,private ngZone: NgZone, private loginservice: LoginService,
-     private usuarioservice: UsuarioService,private router: Router) { }
+     private usuarioservice: UsuarioService,private router: Router,private toastr: ToastrService,private carritoservice:CarritoService) { }
 
   ngOnInit() {
+    //para recuperar la lista de los productos que tiene
+    this.recuperarcarrito();
 
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
@@ -80,6 +101,8 @@ export class RegistrosComponent implements OnInit {
 
 
   }
+  
+
 
    // Get Current Location Coordinates
    private setCurrentLocation() {
@@ -122,86 +145,134 @@ export class RegistrosComponent implements OnInit {
     });
   }
 
+ async recuperarcarrito(){
+  var id= await this.loginservice.readiduser();
+  console.log("el id dueño de carrito", typeof(id));
+  this.carritoservice.readcarrito("usuario",""+id).get().then((resp)=>{
+    resp.forEach((datos)=>{
+      this.idproduct.push(
+        datos.id
+      )
 
-  //esta funcion es para iniciar sesion
-  iniciarsesion(){
+    })
+    console.log("los productos de este usuario",this.idproduct);
 
-       
+  })
+  
+  
 
-        if (this.correo==null && this.contrasena==null) {
-          console.log("ingrese una cuenta valida")
-          
-        } else {
-            this.loginservice.loginByEmail(this.correo, this.contrasena).then((usercred)=>{
-              console.log("el usuario logueado es", usercred.user.uid);
+
+ }
+
+ //funcion para iniciar sesion
+
+async iniciarsesion(){
+   this.idold=await this.loginservice.readiduser();
+   console.log("iniciando sesion", this.correo,this.contrasena);
+   console.log("usuario antes de ser transferido",this.idold);
+   this.loginservice.loginByEmail(this.correo,this.contrasena).then((resp)=>{
+     console.log("iniciando sesion");
+     this.idnew=resp.user.uid;
+     this.transferirproducto();
+     
+     
+   })
+   .catch((err)=>{
+     console.log("no pudimos iniciar sesion", err);
+     this.toastr.error('ocurrio un error','Error!')
+   })
+
+ }
+
+transferirproducto(){
+  
+  if(this.idold !== this.idnew){
+      for(var i=0;i <this.idproduct.length;i++){
+        var doc=this.idproduct[i]
+        this.carritoservice.updateproductocarrito(""+doc,"usuario",""+this.idnew)
+       console.log("los ids del producto",doc);
+
+        
+      }
+
+
+      console.log("productos trasferidos a un usuario existente");
+      this.toastr.success('Bienvenido',"Exito!")
+    
+
+  }
+}
+
+
+
+registro(){
+  console.log("datos de registro",
+    this.nombres,
+    this.apellidos,
+    this.fechadenacimiento,
+    this.numerodetelefono,
+    this.direccion,
+    this.correo2,
+    this.contrasena2    
+  )
+  //transferir usuario  registra como un usuario nuevo
+  this.loginservice.trasferiruser(this.correo2,this.contrasena2).then((usercred)=>{
+     var iud=usercred.user.uid; // este es el id del usuario
+            var record={
+              id:iud,
+              nombres:this.nombres,
+              apellidos: this.apellidos,
+              fechadenacimiento:this.fechadenacimiento,
+              numerodetelefono:this.numerodetelefono,
+              direccion:this.direccion,
+              correo:this.correo2,
+              contrasena: this.contrasena2
+
+            }
+            this.loginservice.loginByEmail(this.correo2,this.contrasena2).then((resp)=>{
+
+                    this.usuarioservice.createuser(record).then((resp)=>{
+                      console.log("usuario creado en la base de datos")
+                      this.router.navigate(['/confirmar-datos']);
+                      this.toastr.success('bienvenido', 'Exito!');
+
+                    })
+                    .catch((err)=>{
+                      console.log("error al crear el usuario en la base de datos",err);
+                      this.toastr.error('no se pudo crear el usuario','Error!')
+
+                    })
+
+              
+              
+
 
             })
             .catch((err)=>{
-              console.log("error no se pudo actualizar el usuario", err);
-
-              
-            })
-          
-        }
+              console.log("no pudimos loguear al usuario");
+              this.toastr.error('no pudimos loguearte','Error!');
+            })      
 
 
-  }
+     
+  })
+  .catch((err)=>{
+    console.log("no pudimos transferir el usuario anonimo",err);
+    this.toastr.error('no pudimos trasferir tus productos a tu usuario','Error!');
+  })
+
+}
 
 
-  registro(){
-    console.log("datos de registro",
-      this.nombres,
-      this.apellidos,
-      this.fechadenacimiento,
-      this.numerodetelefono,
-      this.direccion,
-      this.correo2,
-      this.contrasena2    
-    )
-    //transferir usuario  registra como un usuario nuevo
-    this.loginservice.trasferiruser(this.correo2,this.contrasena2).then((usercred)=>{
-       var iud=usercred.user.uid; // este es el id del usuario
-              var record={
-                id:iud,
-                nombres:this.nombres,
-                apellidos: this.apellidos,
-                fechadenacimiento:this.fechadenacimiento,
-                numerodetelefono:this.numerodetelefono,
-                direccion:this.direccion,
-                correo:this.correo2,
-                contrasena: this.contrasena2
-
-              }
-              this.loginservice.loginByEmail(this.correo2,this.contrasena2).then((resp)=>{
-
-                      this.usuarioservice.createuser(record).then((resp)=>{
-                        console.log("usuario creado en la base de datos")
-                        this.router.navigate(['/confirmar-datos']);
 
 
-                      })
-                      .catch((err)=>{
-                        console.log("error al crear el usuario en la base de datos",err);
-
-                      })
-
-                
-                
 
 
-              })
-              .catch((err)=>{
-                console.log("no pudimos loguear al usuario")
-              })      
 
 
-       
-    })
-    .catch((err)=>{
-      console.log("no pudimos transferir el usuario anonimo",err);
-    })
 
-  }
+      
+   
 
 
 
